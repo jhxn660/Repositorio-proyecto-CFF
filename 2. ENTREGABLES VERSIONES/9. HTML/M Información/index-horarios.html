@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Corralejo Fast Food — Horarios</title>
+
+  <!-- Font Awesome CDN -->
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+        crossorigin="anonymous" />
+
+  <!-- Hoja de estilos principal -->
+  <link rel="stylesheet" href="/Css/styles.css" />
+</head>
+<body>
+
+  <!-- ══════════════════════════════════════════════════
+       ENCABEZADO SUPERIOR
+  ═══════════════════════════════════════════════════ -->
+  <header class="site-header" role="banner">
+    <div class="brand">
+      <span class="brand__name">
+        <i class="fa-solid fa-burger" aria-hidden="true"></i>
+        Corralejo <span>Fast Food</span>
+      </span>
+      <span class="brand__tagline">El inicio de tu viaje gastronómico comienza aquí</span>
+    </div>
+
+    <!-- Acceso rápido en header -->
+    <nav aria-label="Acciones de usuario">
+      <div style="display:flex;gap:.5rem;">
+        <a href="#" class="btn btn--outline" style="padding:.45rem 1rem;font-size:.8rem;">
+          <i class="fa-regular fa-user" aria-hidden="true"></i> Iniciar Sesión
+        </a>
+        <a href="#" class="btn btn--primary" style="padding:.45rem 1rem;font-size:.8rem;">
+          <i class="fa-solid fa-user-plus" aria-hidden="true"></i> Registrarse
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ══════════════════════════════════════════════════
+       BARRA DE BIENVENIDA
+  ═══════════════════════════════════════════════════ -->
+  <div class="welcome-bar">
+    <h1 class="welcome-bar__title">¡Bienvenido/a!</h1>
+    <p class="welcome-bar__desc">
+      Explora nuestros productos o gestiona tu cuenta con tan solo un click.
+    </p>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════
+       NAVEGACIÓN PRINCIPAL
+  ═══════════════════════════════════════════════════ -->
+  <nav class="site-nav" aria-label="Navegación principal">
+    <ul class="site-nav__list" role="list">
+
+      <li class="site-nav__item">
+        <a href="/indexubicación.html">
+          <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+          Ubicación
+        </a>
+      </li>
+
+      <li class="site-nav__item">
+        <a href="index-horarios.html" class="active" aria-current="page">
+          <i class="fa-regular fa-clock" aria-hidden="true"></i>
+          Horarios
+        </a>
+      </li>
+
+      <li class="site-nav__item">
+        <a href="index-menu.html">
+          <i class="fa-solid fa-utensils" aria-hidden="true"></i>
+          Menú
+        </a>
+      </li>
+
+      <li class="site-nav__item">
+        <a href="index-valoraciones.html">
+          <i class="fa-solid fa-star" aria-hidden="true"></i>
+          Valoraciones
+        </a>
+      </li>
+
+    </ul>
+  </nav>
+
+  <!-- ══════════════════════════════════════════════════
+       CONTENIDO PRINCIPAL
+  ═══════════════════════════════════════════════════ -->
+  <main class="page-main" id="main-content">
+
+    <section class="horarios-grid" aria-labelledby="horarios-heading">
+
+      <!-- ── Columna izquierda: calendario ─────────────── -->
+      <div>
+
+        <!-- Calendario -->
+        <div class="calendar-card" role="region" aria-label="Calendario de horarios">
+
+          <div class="calendar-header">
+            <h3 id="horarios-heading">
+              <i class="fa-regular fa-calendar" aria-hidden="true"></i>
+              <span id="cal-month-label">Junio, 2026</span>
+            </h3>
+            <div class="calendar-nav" aria-label="Navegar meses">
+              <button id="btn-prev" aria-label="Mes anterior">
+                <i class="fa-solid fa-chevron-left"></i>
+              </button>
+              <button id="btn-next" aria-label="Mes siguiente">
+                <i class="fa-solid fa-chevron-right"></i>
+              </button>
+            </div>
+          </div>
+
+          <div class="calendar-grid">
+            <!-- Días de la semana -->
+            <div class="calendar-weekdays" aria-hidden="true">
+              <span>LU</span>
+              <span>MA</span>
+              <span>MI</span>
+              <span>JU</span>
+              <span>VI</span>
+              <span>SA</span>
+              <span>DO</span>
+            </div>
+
+            <!-- Días generados por JS -->
+            <div class="calendar-days" id="calendar-days" role="grid" aria-label="Días del mes">
+              <!-- Se llena dinámicamente -->
+            </div>
+          </div>
+
+          <!-- Tarjeta de información del día seleccionado -->
+          <div class="day-info-card" id="day-info-card" aria-live="polite">
+            <div class="day-info-card__icon" aria-hidden="true">
+              <i class="fa-regular fa-calendar-check"></i>
+            </div>
+            <div class="day-info-card__content">
+              <p class="date" id="day-info-date">Miércoles 18 / 06 / 26</p>
+              <p class="comment" id="day-info-comment">
+                El restaurante Corralejo Fast Food estará disponible según el horario
+                laboral de 2:00 p.m. hasta las 9:30 p.m.
+              </p>
+            </div>
+          </div>
+
+        </div><!-- /calendar-card -->
+
+      </div><!-- /columna izquierda -->
+
+      <!-- ── Columna derecha: panel de horarios ────────── -->
+      <div class="schedule-panel">
+
+        <!-- Información Días -->
+        <div class="schedule-legend" role="note" aria-label="Leyenda del calendario">
+          <h4>Información Días</h4>
+          <div class="legend-item">
+            <span class="legend-dot legend-dot--closed"></span>
+            Restaurante Cerrado
+          </div>
+          <div class="legend-item">
+            <span class="legend-dot legend-dot--maintenance"></span>
+            Mantenimiento
+          </div>
+          <div class="legend-item">
+            <span class="legend-dot legend-dot--selected"></span>
+            Día Seleccionado
+          </div>
+        </div>
+
+        <!-- Tabla de horarios semanales -->
+        <div class="schedule-table-card">
+          <div class="schedule-table-header">
+            <i class="fa-regular fa-clock" aria-hidden="true"></i>
+            Horario de apertura
+          </div>
+
+          <ul class="schedule-list" aria-label="Horarios por día">
+
+            <li class="schedule-row schedule-row--closed" aria-label="Lunes cerrado">
+              <span class="schedule-day">
+                <i class="fa-solid fa-circle dot-closed" aria-hidden="true"></i>
+                Lunes
+              </span>
+              <span class="badge-closed">CERRADO</span>
+            </li>
+
+            <li class="schedule-row" aria-label="Martes 2:00 p.m. a 9:30 p.m.">
+              <span class="schedule-day">
+                <i class="fa-solid fa-circle dot-open" aria-hidden="true"></i>
+                Martes
+              </span>
+              <span class="schedule-time">2:00 p. m. – 9:30 p. m.</span>
+            </li>
+
+            <li class="schedule-row" aria-label="Miércoles 2:00 p.m. a 9:30 p.m.">
+              <span class="schedule-day">
+                <i class="fa-solid fa-circle dot-open" aria-hidden="true"></i>
+                Miércoles
+              </span>
+              <span class="schedule-time">2:00 p. m. – 9:30 p. m.</span>
+            </li>
+
+            <li class="schedule-row" aria-label="Jueves 2:00 p.m. a 9:30 p.m.">
+              <span class="schedule-day">
+                <i class="fa-solid fa-circle dot-open" aria-hidden="true"></i>
+                Jueves
+              </span>
+              <span class="schedule-time">2:00 p. m. – 9:30 p. m.</span>
+            </li>
+
+            <li class="schedule-row" aria-label="Viernes 2:00 p.m. a 9:30 p.m.">
+              <span class="schedule-day">
+                <i class="fa-solid fa-circle dot-open" aria-hidden="true"></i>
+                Viernes
+              </span>
+              <span class="schedule-time">2:00 p. m. – 9:30 p. m.</span>
+            </li>
+
+            <li class="schedule-row" aria-label="Sábado 2:00 p.m. a 9:30 p.m.">
+              <span class="schedule-day">
+                <i class="fa-solid fa-circle dot-open" aria-hidden="true"></i>
+                Sábado
+              </span>
+              <span class="schedule-time">2:00 p. m. – 9:30 p. m.</span>
+            </li>
+
+            <li class="schedule-row" aria-label="Domingo 2:00 p.m. a 8:45 p.m.">
+              <span class="schedule-day">
+                <i class="fa-solid fa-circle dot-open" aria-hidden="true"></i>
+                Domingo
+              </span>
+              <span class="schedule-time">2:00 p. m. – 8:45 p. m.</span>
+            </li>
+
+          </ul>
+        </div><!-- /schedule-table-card -->
+
+      </div><!-- /schedule-panel -->
+
+    </section>
+
+  </main>
+
+  <!-- ══════════════════════════════════════════════════
+       FOOTER
+  ═══════════════════════════════════════════════════ -->
+  <footer class="site-footer" role="contentinfo">
+    <p>© 2026 <span>Corralejo Fast Food</span> — Todos los derechos reservados.</p>
+  </footer>
+
+  <!-- SCRIPT — Calendario interactivo (solo lectura)-->
+  <script>
+    (function () {
+      /* ── Días cerrados (lunes = día 1 en JS: 0=dom,1=lun…) ── */
+      const CLOSED_DAY = 1; // Lunes
+
+      /* Días con evento especial: { "YYYY-MM-DD": "texto" } */
+      const SPECIAL_DAYS = {
+        "2026-06-18": "Miércoles 18 de junio el restaurante Corralejo Fast Food estará disponible según el horario laboral de 2:00 p.m. hasta las 9:30 p.m."
+      };
+
+      const MONTHS_ES = [
+        "Enero","Febrero","Marzo","Abril","Mayo","Junio",
+        "Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"
+      ];
+      const DAYS_ES = ["domingo","lunes","martes","miércoles","jueves","viernes","sábado"];
+
+      let current = new Date();
+      current.setDate(1);
+
+      const today = new Date();
+      today.setHours(0,0,0,0);
+
+      let selectedDate = new Date(today);
+
+      const labelEl    = document.getElementById("cal-month-label");
+      const daysEl     = document.getElementById("calendar-days");
+      const infoDate   = document.getElementById("day-info-date");
+      const infoComment= document.getElementById("day-info-comment");
+
+      function pad(n){ return String(n).padStart(2,"0"); }
+
+      function formatKey(d){
+        return `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`;
+      }
+
+      function isClosed(d){ return d.getDay() === CLOSED_DAY; }
+
+      function updateInfo(d){
+        const key = formatKey(d);
+        const dayName = DAYS_ES[d.getDay()];
+        const dayNum  = d.getDate();
+        const month   = MONTHS_ES[d.getMonth()];
+        const year    = String(d.getFullYear()).slice(2);
+
+        infoDate.textContent =
+          `${dayName.charAt(0).toUpperCase()+dayName.slice(1)} ${pad(dayNum)} / ${pad(d.getMonth()+1)} / ${year}`;
+
+        if(isClosed(d)){
+          infoComment.textContent = "El restaurante se encuentra cerrado los lunes. ¡Te esperamos el martes!";
+        } else if(SPECIAL_DAYS[key]){
+          infoComment.textContent = SPECIAL_DAYS[key];
+        } else {
+          const timeStr = d.getDay() === 0 ? "2:00 p.m. hasta las 8:45 p.m." : "2:00 p.m. hasta las 9:30 p.m.";
+          infoComment.textContent =
+            `${dayName.charAt(0).toUpperCase()+dayName.slice(1)} ${dayNum} de ${month} el restaurante Corralejo Fast Food estará disponible según el horario laboral de ${timeStr}.`;
+        }
+      }
+
+      function render(){
+        const year  = current.getFullYear();
+        const month = current.getMonth();
+
+        labelEl.textContent = `${MONTHS_ES[month]}, ${year}`;
+
+        const firstDay = new Date(year, month, 1).getDay();
+        // Ajuste: semana empieza en lunes (0=lun)
+        const startOffset = (firstDay === 0) ? 6 : firstDay - 1;
+        const daysInMonth = new Date(year, month + 1, 0).getDate();
+
+        daysEl.innerHTML = "";
+
+        /* Celdas vacías antes del día 1 */
+        for(let i = 0; i < startOffset; i++){
+          const empty = document.createElement("div");
+          empty.className = "cal-day cal-day--empty";
+          empty.setAttribute("aria-hidden","true");
+          daysEl.appendChild(empty);
+        }
+
+        /* Días del mes */
+        for(let d = 1; d <= daysInMonth; d++){
+          const date = new Date(year, month, d);
+          date.setHours(0,0,0,0);
+
+          const btn = document.createElement("button");
+          btn.textContent = d;
+          btn.setAttribute("role","gridcell");
+          btn.setAttribute("aria-label", `${d} de ${MONTHS_ES[month]}`);
+
+          let cls = "cal-day";
+
+          if(isClosed(date)){
+            cls += " cal-day--closed";
+            btn.setAttribute("aria-disabled","true");
+          }
+
+          if(date.getTime() === today.getTime()){
+            cls += " cal-day--today";
+          }
+
+          if(date.getTime() === selectedDate.getTime()){
+            cls += " cal-day--selected";
+            btn.setAttribute("aria-pressed","true");
+          }
+
+          btn.className = cls;
+
+          if(!isClosed(date)){
+            btn.addEventListener("click", function(){
+              selectedDate = date;
+              updateInfo(date);
+              render();
+            });
+          }
+
+          daysEl.appendChild(btn);
+        }
+      }
+
+      document.getElementById("btn-prev").addEventListener("click", function(){
+        current.setMonth(current.getMonth() - 1);
+        render();
+      });
+
+      document.getElementById("btn-next").addEventListener("click", function(){
+        current.setMonth(current.getMonth() + 1);
+        render();
+      });
+
+      /* Inicializar */
+      updateInfo(selectedDate);
+      render();
+    })();
+  </script>
+
+</body>
+</html>
