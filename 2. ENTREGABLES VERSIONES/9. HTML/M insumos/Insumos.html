@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Corralejo Fast Food – Gestión de Inventario</title>
+  <link rel="stylesheet" href="/styles/Insumos.css">
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <span class="navbar-brand">Corralejo Fast Food</span>
+  <div class="navbar-icons">
+    <svg viewBox="0 0 24 24"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+    <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+  </div>
+</nav>
+
+<!-- CONTENT -->
+<main class="content">
+  <h1>Gestión de inventario</h1>
+
+  <!-- Toolbar -->
+  <div class="toolbar">
+    <div class="search-box">
+      <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <input type="text" id="searchInput" placeholder="Buscar insumos...">
+    </div>
+    <select class="filter-select" id="filterCategoria">
+      <option value="Todos">Todos</option>
+      <option value="Harinas">Harinas</option>
+      <option value="Lácteos">Lácteos</option>
+      <option value="Aceites">Aceites</option>
+    </select>
+    <div class="legend">
+      <span class="legend-item"><span class="dot dot-green"></span> Stock suficiente</span>
+      <span class="legend-item"><span class="dot dot-red"></span> Stock bajo</span>
+    </div>
+  </div>
+
+  <!-- Encabezado lista -->
+  <div class="list-header">
+    <h2>Lista de insumos</h2>
+    <button class="btn-add" id="btnAddInsumo">Añadir insumo</button>
+  </div>
+
+  <!-- Las tarjetas de insumos se generan dinámicamente con JavaScript -->
+  <div id="insumosList"></div>
+
+  <!-- Paginación -->
+  <div class="footer-bar">
+    <span id="footerInfo">Mostrando 0 a 0 de 0 insumos</span>
+    <div class="pagination" id="paginationContainer"></div>
+  </div>
+</main>
+
+<!-- MODAL: Añadir / Editar insumo -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal-box">
+    <div class="modal-header">
+      <h3 id="modalTitle">Añadir insumo</h3>
+      <button type="button" class="modal-close" id="modalClose" aria-label="Cerrar">&times;</button>
+    </div>
+
+    <form id="insumoForm" class="modal-form">
+      <input type="hidden" id="insumoId">
+
+      <div class="form-row">
+        <label for="fieldNombre">Nombre</label>
+        <input type="text" id="fieldNombre" required>
+      </div>
+
+      <div class="form-row">
+        <label for="fieldDescripcion">Descripción</label>
+        <textarea id="fieldDescripcion" rows="2"></textarea>
+      </div>
+
+      <div class="form-grid">
+        <div class="form-row">
+          <label for="fieldCategoria">Categoría</label>
+          <select id="fieldCategoria" required>
+            <option value="Harinas">Harinas</option>
+            <option value="Lácteos">Lácteos</option>
+            <option value="Aceites">Aceites</option>
+          </select>
+        </div>
+
+        <div class="form-row">
+          <label for="fieldUnidad">Unidad</label>
+          <select id="fieldUnidad" required>
+            <option value="Kilogramos (kg)">Kilogramos (kg)</option>
+            <option value="Litros (L)">Litros (L)</option>
+            <option value="Gramos (g)">Gramos (g)</option>
+            <option value="Unidades (u)">Unidades (u)</option>
+          </select>
+        </div>
+
+        <div class="form-row">
+          <label for="fieldEstado">Estado</label>
+          <select id="fieldEstado" required>
+            <option value="Disponible">Disponible</option>
+            <option value="Fuera de stock">Fuera de stock</option>
+          </select>
+        </div>
+
+        <div class="form-row">
+          <label for="fieldStockActual">Stock actual</label>
+          <input type="number" step="0.01" min="0" id="fieldStockActual" required>
+        </div>
+
+        <div class="form-row">
+          <label for="fieldStockMinimo">Stock mínimo</label>
+          <input type="number" step="0.01" min="0" id="fieldStockMinimo" required>
+        </div>
+
+        <div class="form-row">
+          <label for="fieldCosto">Costo unitario ($)</label>
+          <input type="number" step="0.01" min="0" id="fieldCosto" required>
+        </div>
+
+        <div class="form-row">
+          <label for="fieldVencimiento">Fecha de vencimiento</label>
+          <input type="date" id="fieldVencimiento">
+        </div>
+
+        <div class="form-row">
+          <label for="fieldPesoUnidad">Peso por unidad</label>
+          <input type="text" id="fieldPesoUnidad" placeholder="Ej: 500 g o ---">
+        </div>
+
+        <div class="form-row">
+          <label for="fieldCalorias">Calorías por 100g</label>
+          <input type="text" id="fieldCalorias" placeholder="Ej: 364 kcal">
+        </div>
+      </div>
+
+      <div class="modal-actions">
+        <button type="button" class="btn-cancel" id="modalCancel">Cancelar</button>
+        <button type="submit" class="btn-save">Guardar</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script>
+
+(function () {
+  const PAGE_SIZE = 3;
+  let currentPage = 1;
+  let editingId = null;
+  let nextId = 4;
+
+  // ---- Datos iniciales (los mismos que ya tenías en el HTML) ----
+  let insumos = [
+    {
+      id: 1,
+      icon: '/contenido/img/harina.png',
+      nombre: 'Harina de trigo',
+      descripcion: 'Lorem ipsum dolor sit amet, consectetur amet amet amet consectetur',
+      unidad: 'Kilogramos (kg)',
+      stockActual: 49.23,
+      stockMinimo: 20,
+      costo: 2500,
+      categoria: 'Harinas',
+      vencimiento: '2026-07-10',
+      pesoUnidad: '---',
+      calorias: '364 kcal',
+      estado: 'Disponible'
+    },
+    {
+      id: 2,
+      icon: '/contenido/img/queso.png',
+      nombre: 'Queso mozzarella',
+      descripcion: 'Lorem ipsum dolor sit amet, consectetur amet amet amet consectetur',
+      unidad: 'Kilogramos (kg)',
+      stockActual: 62,
+      stockMinimo: 30,
+      costo: 8200,
+      categoria: 'Lácteos',
+      vencimiento: '2026-02-01',
+      pesoUnidad: '500 g',
+      calorias: '852 kcal',
+      estado: 'Fuera de stock'
+    },
+    {
+      id: 3,
+      icon: '/contenido/img/aceite-de-oliva.png',
+      nombre: 'Aceite vegetal',
+      descripcion: 'Lorem ipsum dolor sit amet, consectetur amet amet amet consectetur',
+      unidad: 'Litros (L)',
+      stockActual: 31,
+      stockMinimo: 10,
+      costo: 6000,
+      categoria: 'Aceites',
+      vencimiento: '2026-07-10',
+      pesoUnidad: '---',
+      calorias: '884 kcal',
+      estado: 'Disponible'
+    }
+  ];
+
+  // Icono por categoría, para cuando se crea un insumo nuevo
+  const ICONOS_POR_CATEGORIA = {
+    Harinas: '/contenido/img/harina.png',
+    'Lácteos': '/contenido/img/queso.png',
+    Aceites: '/contenido/img/aceite-de-oliva.png'
+  };
+
+  // ---- Referencias al DOM ----
+  const insumosList = document.getElementById('insumosList');
+  const searchInput = document.getElementById('searchInput');
+  const filterSelect = document.getElementById('filterCategoria');
+  const footerInfo = document.getElementById('footerInfo');
+  const paginationContainer = document.getElementById('paginationContainer');
+  const btnAdd = document.getElementById('btnAddInsumo');
+
+  const modalOverlay = document.getElementById('modalOverlay');
+  const modalTitle = document.getElementById('modalTitle');
+  const insumoForm = document.getElementById('insumoForm');
+  const modalClose = document.getElementById('modalClose');
+  const modalCancel = document.getElementById('modalCancel');
+
+  const fieldId = document.getElementById('insumoId');
+  const fieldNombre = document.getElementById('fieldNombre');
+  const fieldDescripcion = document.getElementById('fieldDescripcion');
+  const fieldUnidad = document.getElementById('fieldUnidad');
+  const fieldCategoria = document.getElementById('fieldCategoria');
+  const fieldEstado = document.getElementById('fieldEstado');
+  const fieldStockActual = document.getElementById('fieldStockActual');
+  const fieldStockMinimo = document.getElementById('fieldStockMinimo');
+  const fieldCosto = document.getElementById('fieldCosto');
+  const fieldVencimiento = document.getElementById('fieldVencimiento');
+  const fieldPesoUnidad = document.getElementById('fieldPesoUnidad');
+  const fieldCalorias = document.getElementById('fieldCalorias');
+
+  // ---- Utilidades ----
+  function escapeHtml(str) {
+    if (str === undefined || str === null) return '';
+    return String(str)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
+  }
+
+  function unidadAbrev(unidad) {
+    const match = unidad.match(/\(([^)]+)\)/);
+    return match ? match[1] : unidad;
+  }
+
+  function formatNumero(num) {
+    return Number(num).toString().replace('.', ',');
+  }
+
+  function formatCosto(num, unidad) {
+    const entero = Math.round(Number(num)).toLocaleString('es-CO');
+    return `$${entero} por ${unidadAbrev(unidad)}`;
+  }
+
+  function formatFecha(iso) {
+    if (!iso) return '---';
+    const [y, m, d] = iso.split('-');
+    return `${d}/${m}/${y}`;
+  }
+
+  // ---- Filtrado (búsqueda + categoría) ----
+  function getFiltered() {
+    const term = searchInput.value.trim().toLowerCase();
+    const categoria = filterSelect.value;
+    return insumos.filter((it) => {
+      const coincideTexto = term === '' || it.nombre.toLowerCase().includes(term);
+      const coincideCategoria = categoria === 'Todos' || it.categoria === categoria;
+      return coincideTexto && coincideCategoria;
+    });
+  }
+
+  // ---- Render de una tarjeta ----
+  function renderCard(it) {
+    const badgeClass = it.estado === 'Disponible' ? 'badge-green' : 'badge-red';
+    return `
+      <div class="insumo-card" data-id="${it.id}">
+        <div class="card-top">
+          <div class="insumo-icon">
+            <img src="${it.icon}" alt="Icono de ${escapeHtml(it.nombre)}">
+          </div>
+          <div class="col-info">
+            <div><span class="insumo-name">${escapeHtml(it.nombre)}</span></div>
+            <div class="insumo-desc">${escapeHtml(it.descripcion)}</div>
+          </div>
+          <div class="data-grid">
+            <div class="data-cell">
+              <div class="data-label">Unidad:</div>
+              <div class="data-value">${escapeHtml(it.unidad)}</div>
+            </div>
+            <div class="data-cell">
+              <div class="data-label">Stock actual:</div>
+              <div class="data-value">${formatNumero(it.stockActual)} ${unidadAbrev(it.unidad)}</div>
+            </div>
+            <div class="data-cell">
+              <div class="data-label">Stock mínimo:</div>
+              <div class="data-value">${formatNumero(it.stockMinimo)} ${unidadAbrev(it.unidad)}</div>
+            </div>
+            <div class="data-cell">
+              <div class="data-label">Costo unitario:</div>
+              <div class="data-value">${formatCosto(it.costo, it.unidad)}</div>
+            </div>
+            <div class="data-cell">
+              <div class="data-label">Categoría:</div>
+              <div class="data-value">${escapeHtml(it.categoria)}</div>
+            </div>
+            <div class="data-cell">
+              <div class="data-label">Fecha de vencimiento:</div>
+              <div class="data-value">${formatFecha(it.vencimiento)}</div>
+            </div>
+          </div>
+          <div class="nutribox">
+            <div class="nutri-item">
+              <div class="nutri-label">Peso por unidad:</div>
+              <div class="nutri-value">${escapeHtml(it.pesoUnidad || '---')}</div>
+            </div>
+            <div class="nutri-item">
+              <div class="nutri-label">Calorías por 100g:</div>
+              <div class="nutri-value">${escapeHtml(it.calorias || '---')}</div>
+            </div>
+          </div>
+        </div>
+        <div class="card-bottom">
+          <span class="badge ${badgeClass}">● ${escapeHtml(it.estado)}</span>
+          <button type="button" class="btn-action btn-edit" data-id="${it.id}">Editar</button>
+          <button type="button" class="btn-action btn-delete" data-id="${it.id}">Eliminar</button>
+        </div>
+      </div>`;
+  }
+
+  // ---- Paginación ----
+  function renderPagination(totalPages) {
+    paginationContainer.innerHTML = '';
+
+    const btnPrev = document.createElement('button');
+    btnPrev.type = 'button';
+    btnPrev.className = 'page-btn';
+    btnPrev.textContent = 'Anterior';
+    btnPrev.disabled = currentPage <= 1;
+    btnPrev.addEventListener('click', () => {
+      if (currentPage > 1) {
+        currentPage--;
+        renderAll();
+      }
+    });
+    paginationContainer.appendChild(btnPrev);
+
+    for (let p = 1; p <= totalPages; p++) {
+      const btnPage = document.createElement('button');
+      btnPage.type = 'button';
+      btnPage.className = 'page-btn' + (p === currentPage ? ' active' : '');
+      btnPage.textContent = String(p);
+      btnPage.addEventListener('click', () => {
+        currentPage = p;
+        renderAll();
+      });
+      paginationContainer.appendChild(btnPage);
+    }
+
+    const btnNext = document.createElement('button');
+    btnNext.type = 'button';
+    btnNext.className = 'page-btn';
+    btnNext.textContent = 'Siguiente';
+    btnNext.disabled = currentPage >= totalPages;
+    btnNext.addEventListener('click', () => {
+      if (currentPage < totalPages) {
+        currentPage++;
+        renderAll();
+      }
+    });
+    paginationContainer.appendChild(btnNext);
+  }
+
+  // ---- Render general (lista + paginación + contador) ----
+  function renderAll() {
+    const filtered = getFiltered();
+    const totalPages = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE));
+    if (currentPage > totalPages) currentPage = totalPages;
+    if (currentPage < 1) currentPage = 1;
+
+    const start = (currentPage - 1) * PAGE_SIZE;
+    const pageItems = filtered.slice(start, start + PAGE_SIZE);
+
+    insumosList.innerHTML = pageItems.length
+      ? pageItems.map(renderCard).join('')
+      : '<p class="no-results">No se encontraron insumos.</p>';
+
+    const desde = filtered.length === 0 ? 0 : start + 1;
+    const hasta = start + pageItems.length;
+    footerInfo.textContent = `Mostrando ${desde} a ${hasta} de ${filtered.length} insumos`;
+
+    renderPagination(totalPages);
+  }
+
+  // ---- Modal: abrir / cerrar ----
+  function openModal(mode, id) {
+    insumoForm.reset();
+
+    if (mode === 'edit') {
+      const it = insumos.find((x) => x.id === id);
+      if (!it) return;
+      editingId = id;
+      modalTitle.textContent = 'Editar insumo';
+      fieldId.value = it.id;
+      fieldNombre.value = it.nombre;
+      fieldDescripcion.value = it.descripcion;
+      fieldUnidad.value = it.unidad;
+      fieldCategoria.value = it.categoria;
+      fieldEstado.value = it.estado;
+      fieldStockActual.value = it.stockActual;
+      fieldStockMinimo.value = it.stockMinimo;
+      fieldCosto.value = it.costo;
+      fieldVencimiento.value = it.vencimiento || '';
+      fieldPesoUnidad.value = it.pesoUnidad || '';
+      fieldCalorias.value = it.calorias || '';
+    } else {
+      editingId = null;
+      modalTitle.textContent = 'Añadir insumo';
+      fieldId.value = '';
+    }
+
+    modalOverlay.classList.add('active');
+    document.body.classList.add('modal-open');
+  }
+
+  function closeModal() {
+    modalOverlay.classList.remove('active');
+    document.body.classList.remove('modal-open');
+    insumoForm.reset();
+    editingId = null;
+  }
+
+  // ---- Guardar (crear o editar) ----
+  function handleSubmit(e) {
+    e.preventDefault();
+
+    const datos = {
+      nombre: fieldNombre.value.trim(),
+      descripcion: fieldDescripcion.value.trim(),
+      unidad: fieldUnidad.value,
+      categoria: fieldCategoria.value,
+      estado: fieldEstado.value,
+      stockActual: parseFloat(fieldStockActual.value) || 0,
+      stockMinimo: parseFloat(fieldStockMinimo.value) || 0,
+      costo: parseFloat(fieldCosto.value) || 0,
+      vencimiento: fieldVencimiento.value,
+      pesoUnidad: fieldPesoUnidad.value.trim() || '---',
+      calorias: fieldCalorias.value.trim() || '---'
+    };
+
+    if (!datos.nombre) {
+      alert('El nombre del insumo es obligatorio.');
+      return;
+    }
+
+    if (editingId !== null) {
+      const it = insumos.find((x) => x.id === editingId);
+      if (it) Object.assign(it, datos);
+    } else {
+      insumos.push({
+        id: nextId++,
+        icon: ICONOS_POR_CATEGORIA[datos.categoria] || '/contenido/img/harina.png',
+        ...datos
+      });
+      // Para que el nuevo insumo sea visible de inmediato, se limpian los filtros
+      searchInput.value = '';
+      filterSelect.value = 'Todos';
+      currentPage = Math.max(1, Math.ceil(insumos.length / PAGE_SIZE));
+    }
+
+    closeModal();
+    renderAll();
+  }
+
+  // ---- Eliminar ----
+  function handleDelete(id) {
+    const it = insumos.find((x) => x.id === id);
+    if (!it) return;
+    const confirmado = confirm(`¿Eliminar "${it.nombre}" del inventario?`);
+    if (!confirmado) return;
+    insumos = insumos.filter((x) => x.id !== id);
+    renderAll();
+  }
+
+  // ---- Eventos ----
+  btnAdd.addEventListener('click', () => openModal('add'));
+  modalClose.addEventListener('click', closeModal);
+  modalCancel.addEventListener('click', closeModal);
+
+  modalOverlay.addEventListener('click', (e) => {
+    if (e.target === modalOverlay) closeModal();
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modalOverlay.classList.contains('active')) {
+      closeModal();
+    }
+  });
+
+  insumoForm.addEventListener('submit', handleSubmit);
+
+  insumosList.addEventListener('click', (e) => {
+    const editBtn = e.target.closest('.btn-edit');
+    const delBtn = e.target.closest('.btn-delete');
+    if (editBtn) {
+      openModal('edit', Number(editBtn.dataset.id));
+    } else if (delBtn) {
+      handleDelete(Number(delBtn.dataset.id));
+    }
+  });
+
+  searchInput.addEventListener('input', () => {
+    currentPage = 1;
+    renderAll();
+  });
+
+  filterSelect.addEventListener('change', () => {
+    currentPage = 1;
+    renderAll();
+  });
+
+  // ---- Inicio ----
+  renderAll();
+})();
+
+</script>
+</body>
+</html>
