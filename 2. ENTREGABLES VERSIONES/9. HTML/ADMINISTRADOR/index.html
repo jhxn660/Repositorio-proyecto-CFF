@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Módulo Menú - Corralejo Fast Food</title>
+    <link rel="stylesheet" href="css/style.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+     <header class="header">
+        <div class="logo">
+            <img class="conterimg" src="img/imagen fuego.png" alt="Logo Corralejo">
+            <h2>Corralejo <span class="letracolor">Fast Food</span></h2>
+        </div>
+
+        <nav>
+            <ul class="nav-logos">
+                <li class="logo1"><i class="fa-solid fa-bell"></i></li>
+                <li class="logo2"><i class="fa-regular fa-circle-user"></i></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container">
+
+        <aside class="sidebar">
+            <h3>Administrador</h3>
+            <ul>
+                <li><i class="fa-solid fa-circle-info"></i> Gestión de Información</li>
+                <li><i class="fa-solid fa-paste"></i> Gestión de Inventario</li>
+                <li class="active-link"><a href="index.html" style="color: inherit; text-decoration: none;"><i class="fa-solid fa-utensils"></i> Gestión de Menú</a></li>
+                <li><a href="/MATEO/Indicadores Rojo/index.html" style="color: inherit; text-decoration: none;"><i class="fa-solid fa-arrow-trend-up"></i> Estadísticas de Negocio</a></li>
+                <li><i class="fa-solid fa-people-line"></i> Gestión de Empleados</li>
+            </ul>
+        </aside>
+
+        <section class="content">
+            <h1>Menú Compuesto</h1>
+
+            <section class="acciones">
+                <button class="btn btn-rojo" id="btn-registrar">
+                    <i class="fa-solid fa-circle-plus"></i>
+                    Registrar nueva categoría
+                </button>
+            
+                <button class="btn btn-search">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input class="barrabusq" type="text" id="input-busqueda" placeholder="Consultar">
+                </button>
+            
+                <button class="btn" id="btn-actualizar">
+                    <i class="fa-solid fa-rotate"></i>
+                    Actualizar apartado
+                </button>
+            </section>
+
+            <section class="categorias" id="contenedor-categorias">
+            
+                <div class="card-categoria">
+                    <div class="icono">
+                        <i class="fa-solid fa-burger"></i>
+                    </div>
+            
+                    <div class="info">
+                        <h3>Hamburguesas</h3>
+                        <p>Jugosas hamburguesas preparadas al momento, con ingredientes frescos y mucho sabor.</p>
+                    </div>
+            
+                    <div class="contenido">
+                        <h3>Contenido</h3>
+                        <div class="item"><p>Hamburguesa Clásica</p><p>$14.000</p></div>
+                        <div class="item"><p>Hamburguesa Pollo</p><p>$14.000</p></div>
+                        <div class="item"><p>Hamburguesa Doble</p><p>$20.000</p></div>
+                        <div class="item"><p>Hamburguesa Colombiana</p><p>$17.500</p></div>
+                        <div class="item"><p>Hamburguesa Americana</p><p>$17.500</p></div>
+                        <div class="item"><p>Hamburguesa Mexicana</p><p>$17.500</p></div>
+                        <div class="item"><p>Hamburguesa Francesa</p><p>$17.500</p></div>
+                        <div class="item"><p>Hamburguesa Argentina</p><p>$17.500</p></div>
+                        <div class="item"><p>Hamburguesa Corraleja</p><p>$22.500</p></div>
+                    </div>
+            
+                    <div class="acciones-card">
+                        <p class="estado disponible">● Disponible</p>
+                        <div class="botones">
+                            <button class="btn-editar-cat">Editar</button>
+                            <button class="btn-agregar-prod">Agregar</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-categoria">
+                    <div class="icono">
+                        <i class="fa-solid fa-bowl-food"></i>
+                    </div>
+            
+                    <div class="info">
+                        <h3>Mazorcadas</h3>
+                        <p>Mazorcadas llenas de sabor, acompañadas de carnes, salsas y toppings especiales.</p>
+                    </div>
+            
+                    <div class="contenido">
+                        <h3>Contenido</h3>
+                        <div class="item"><p>Mazorcada Carne</p><p>$24.000</p></div>
+                        <div class="item"><p>Mazorcada Pollo</p><p>$24.000</p></div>
+                        <div class="item"><p>Mazorcada Mixta</p><p>$29.000</p></div>
+                    </div>
+            
+                    <div class="acciones-card">
+                        <p class="estado disponible">● Disponible</p>
+                        <div class="botones">
+                            <button class="btn-editar-cat">Editar</button>
+                            <button class="btn-agregar-prod">Agregar</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-categoria">
+                    <div class="icono">
+                        <i class="fa-solid fa-pepper-hot"></i>
+                    </div>
+            
+                    <div class="info">
+                        <h3>Burritos</h3>
+                        <p>Burritos rellenos con ingredientes frescos envueltos en tortillas suaves y deliciosas.</p>
+                    </div>
+            
+                    <div class="contenido">
+                        <h3>Contenido</h3>
+                        <div class="item"><p>Burrito Pollo</p><p>$17.500</p></div>
+                        <div class="item"><p>Burrito Carne</p><p>$20.000</p></div>
+                        <div class="item"><p>Burrito Carne</p><p>$22.500</p></div>
+                    </div>
+            
+                    <div class="acciones-card">
+                        <p class="estado disponible">● Disponible</p>
+                        <div class="botones">
+                            <button class="btn-editar-cat">Editar</button>
+                            <button class="btn-agregar-prod">Agregar</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-categoria">
+                    <div class="icono">
+                        <i class="fa-solid fa-cookie"></i>
+                    </div>
+            
+                    <div class="info">
+                        <h3>Tortillas</h3>
+                        <p>Tortillas calientes y recién preparadas, perfectas para acompañar cualquier plato.</p>
+                    </div>
+            
+                    <div class="contenido">
+                        <h3>Contenido</h3>
+                        <div class="item"><p>Tortilla Carne</p><p>$15.000</p></div>
+                        <div class="item"><p>Tortilla Pollo</p><p>$15.000</p></div>
+                        <div class="item"><p>Tortilla Mixta</p><p>$19.000</p></div>
+                    </div>
+            
+                    <div class="acciones-card">
+                        <p class="estado disponible">● Disponible</p>
+                        <div class="botones">
+                            <button class="btn-editar-cat">Editar</button>
+                            <button class="btn-agregar-prod">Agregar</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-categoria">
+                    <div class="icono">
+                        <i class="fa-solid fa-drumstick-bite"></i>
+                    </div>
+            
+                    <div class="info">
+                        <h3>Carnes</h3>
+                        <p>Cortes de carne tiernos y sazonados, preparados al punto para disfrutar cada bocado.</p>
+                    </div>
+            
+                    <div class="contenido">
+                        <h3>Contenido</h3>
+                        <div class="item"><p>Costillas BBQ</p><p>$35.000</p></div>
+                        <div class="item"><p>Pechuga</p><p>$25.000</p></div>
+                        <div class="item"><p>Pechuga en Salsa de Champiñones</p><p>$31.500</p></div>
+                        <div class="item"><p>Pechuga en Salsa Criolla</p><p>$31.500</p></div>
+                        <div class="item"><p>Pechuga Gratinada</p><p>$29.000</p></div>
+                    </div>
+            
+                    <div class="acciones-card">
+                        <p class="estado disponible">● Disponible</p>
+                        <div class="botones">
+                            <button class="btn-editar-cat">Editar</button>
+                            <button class="btn-agregar-prod">Agregar</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-categoria">
+                    <div class="icono">
+                        <i class="fa-solid fa-glass-water"></i>
+                    </div>
+            
+                    <div class="info">
+                        <h3>Bebidas</h3>
+                        <p>Refrescantes bebidas para acompañar tus comidas y disfrutar en cualquier momento.</p>
+                    </div>
+            
+                    <div class="contenido">
+                        <h3>Contenido</h3>
+                        <div class="item"><p>Gaseosa 250 ml</p><p>$4.000</p></div>
+                        <div class="item"><p>Jugo Hit</p><p>$5.000</p></div>
+                        <div class="item"><p>Gaseosa 400 ml</p><p>$5.000</p></div>
+                        <div class="item"><p>Gaseosa 1.5 lts</p><p>$8.000</p></div>
+                        <div class="item"><p>Jugo Natural en Agua</p><p>$6.000</p></div>
+                        <div class="item"><p>Jugo Natural en Leche</p><p>$7.000</p></div>
+                    </div>
+            
+                    <div class="acciones-card">
+                        <p class="estado disponible">● Disponible</p>
+                        <div class="botones">
+                            <button class="btn-editar-cat">Editar</button>
+                            <button class="btn-agregar-prod">Agregar</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-categoria">
+                    <div class="icono">
+                        <i class="fa-solid fa-cheese"></i>
+                    </div>
+            
+                    <div class="info">
+                        <h3>Adicional</h3>
+                        <p>Complementos y extras ideales para personalizar y hacer tu pedido aún más completo.</p>
+                    </div>
+            
+                    <div class="contenido">
+                        <h3>Contenido</h3>
+                        <div class="item"><p>Papa Francesa</p><p>$6.000</p></div>
+                        <div class="item"><p>Papa Criolla</p><p>$6.000</p></div>
+                        <div class="item"><p>Yuca</p><p>$5.000</p></div>
+                    </div>
+            
+                    <div class="acciones-card">
+                        <p class="estado disponible">● Disponible</p>
+                        <div class="botones">
+                            <button class="btn-editar-cat">Editar</button>
+                            <button class="btn-agregar-prod">Agregar</button>
+                        </div>
+                    </div>
+                </div>      
+            
+            </section>
+        </section>
+    </main>
+
+    <div class="modal-overlay" id="modal-registro">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Registrar Nueva Categoría</h2>
+                <button class="btn-close class-close-btn">&times;</button>
+            </div>
+            <form id="form-categoria" onsubmit="event.preventDefault();">
+                <div class="form-group">
+                    <label for="cat-img">Imagen o Ícono de la Categoría</label>
+                    <input type="file" id="cat-img" accept="image/*">
+                </div>
+                <div class="form-group">
+                    <label for="cat-titulo">Título de la Categoría</label>
+                    <input type="text" id="cat-titulo" placeholder="Ej. Perros Calientes" required>
+                </div>
+                <div class="form-group">
+                    <label for="cat-desc">Descripción de la Categoría</label>
+                    <textarea id="cat-desc" rows="2" placeholder="Ej. Deliciosos perros con combinaciones únicas..." required></textarea>
+                </div>
+
+                <div class="productos-seccion">
+                    <label class="seccion-titulo">Agregar Productos a esta Categoría</label>
+                    <div class="form-row inputs-agregar-producto">
+                        <div class="form-group">
+                            <input type="text" id="prod-nombre-input" placeholder="Nombre (Ej. Perro Suizo)">
+                        </div>
+                        <div class="form-group" style="max-width: 140px;">
+                            <input type="text" id="prod-precio-input" placeholder="Precio (Ej. 15.000)">
+                        </div>
+                        <button type="button" class="btn btn-agregar-lista" id="btn-agregar-lista">
+                            <i class="fa-solid fa-plus"></i>
+                        </button>
+                    </div>
+                    <div class="lista-productos-temporal" id="lista-productos-temporal"></div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-cancelar-modal">Cancelar</button>
+                    <button type="submit" class="btn btn-rojo">Guardar Categoría</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="modal-editar">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Editar Categoría</h2>
+                <button class="btn-close class-close-btn">&times;</button>
+            </div>
+            <form id="form-editar-categoria" onsubmit="event.preventDefault();">
+                <div class="form-group">
+                    <label for="edit-cat-img">Cambiar Imagen o Ícono</label>
+                    <input type="file" id="edit-cat-img" accept="image/*">
+                </div>
+                <div class="form-group">
+                    <label for="edit-cat-titulo">Título de la Categoría</label>
+                    <input type="text" id="edit-cat-titulo" required>
+                </div>
+                <div class="form-group">
+                    <label for="edit-cat-desc">Descripción de la Categoría</label>
+                    <textarea id="edit-cat-desc" rows="2" required></textarea>
+                </div>
+
+                <div class="productos-seccion">
+                    <label class="seccion-titulo">Modificar Contenido de Productos</label>
+                    <div class="form-row inputs-agregar-producto">
+                        <div class="form-group">
+                            <input type="text" id="edit-prod-nombre-input" placeholder="Nuevo producto...">
+                        </div>
+                        <div class="form-group" style="max-width: 140px;">
+                            <input type="text" id="edit-prod-precio-input" placeholder="Precio...">
+                        </div>
+                        <button type="button" class="btn btn-agregar-lista" id="btn-edit-agregar-lista" title="Añadir producto">
+                            <i class="fa-solid fa-plus"></i>
+                        </button>
+                    </div>
+                    
+                    <div class="lista-productos-temporal" id="edit-lista-productos-temporal" style="max-height: 180px;">
+                        </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-cancelar-modal">Cancelar</button>
+                    <button type="submit" class="btn btn-rojo">Guardar Cambios</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="modal-agregar-producto">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Añadir Producto a: <span id="nombre-cat-producto" class="letracolor"></span></h2>
+                <button class="btn-close class-close-btn">&times;</button>
+            </div>
+            <form id="form-agregar-producto" onsubmit="event.preventDefault();">
+                <div class="form-group">
+                    <label for="new-prod-nombre">Nombre del Producto</label>
+                    <input type="text" id="new-prod-nombre" placeholder="Ej. Hamburguesa de la Casa" required>
+                </div>
+                <div class="form-group">
+                    <label for="new-prod-precio">Precio del Producto</label>
+                    <input type="text" id="new-prod-precio" placeholder="Ej. 18.500" required>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-cancelar-modal">Cancelar</button>
+                    <button type="submit" class="btn btn-rojo">Añadir al Menú</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>
