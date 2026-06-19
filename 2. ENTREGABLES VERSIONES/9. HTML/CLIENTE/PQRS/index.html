@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Corralejo Fast Food</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body>
+
+    <div class="contenedor">
+
+        <aside class="sidebar">
+
+            <div class="logo">
+                <img class="imglogo" src="img/imagen fuego.png" alt="">
+                <h2>CFF</h2>
+            </div>
+
+            <nav>
+                <ul>
+                    <li class="movimiento">
+                        <i class="fa-solid fa-circle-info"></i>
+                        Información
+                    </li>
+
+                    <li class="movimiento">
+                        <i class="fa-solid fa-location-dot"></i>
+                        Ubicación
+                    </li>
+
+                    <li class="movimiento">
+                        <i class="fa-solid fa-calendar"></i>
+                        Horarios
+                    </li>
+
+                    <li class="movimiento">
+                        <i class="fa-solid fa-utensils"></i>
+                        Menú
+                    </li>
+
+                    <li class="movimiento">
+                        <i class="fa-regular fa-comment"></i>
+                        Comentarios
+                    </li>
+
+                    <li class="activo">
+                        <i class="fa-solid fa-users-rectangle"></i>
+                        PQRS
+                    </li>
+                </ul>
+            </nav>
+
+        </aside>
+
+        <main class="contenido">
+
+            <div class="secencabezado">
+                <div class="encabezado">
+                    <h1>PQRS</h1>
+                    <p>Permite a los clientes enviar petiiones, quejas, relamos y sugerencias facilitando la comunicacion.</p>
+                </div>
+
+                <div class="treencabezado">
+                    <li class="logo1"><i class="fa-solid fa-bell"></i></li>
+                    <li class="logo2"><i class="fa-regular fa-circle-user"></i></li>
+                </div>
+            </div>
+
+            <div class="contenido-principal">
+
+                <div class="panel-cliente">
+
+                    <div class="cliente-avatar">
+                        <i class="fa-solid fa-user"></i>
+                    </div>
+
+                    <h2 class="cliente-bienvenida">Bienvenido, cliente</h2>
+                    <p class="cliente-subtitulo">¿En qué podemos ayudarte hoy?</p>
+
+                    <div class="pqrs-grid">
+
+                        <div class="pqrs-card" data-tipo="peticion">
+                            <i class="fa-solid fa-file-lines"></i>
+                            <span>Petición</span>
+                        </div>
+
+                        <div class="pqrs-card" data-tipo="queja">
+                            <i class="fa-solid fa-bullhorn"></i>
+                            <span>Queja</span>
+                        </div>
+
+                        <div class="pqrs-card" data-tipo="reclamo">
+                            <i class="fa-solid fa-triangle-exclamation"></i>
+                            <span>Reclamo</span>
+                        </div>
+
+                        <div class="pqrs-card" data-tipo="sugerencia">
+                            <i class="fa-solid fa-lightbulb"></i>
+                            <span>Sugerencia</span>
+                        </div>
+
+                    </div>
+
+                    <div class="mis-solicitudes">
+                        <h3>Mis solicitudes</h3>
+                        <div class="lista-pqrs" id="listaPQRS">
+                            <p class="sin-registros" id="sinRegistros">Aún no has enviado ninguna PQRS.</p>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </main>
+
+    </div>
+    <div class="modal-overlay" id="modalPQRS">
+        <div class="modal-box">
+
+            <div class="modal-header">
+                <i id="modalIcono" class="fa-solid fa-file-lines"></i>
+                <h3 id="modalTitulo">Nueva Petición</h3>
+                <span class="modal-cerrar" id="cerrarModal">&times;</span>
+            </div>
+
+            <form id="formPQRS">
+                <input type="hidden" id="pqrsId">
+                <input type="hidden" id="pqrsTipo">
+
+                <label for="pqrsAsunto">Asunto</label>
+                <input type="text" id="pqrsAsunto" placeholder="Escribe un breve asunto" required>
+
+                <label for="pqrsDescripcion">Descripción</label>
+                <textarea id="pqrsDescripcion" rows="4" placeholder="Cuéntanos los detalles..." required></textarea>
+
+                <div class="modal-acciones">
+                    <button type="button" class="btn-cancelar" id="btnCancelar">Cancelar</button>
+                    <button type="submit" class="btn-enviar" id="btnEnviar">Enviar</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
