@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Corralejo Fast Food - Ubicación</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body>
+
+    <div class="contenedor">
+
+        <aside class="sidebar">
+
+            <div class="logo">
+                <img class="imglogo" src="img/imagen fuego.png" alt="">
+                <h2>CFF</h2>
+            </div>
+
+            <nav>
+                <ul>
+                    <li class="movimiento">
+                        <i class="fa-solid fa-circle-info"></i>
+                        Información
+                    </li>
+
+                    <li class="activo">
+                        <i class="fa-solid fa-location-dot"></i>
+                        Ubicación
+                    </li>
+
+                    <li class="movimiento">
+                        <i class="fa-solid fa-calendar"></i>
+                        Horarios
+                    </li>
+
+                    <li class="movimiento">
+                        <i class="fa-solid fa-utensils"></i>
+                        Menú
+                    </li>
+
+                    <li class="movimiento">
+                        <i class="fa-regular fa-comment"></i>
+                        Comentarios
+                    </li>
+
+                    <li class="movimiento">
+                        <i class="fa-solid fa-users-rectangle"></i>
+                        PQRS
+                    </li>
+                </ul>
+            </nav>
+
+        </aside>
+
+        <main class="contenido">
+
+            <div class="secencabezado">
+                <div class="encabezado">
+                    <h1>Nuestra Ubicación</h1>
+                    <p>Encuéntranos en el corazón de la ciudad. Estamos listos para atenderte con el mejor sabor.</p>
+                </div>
+
+                <div class="treencabezado">
+                    <li class="logo1"><i class="fa-solid fa-bell"></i></li>
+                    <li class="logo2"><i class="fa-regular fa-circle-user"></i></li>
+                </div>
+            </div>
+
+            <div class="contenido-principal">
+
+                <div class="ubicacion-layout">
+
+                    <!-- Panel izquierdo: texto, beneficios, botones login -->
+                    <div class="ubicacion-info">
+                        <span class="ubicacion-eyebrow"><i class="fa-solid fa-location-dot"></i> ENCUÉNTRANOS</span>
+                        <h2 class="ubicacion-titulo">Descubre el mejor<br><span>sabor de la ciudad</span></h2>
+                        <p class="ubicacion-desc">¿Buscas dónde disfrutar de la mejor comida rápida con ingredientes frescos y sabores auténticos? Estamos ubicados en el corazón de la ciudad, listos para ofrecerte una experiencia gastronómica que no olvidarás. Ven y descubre por qué somos el favorito de cientos de clientes.</p>
+
+                        <ul class="ubicacion-beneficios">
+                            <li><i class="fa-solid fa-circle-check"></i> Fácil acceso y estacionamiento disponible</li>
+                            <li><i class="fa-solid fa-circle-check"></i> A pocas cuadras de la estación de transporte</li>
+                            <li><i class="fa-solid fa-circle-check"></i> Servicio a domicilio en la zona</li>
+                            <li><i class="fa-solid fa-circle-check"></i> Reservas disponibles vía WhatsApp</li>
+                        </ul>
+
+                        <div class="ubicacion-auth-btns">
+                            <button class="btn-auth btn-login">
+                                <i class="fa-regular fa-circle-user"></i> Iniciar Sesión
+                            </button>
+                            <button class="btn-auth btn-register">
+                                <i class="fa-solid fa-user-plus"></i> Registrarse
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Panel derecho: header mapa + mapa + botones contacto -->
+                    <div class="ubicacion-mapa-wrap">
+                        <div class="mapa-header">
+                            <i class="fa-solid fa-signs-post"></i>
+                            <span class="mapa-header-titulo">Nuestra ubicación</span>
+                            <span class="mapa-header-ciudad"><i class="fa-solid fa-location-dot"></i> Bogotá, Colombia</span>
+                        </div>
+                        <iframe
+                            class="mapa-iframe"
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d254508.08424399578!2d-74.24789978515625!3d4.648618!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f9bfd2da6cb29%3A0x239d635520a33914!2sBogot%C3%A1%2C%20Colombia!5e0!3m2!1ses!2sco!4v1718800000000!5m2!1ses!2sco"
+                            allowfullscreen=""
+                            loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+                        <div class="ubicacion-contacto-btns">
+                            <a href="tel:+573000000000" class="btn-contacto btn-telefono">
+                                <i class="fa-solid fa-phone"></i> +57 300 000 0000
+                            </a>
+                            <a href="https://wa.me/573000000000" target="_blank" class="btn-contacto btn-whatsapp">
+                                <i class="fa-brands fa-whatsapp"></i> WhatsApp
+                            </a>
+                            <span class="btn-contacto btn-domicilio">
+                                <i class="fa-solid fa-motorcycle"></i> Domicilios
+                            </span>
+                            <span class="btn-contacto btn-wifi">
+                                <i class="fa-solid fa-wifi"></i> Wi-Fi gratis
+                            </span>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </main>
+
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
