@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel Operaciones - Corralejo Fast Food</title>
+    <link rel="stylesheet" href="/pqrs/css/pqrs.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+    <header class="header">
+        <div class="logo">
+            <img class="conterimg" src="/pqrs/img/imagen fuego.png" alt="Logo Fuego">
+            <h2>Corralejo <span class="letracolor">Fast Food</span></h2>
+        </div>
+
+        <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+
+        <nav>
+            <ul class="nav-logos">
+                <li class="logo1"><i class="fa-solid fa-bell"></i></li>
+                <li class="logo2"><i class="fa-regular fa-circle-user"></i></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="mobile-menu" id="mobileMenu">
+        <ul>
+            <li><i class="fa-solid fa-pen-to-square"></i> Gestión de Pedidos</li>
+            <li><i class="fa-solid fa-utensils"></i> Menú</li>
+            <li><i class="fa-solid fa-book-open"></i> Gestión de Ventas</li>
+            <li class="active"><i class="fa-regular fa-user"></i> Gestión de PQRS</li>
+        </ul>
+    </div>
+    
+    <div class="main-layout">
+
+        <aside class="sidebar">
+            <h3>Panel Empleado</h3>
+            <ul>
+                <li>
+                    <i class="fa-solid fa-pen-to-square"></i>
+                    Gestión de Pedidos
+                </li>
+                <li>
+                    <i class="fa-solid fa-utensils"></i>
+                    Menú
+                </li>
+                <li>
+                    <i class="fa-solid fa-book-open"></i>
+                    Gestión de Ventas
+                </li>
+                <li class="active">
+                    <i class="fa-regular fa-user"></i>
+                    Gestión de PQRS
+                </li>
+            </ul>
+        </aside>
+
+        <main class="main-content">
+            <h2 class="page-heading">Listado de PQRS: Gestión y Respuestas</h2>
+
+            <div class="filters-card">
+                <div class="filter-group-row">
+                    <div class="input-pill-group">
+                        <label>Tipo de solicitud:</label>
+                        <select class="select-pill" id="filtroTipo">
+                            <option value="Todos">Todos</option>
+                            <option value="Queja">Queja</option>
+                            <option value="Reclamo">Reclamo</option>
+                            <option value="Sugerencia">Sugerencia</option>
+                        </select>
+                    </div>
+                    <div class="input-pill-group">
+                        <label>Estado:</label>
+                        <select class="select-pill" id="filtroEstado">
+                            <option value="Todos">Pendiente / Resuelto</option>
+                            <option value="Pendiente">Pendiente</option>
+                            <option value="Resuelto">Resuelto</option>
+                        </select>
+                    </div>
+                    <div class="input-pill-group">
+                        <label>Fecha de creación:</label>
+                        <select class="select-pill" id="filtroFecha">
+                            <option value="Todas">Cualquier fecha</option>
+                            <option value="Ultima semana">Última semana</option>
+                            <option value="Ultimo mes">Último mes</option>
+                            <option value="Año actual">Año actual</option>
+                        </select>
+                    </div>
+                    <div class="btn-filter-container">
+                        <button class="btn-solid-dark btn-actualizar" id="btnActualizarFiltros">Actualizar</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="table-wrapper mt-20">
+                <table class="pqrs-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Tipo de solicitud</th>
+                            <th>Fecha creación<br><small>Fecha respuesta</small></th>
+                            <th>Cliente</th>
+                            <th>Mensaje</th>
+                            <th>Estado</th>
+                            <th>Respuesta</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>#121</strong></td>
+                            <td>Queja</td>
+                            <td>04/03/2026<br><span class="text-muted">-----</span></td>
+                            <td>Juan Perdomo</td>
+                            <td class="text-truncate">Parece que el pedido...</td>
+                            <td><span class="status-badge pending">Pendiente</span></td>
+                            <td><button class="btn-table-action btn-open-modal">Ingresar</button></td>
+                        </tr>
+                        <tr>
+                            <td><strong>#120</strong></td>
+                            <td>Sugerencia</td>
+                            <td>04/03/2026<br>07/03/2026</td>
+                            <td>Sergio Niño</td>
+                            <td class="text-truncate">Las mesas estaban...</td>
+                            <td><span class="status-badge resolved">Resuelto</span></td>
+                            <td><button class="btn-table-action btn-open-modal">Ingresar</button></td>
+                        </tr>
+                        <tr>
+                            <td><strong>#119</strong></td>
+                            <td>Reclamo</td>
+                            <td>02/03/2026<br><span class="text-muted">-----</span></td>
+                            <td>Harold Antonio</td>
+                            <td class="text-truncate">Me dieron un pedido...</td>
+                            <td><span class="status-badge pending">Pendiente</span></td>
+                            <td><button class="btn-table-action btn-open-modal">Ingresar</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+
+    <div class="modal-overlay" id="pqrsModal">
+        <div class="modal-content">
+            
+            <div class="modal-info-capsule">
+                <div class="capsule-item">Petición #121</div>
+                <div class="capsule-item">Estado pendiente</div>
+                <div class="capsule-item">Tipo queja</div>
+            </div>
+
+            <div class="modal-body">
+                <div class="detail-section">
+                    <h4>Nombre del cliente</h4>
+                    <p>Juan Perdomo Acosta</p>
+                </div>
+
+                <div class="detail-section">
+                    <h4>Mensaje cliente</h4>
+                    <p class="client-message-text">
+                        Parece que el pedido que he generado no ha sido el correcto, ya que he pedido la hamburguesa clásica con combo (gaseosa 250ml y papas fritas) y solamente me ha llegado la hamburguesa clásica sin el combo completo, me parece una faltada de respeto ya que dure una hora esperando y no me orecieron un pasabocas o algo por el estilo.
+                    </p>
+                </div>
+
+                <div class="detail-section">
+                    <h4>Fecha de creación</h4>
+                    <p>04/03/2026</p>
+                </div>
+
+                <div class="detail-section mt-15">
+                    <h4>Estado actual de la solicitud generada:</h4>
+                    <select class="select-pill modal-select" id="modalEstadoSelect">
+                        <option value="PENDIENTE">PENDIENTE</option>
+                        <option value="RESUELTO">RESUELTO</option>
+                    </select>
+                </div>
+
+                <div class="detail-section mt-15">
+                    <h4>Digite su respuesta:</h4>
+                    <textarea class="modal-textarea" placeholder="Escriba la respuesta aquí..."></textarea>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button class="btn-outline-pill" id="btnCancelModal">CANCELAR</button>
+                <button class="btn-solid-dark-pill" id="btnEnviarRespuesta">ENVIAR RESPUESTA</button>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        // Lógica para alternar el Menú Desplegable Móvil
+        const menuToggle = document.getElementById('menuToggle');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('open');
+        });
+
+        // Referencias al Modal de PQRS
+        const modal = document.getElementById('pqrsModal');
+        const openButtons = document.querySelectorAll('.btn-open-modal');
+        const cancelButton = document.getElementById('btnCancelModal');
+        const btnEnviarRespuesta = document.getElementById('btnEnviarRespuesta');
+        const modalEstadoSelect = document.getElementById('modalEstadoSelect');
+
+        // Referencias para los Filtros de la Tabla
+        const filtroTipo = document.getElementById('filtroTipo');
+        const filtroEstado = document.getElementById('filtroEstado');
+        const filtroFecha = document.getElementById('filtroFecha');
+        const btnActualizarFiltros = document.getElementById('btnActualizarFiltros');
+        const filasTabla = document.querySelectorAll('.pqrs-table tbody tr');
+
+        let filaActual = null;
+
+        // Abrir Modal e Interconectar datos del estado
+        openButtons.forEach(button => {
+            button.addEventListener('click', (e) => {
+                filaActual = e.target.closest('tr'); 
+                
+                const badgeActual = filaActual.querySelector('.status-badge');
+                if (badgeActual.classList.contains('resolved')) {
+                    modalEstadoSelect.value = "RESUELTO";
+                } else {
+                    modalEstadoSelect.value = "PENDIENTE";
+                }
+
+                modal.classList.add('active');
+            });
+        });
+
+        const cerrarModal = () => {
+            modal.classList.remove('active');
+            filaActual = null;
+        };
+
+        cancelButton.addEventListener('click', cerrarModal);
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) cerrarModal();
+        });
+
+        // Enviar Respuesta y Modificar el Estado en Caliente dentro de la Fila
+        btnEnviarRespuesta.addEventListener('click', () => {
+            if (filaActual) {
+                const nuevoEstado = modalEstadoSelect.value;
+                const badgeElement = filaActual.querySelector('.status-badge');
+                
+                badgeElement.textContent = nuevoEstado.charAt(0) + nuevoEstado.slice(1).toLowerCase();
+                
+                if (nuevoEstado === 'RESUELTO') {
+                    badgeElement.classList.remove('pending');
+                    badgeElement.classList.add('resolved');
+                } else {
+                    badgeElement.classList.remove('resolved');
+                    badgeElement.classList.add('pending');
+                }
+
+                document.querySelector('.modal-textarea').value = '';
+                cerrarModal();
+            }
+        });
+
+        // ==========================================
+        // NUEVA LÓGICA DE FILTRADO MÚLTIPLE
+        // ==========================================
+        btnActualizarFiltros.addEventListener('click', () => {
+            const tipoSeleccionado = filtroTipo.value;
+            const estadoSeleccionado = filtroEstado.value;
+            const fechaSeleccionada = filtroFecha.value;
+
+            // Obtener la fecha de hoy para hacer las matemáticas del filtro
+            const hoy = new Date();
+
+            filasTabla.forEach(fila => {
+                // 1. Validar Tipo
+                const tipoEnFila = fila.querySelector('td:nth-child(2)').textContent.trim();
+                const cumpleTipo = (tipoSeleccionado === 'Todos' || tipoEnFila === tipoSeleccionado);
+
+                // 2. Validar Estado
+                const estadoEnFila = fila.querySelector('td:nth-child(6)').textContent.trim();
+                const cumpleEstado = (estadoSeleccionado === 'Todos' || estadoEnFila === estadoSeleccionado);
+
+                // 3. Validar Fecha
+                // Extraemos exactamente los primeros 10 caracteres (la fecha de creación: DD/MM/YYYY)
+                const textoFechaCelda = fila.querySelector('td:nth-child(3)').textContent.trim().substring(0, 10);
+                const partesFecha = textoFechaCelda.split('/'); // [DD, MM, YYYY]
+                
+                // Formato en JS (Año, Mes [0-11], Día)
+                const fechaFila = new Date(partesFecha[2], partesFecha[1] - 1, partesFecha[0]);
+                
+                let cumpleFecha = true;
+
+                if (fechaSeleccionada === 'Ultima semana') {
+                    const haceUnaSemana = new Date();
+                    haceUnaSemana.setDate(hoy.getDate() - 7);
+                    cumpleFecha = (fechaFila >= haceUnaSemana && fechaFila <= hoy);
+                } 
+                else if (fechaSeleccionada === 'Ultimo mes') {
+                    const haceUnMes = new Date();
+                    haceUnMes.setMonth(hoy.getMonth() - 1);
+                    cumpleFecha = (fechaFila >= haceUnMes && fechaFila <= hoy);
+                } 
+                else if (fechaSeleccionada === 'Año actual') {
+                    cumpleFecha = (fechaFila.getFullYear() === hoy.getFullYear());
+                }
+
+                // 4. Aplicar visibilidad solo si cumple TODAS las reglas
+                if (cumpleTipo && cumpleEstado && cumpleFecha) {
+                    fila.style.display = '';
+                } else {
+                    fila.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
