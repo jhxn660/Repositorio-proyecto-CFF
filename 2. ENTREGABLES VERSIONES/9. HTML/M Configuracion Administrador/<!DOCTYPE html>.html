@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configuración - Corralejo Fast Food</title>
+    <link rel="stylesheet" href="/AdminCss.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    
+    <header class="header">
+        <div class="logo">
+            <img class="conterimg" src="img/imagen fuego.png" alt="Logo Corralejo">
+            <h2>Corralejo <span class="letracolor">Fast Food</span></h2>
+        </div>
+        <nav>
+            <ul class="nav-logos">
+                <li class="logo1"><i class="fa-solid fa-bell"></i></li>
+                <li class="logo2"><i class="fa-regular fa-circle-user"></i></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container">
+
+        <aside class="sidebar">
+            <h3>Administrador</h3>
+            <ul>
+                <li><i class="fa-solid fa-circle-info"></i> Gestión de Información</li>
+                <li><i class="fa-solid fa-paste"></i> Gestión de Inventario</li>
+                <li><i class="fa-solid fa-utensils"></i> Gestión de Menú</li>
+                <li><i class="fa-solid fa-arrow-trend-up"></i> Estadísticas de Negocio</li>
+                <li><i class="fa-solid fa-people-line"></i> Gestión de Empleados</li>
+            </ul>
+        </aside>
+
+        <section class="content">
+            <div class="settings-wrapper">
+                <h1 class="page-title">Configuración del Sistema</h1>
+                
+                <div class="settings-grid">
+                    
+                    <div class="settings-card">
+                        <div class="settings-icon">
+                            <i class="fa-solid fa-user"></i>
+                        </div>
+                        <h3>Administrar Cuenta</h3>
+                        <p>Configura tus datos de tu cuenta a tu gusto.</p>
+                        <button class="btn-settings" data-modal="modal-cuenta">Gestionar Cuenta</button>
+                    </div>
+
+                    <div class="settings-card">
+                        <div class="settings-icon">
+                            <i class="fa-solid fa-bell"></i>
+                        </div>
+                        <h3>Preferencias de Notificación</h3>
+                        <p>Configura cómo y cuándo recibir alertas del sistema.</p>
+                        <button class="btn-settings" data-modal="modal-notificaciones">Configurar Notificaciones</button>
+                    </div>
+
+                    <div class="settings-card">
+                        <div class="settings-icon">
+                            <i class="fa-solid fa-paint-brush"></i>
+                        </div>
+                        <h3>Gestionar Preferencias</h3>
+                        <p>Configura como quieres visualizar la interfaz.</p>
+                        <button class="btn-settings" data-modal="modal-preferencias">Administrar Preferencias</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div class="modal-overlay" id="modal-cuenta">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Administrar Cuenta</h2>
+                <button class="btn-close"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="modal-body">
+                <form id="form-cuenta">
+                    <div class="form-group">
+                        <label>Nombre de Usuario</label>
+                        <input type="text" value="Admin Principal" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Correo Electrónico</label>
+                        <input type="email" value="admin@corralejoff.com" required>
+                    </div>
+                    <span class="seccion-titulo">Cambiar Contraseña</span>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Nueva Contraseña</label>
+                            <input type="password" id="new-password" placeholder="Mínimo 8 caracteres">
+                        </div>
+                        <div class="form-group">
+                            <label>Confirmar Contraseña</label>
+                            <input type="password" id="confirm-password" placeholder="Repita la contraseña">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-cancelar btn-close-action">Cancelar</button>
+                        <button type="submit" class="btn btn-rojo">Guardar Cambios</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="modal-notificaciones">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Preferencias de Notificación</h2>
+                <button class="btn-close"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="modal-body">
+                <form id="form-notificaciones">
+                    <div class="toggle-row">
+                        <div class="toggle-info">
+                            <h4>Alertas de Nuevos Pedidos</h4>
+                            <p>Recibe una alerta sonora cuando ingrese un pedido.</p>
+                        </div>
+                        <label class="switch">
+                            <input type="checkbox" checked>
+                            <span class="slider round"></span>
+                        </label>
+                    </div>
+                    <div class="toggle-row">
+                        <div class="toggle-info">
+                            <h4>Alertas de Stock Bajo</h4>
+                            <p>Avisar cuando un producto del inventario esté por agotarse.</p>
+                        </div>
+                        <label class="switch">
+                            <input type="checkbox" checked>
+                            <span class="slider round"></span>
+                        </label>
+                    </div>
+                    <div class="toggle-row">
+                        <div class="toggle-info">
+                            <h4>Resumen Diario por Correo</h4>
+                            <p>Enviar corte de ventas al correo configurado.</p>
+                        </div>
+                        <label class="switch">
+                            <input type="checkbox">
+                            <span class="slider round"></span>
+                        </label>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-cancelar btn-close-action">Cancelar</button>
+                        <button type="submit" class="btn btn-rojo">Guardar Cambios</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="modal-preferencias">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Gestionar Preferencias</h2>
+                <button class="btn-close"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="modal-body">
+                <form id="form-preferencias">
+                    <div class="toggle-row" style="border-bottom: none;">
+                        <div class="toggle-info">
+                            <h4>Modo Oscuro</h4>
+                            <p>Cambia la paleta de colores de la interfaz a tonos oscuros.</p>
+                        </div>
+                        <label class="switch">
+                            <input type="checkbox" id="theme-toggle">
+                            <span class="slider round"></span>
+                        </label>
+                    </div>
+                    
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-cancelar btn-close-action">Cancelar</button>
+                        <button type="submit" class="btn btn-rojo">Aplicar Interfaz</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div id="toast-notification" class="toast">Guardado correctamente.</div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            // 1. MANEJO DE MODALES
+            const openButtons = document.querySelectorAll('.btn-settings');
+            const closeButtons = document.querySelectorAll('.btn-close, .btn-close-action');
+            const overlays = document.querySelectorAll('.modal-overlay');
+
+            const openModal = (modalId) => {
+                const modal = document.getElementById(modalId);
+                if (modal) modal.classList.add('show');
+            };
+
+            const closeModal = () => {
+                overlays.forEach(overlay => overlay.classList.remove('show'));
+            };
+
+            openButtons.forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const targetModal = e.currentTarget.getAttribute('data-modal');
+                    openModal(targetModal);
+                });
+            });
+
+            closeButtons.forEach(btn => {
+                btn.addEventListener('click', closeModal);
+            });
+
+            overlays.forEach(overlay => {
+                overlay.addEventListener('click', (e) => {
+                    if (e.target === overlay) {
+                        closeModal();
+                    }
+                });
+            });
+
+            // 2. FUNCIÓN DE TOAST (MENSAJE DE ÉXITO)
+            const showToast = (message) => {
+                const toast = document.getElementById('toast-notification');
+                toast.textContent = message;
+                toast.classList.add('show');
+                setTimeout(() => {
+                    toast.classList.remove('show');
+                }, 3000);
+            };
+
+            // 3. EVENTOS DE LOS FORMULARIOS
+            document.getElementById('form-cuenta').addEventListener('submit', (e) => {
+                e.preventDefault();
+                const pass1 = document.getElementById('new-password').value;
+                const pass2 = document.getElementById('confirm-password').value;
+
+                if (pass1 !== '' || pass2 !== '') {
+                    if (pass1 !== pass2) {
+                        alert('Las contraseñas no coinciden.');
+                        return;
+                    }
+                }
+                closeModal();
+                showToast('Datos de cuenta actualizados.');
+            });
+
+            document.getElementById('form-notificaciones').addEventListener('submit', (e) => {
+                e.preventDefault();
+                closeModal();
+                showToast('Notificaciones configuradas correctamente.');
+            });
+
+            // Formulario Preferencias (Modo Oscuro)
+            const formPreferencias = document.getElementById('form-preferencias');
+            const themeToggle = document.getElementById('theme-toggle');
+            
+            if (localStorage.getItem('theme') === 'dark') {
+                document.body.classList.add('dark-mode');
+                themeToggle.checked = true;
+            }
+
+            formPreferencias.addEventListener('submit', (e) => {
+                e.preventDefault();
+                if (themeToggle.checked) {
+                    document.body.classList.add('dark-mode');
+                    localStorage.setItem('theme', 'dark');
+                } else {
+                    document.body.classList.remove('dark-mode');
+                    localStorage.setItem('theme', 'light');
+                }
+                closeModal();
+                showToast('Preferencias aplicadas.');
+            });
+        });
+    </script>
+</body>
+</html>
