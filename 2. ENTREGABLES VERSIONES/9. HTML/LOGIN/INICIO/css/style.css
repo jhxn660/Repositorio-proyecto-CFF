@@ -1,0 +1,179 @@
+@import url('https://fonts.googleapis.com/css2?family=Albert+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Albert Sans', sans-serif;
+}
+
+/* Fondo plano y limpio para centrar la tarjeta de login sin imágenes */
+body {
+    width: 100vw;
+    height: 100vh;
+    background: url('/LOGIN/REGISTRO/img/1769a4c6-236c-4268-95e7-d111b93a4d0d.png') no-repeat center center;
+    background-size: cover;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+/* Tarjeta del formulario idéntica a la imagen */
+.form-box {
+    width: 100%;
+    max-width: 430px;
+    background: #ffffff;
+    padding: 50px 35px;
+    border-radius: 16px;
+    border: 1px solid #e6e6e6;
+    position: relative;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2); 
+}
+
+/* Adornos rectangulares naranjas de las esquinas */
+.form-box::before {
+    content: '';
+    position: absolute;
+    top: 22px;
+    right: 35px;
+    width: 65px;
+    height: 7px;
+    background-color: #ff9100;
+    border-radius: 10px;
+}
+
+.form-box::after {
+    content: '';
+    position: absolute;
+    bottom: 22px;
+    left: 35px;
+    width: 65px;
+    height: 7px;
+    background-color: #ff9100;
+    border-radius: 10px;
+}
+
+/* Cabecera */
+.header-form {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+/* Círculo con el logo de la llama */
+.logo-circle {
+    width: 60px;
+    height: 60px;
+    background-color: #222222;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #555555; /* Borde oscuro como el diseño */
+    position: absolute;
+    top: -12px;
+    left: -12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+.header-form h1 {
+    font-size: 1.8rem;
+    color: #222222;
+    font-weight: 700;
+}
+
+.brand-subtitle {
+    font-size: 0.85rem;
+    color: #444444;
+    font-weight: 600;
+    margin-top: -2px;
+}
+
+.brand-subtitle .highlight {
+    color: #ff9100;
+}
+
+/* Inputs y etiquetas */
+.input-group {
+    margin-bottom: 22px;
+    text-align: left;
+}
+
+.input-group label {
+    display: block;
+    font-size: 0.85rem;
+    color: #1a2536; /* Azul oscuro/grisáceo de la etiqueta */
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 13px 16px;
+    border: 1px solid #cccccc;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    color: #333333;
+    background-color: #ffffff;
+    transition: all 0.3s ease;
+}
+
+.input-group input:focus {
+    outline: none;
+    border-color: #ff9100;
+    box-shadow: 0 0 0 3px rgba(255, 145, 0, 0.15);
+}
+
+/* Estilo del placeholder gris claro (Ejemplo: ...) */
+.input-group input::placeholder {
+    color: #bfbfbf;
+    font-size: 0.9rem;
+}
+
+/* Botón Iniciar Sesión */
+.btn-submit {
+    width: 100%;
+    padding: 14px;
+    background-color: #333333; /* Gris oscuro idéntico */
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    margin-top: 5px;
+    margin-bottom: 25px;
+}
+
+.btn-submit:hover {
+    background-color: #1a1a1a;
+}
+
+/* Distribución de los enlaces inferiores con separación */
+.footer-links {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.85rem;
+    padding: 0 5px;
+}
+
+.footer-links a {
+    color: #222222;
+    text-decoration: underline;
+    font-weight: 600;
+    transition: color 0.2s;
+}
+
+.footer-links a:hover {
+    color: #ff9100;
+}

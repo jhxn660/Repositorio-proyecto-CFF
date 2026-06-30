@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel Operaciones - Corralejo Fast Food</title>
+    <link rel="stylesheet" href="css/Ventas1.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+    <header class="header">
+        <div class="logo">
+            <img class="conterimg" src="img/imagen fuego.png" alt="Logo Corralejo">
+            <h2>Corralejo <span class="letracolor">Fast Food</span></h2>
+        </div>
+
+        <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+
+        <div class="treencabezado">
+            <div class="notification-wrapper">
+                <li class="logo1" id="notification-menu-btn"><i class="fa-solid fa-bell"></i></li>
+                
+                <div class="notification-dropdown-panel hidden" id="notification-dropdown">
+                    <div class="dropdown-header">
+                        <div class="notification-icon-title">
+                            <i class="fa-solid fa-bell"></i>
+                        </div>
+                        <p class="dropdown-title-text">Notificaciones</p>
+                    </div>
+                    
+                    <hr class="dropdown-divider">
+                    
+                    <div class="notifications-section">
+                        <a href="/PANEL DE CONFI/index.html" class="btn-notification-item">
+                            <i class="fa-solid fa-user-pen"></i>
+                            <div class="notification-content">
+                                <strong>Mantén tus datos al día</strong>
+                                <p>Actualiza tu perfil para recibir promociones exclusivas.</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="user-profile-wrapper">
+                <li class="logo2" id="user-menu-btn"><i class="fa-regular fa-circle-user"></i></li>
+                
+                <div class="user-dropdown-panel hidden" id="user-dropdown">
+                    <div class="dropdown-header">
+                        <div class="user-avatar">
+                            <i class="fa-solid fa-circle-user"></i>
+                        </div>
+                        <p class="user-email">Karen pinzón</p>
+                    </div>
+                    
+                    <hr class="dropdown-divider">
+                    
+                    <div class="roles-section">
+                        <a href="/ADMIN/INFORMACION/informacion.html" class="role-item">
+                            <i class="fa-solid fa-rotate"></i>
+                            <p>Administrador</p>
+                        </a>
+                        <a href="/EMPLEADO/PEDIDOS/pedidos.html" class="role-item">
+                            <i class="fa-solid fa-rotate"></i>
+                            <p>Empleado</p>
+                        </a>
+                        <a href="/CLIENTE/INFORMACION/index.html" class="role-item role-item">
+                            <i class="fa-solid fa-rotate"></i>
+                            <p>Cliente</p>
+                        </a>
+                    </div>
+                    
+                    <hr class="dropdown-divider">
+                    
+                    <div class="actions-section">
+                        <a href="/PANEL DE CONFI/index.html" class="btn-dropdown btn-config">
+                            <i class="fa-solid fa-gear"></i> Configuración
+                        </a>
+                        <a href="/LOGIN/INICIO/index.html" class="btn-dropdown btn-logout">
+                            <i class="fa-solid fa-arrow-right-from-bracket"></i> Cerrar Sesión
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="mobile-menu" id="mobileMenu">
+        <ul>
+            <li>
+                <a href="/EMPLEADO/PEDIDOS/pedidos.html" style="color: inherit; text-decoration: none; display: block; width: 100%;">
+                    <i class="fa-solid fa-pen-to-square"></i> Gestión de Pedidos
+                </a>
+            </li>
+            <li>
+                <a href="/EMPLEADO/MENU/index.html" style="color: inherit; text-decoration: none; display: block; width: 100%;">
+                    <i class="fa-solid fa-utensils"></i> Gestión de Menú
+                </a>
+            </li>
+            <li class="active">
+                <i class="fa-solid fa-book-open"></i> Gestión de Ventas
+            </li>
+            <li>
+                <i class="fa-regular fa-user"></i> Gestión de PQRS
+            </li>
+        </ul>
+    </div>
+    
+    <div class="main-layout">
+
+        <aside class="sidebar">
+            <h3>Panel Empleado</h3>
+            <ul>
+                <li>
+                    <a href="/EMPLEADO/PEDIDOS/pedidos.html" class="sidebar-link">
+                        <i class="fa-solid fa-pen-to-square"></i> Gestión de Pedidos
+                    </a>
+                </li>
+                <li>
+                    <a href="/EMPLEADO/MENU/index.html" class="sidebar-link">
+                        <i class="fa-solid fa-utensils"></i> Gestión de Menú
+                    </a>
+                </li>
+                <li class="active">
+                    <a href="/EMPLEADO/VENTAS/Ventas1.html" class="sidebar-link">
+                        <i class="fa-solid fa-book-open"></i> Gestión de Ventas
+                    </a>
+                </li>
+                <li>
+                    <a href="/EMPLEADO/PQRS/pqrs.html" class="sidebar-link">
+                        <i class="fa-regular fa-user"></i> Gestión de PQRS
+                    </a>
+                </li>
+            </ul>
+        </aside>
+
+        <main class="main-content">
+            <h2 class="page-heading">Panel de Operaciones Ventas</h2>
+
+            <div class="grid-layout">
+                
+                <div class="card">
+                    <div class="card-header">Consultar Ventas Registradas</div>
+                    <div class="card-body">
+                        
+                        <div class="filter-box">
+                            <div class="input-pill-group">
+                                <label>Fecha</label>
+                                <input type="date" class="input-pill">
+                            </div>
+                            <div class="input-pill-group">
+                                <label>Cliente / Doc</label>
+                                <input type="text" class="input-pill" placeholder="Buscar...">
+                            </div>
+                            <div class="input-pill-group">
+                                <label>Rango de Valor</label>
+                                <input type="text" class="input-pill" placeholder="Ej: > 20000">
+                            </div>
+                        </div>
+
+                        <div class="table-wrapper">
+                            <table class="clean-table">
+                                <thead>
+                                    <tr>
+                                        <th>ID Venta</th>
+                                        <th>Fecha</th>
+                                        <th>Cliente</th>
+                                        <th>Total</th>
+                                        <th>Ticket</th>
+                                        <th>Empleado</th>
+                                        <th>Acción</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="row-active">
+                                        <td>#V-1024</td>
+                                        <td>17/06</td>
+                                        <td>Camilo Vargas</td>
+                                        <td>$45.000</td>
+                                        <td>#T-0891</td>
+                                        <td>#E-007</td>
+                                        <td><button class="btn-icon"><i class="fa-solid fa-chevron-right"></i></button></td>
+                                    </tr>
+                                    <tr>
+                                        <td>#V-1023</td>
+                                        <td>17/06</td>
+                                        <td>Consumidor Final</td>
+                                        <td>$15.200</td>
+                                        <td>#T-0890</td>
+                                        <td>#E-003</td>
+                                        <td><button class="btn-icon"><i class="fa-solid fa-chevron-right"></i></button></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="card right-card">
+                    <div class="card-header">Detalle del Pedido Facturado</div>
+                    <div class="card-body">
+                        
+                        <div class="info-grid">
+                            <div class="input-pill-group">
+                                <label>ID Venta</label>
+                                <div class="read-only-pill">#V-1024</div>
+                            </div>
+                            <div class="input-pill-group">
+                                <label>Pedido Asociado</label>
+                                <div class="read-only-pill">#P-224</div>
+                            </div>
+                            <div class="input-pill-group">
+                                <label>ID Ticket Venta</label>
+                                <div class="read-only-pill">#T-0891</div>
+                            </div>
+                        </div>
+
+                        <div class="info-grid">
+                            <div class="input-pill-group">
+                                <label>Estado del Pedido</label>
+                                <div class="read-only-pill">Entregado</div>
+                            </div>
+                            <div class="input-pill-group">
+                                <label>Dirección de Entrega</label>
+                                <div class="read-only-pill">Local / Mostrador</div>
+                            </div>
+                            <div class="input-pill-group">
+                                <label>Empleado Responsable</label>
+                                <div class="read-only-pill">#E-007</div>
+                            </div>
+                        </div>
+
+                        <div class="table-wrapper mt-15">
+                            <table class="clean-table">
+                                <thead>
+                                    <tr>
+                                        <th>Producto</th>
+                                        <th>Cantidad</th>
+                                        <th>Precio</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Combo Hamburguesa Doble</td>
+                                        <td>1</td>
+                                        <td>$25.000</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Papas Fritas Grandes</td>
+                                        <td>1</td>
+                                        <td>$8.000</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Gaseosa 500ml</td>
+                                        <td>2</td>
+                                        <td>$12.000</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="total-section">
+                            <span class="total-label">TOTAL PAGADO:</span>
+                            <span class="total-amount">$45.000</span>
+                        </div>
+
+                        <div class="action-footer mt-15">
+                            <div class="qr-placeholder">
+                                <i class="fa-solid fa-qrcode"></i>
+                                <span>Ticket QR</span>
+                            </div>
+                            <div class="action-buttons">
+                                <button class="btn-solid">Emitir Ticket</button>
+                                <div class="btn-modificar-wrapper">
+                                    <button class="btn-outline">Modificar Venta</button>
+                                    <small class="time-alert">Restan: 75 min</small>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

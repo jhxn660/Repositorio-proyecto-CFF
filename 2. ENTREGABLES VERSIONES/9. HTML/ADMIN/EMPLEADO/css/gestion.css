@@ -1,0 +1,358 @@
+@import url('https://fonts.googleapis.com/css2?family=Albert+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap');
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Albert Sans', sans-serif;
+}
+
+body{
+    background: #f0f0f0;
+}
+
+/* ========================
+   HEADER
+======================== */
+.header{
+    background-color: #212121;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    height: 80px;
+    padding: 5px 3%;
+    z-index: 100;
+    position: sticky;
+    top: 0; 
+}
+
+.header .logo{
+    cursor: pointer;
+    margin-right: auto;
+    color: #fff;
+    display: flex;
+    align-items: center;
+}
+
+.conterimg {
+    width: 50px;
+    border-radius: 20px;
+    flex-shrink: 0;
+}
+
+.logo h2 {
+    color: #fff;
+    margin: 10px;
+    font-size: clamp(14px, 2.5vw, 22px);
+    white-space: nowrap;
+}
+
+.letracolor {
+    color: #ff9100;
+}
+
+.nav-logos {
+    display: flex;
+    gap: 24px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.logo1,
+.logo2 {
+    font-size: 26px;
+    color: #fff;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.logo1:hover,
+.logo2:hover {
+    transform: scale(1.2);
+}
+
+a{
+    text-decoration: none;
+    color: #212121;
+}
+
+/* ========================
+   CONTENEDOR ESTRUCTURAL
+======================== */
+.container{
+    display: flex; 
+    min-height: calc(100vh - 80px); 
+    width: 100%; 
+}
+
+/* ========================
+   SIDEBAR (desktop/tablet)
+======================== */
+.sidebar {
+    width: 250px;
+    flex-shrink: 0;
+    background: white;
+    border: 1px solid #d9d9d9;
+    margin: 10px;
+    border-radius: 5px;
+    padding: 20px;
+}
+
+.sidebar h3 {
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+    color: #0b1f3f;
+}
+
+.sidebar ul {
+    list-style: none;
+}
+
+.sidebar li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 25px;
+    cursor: pointer;
+}
+
+/* Estilos base para el enlace interno */
+.sidebar-link {
+    text-decoration: none;
+    color: #666;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: color 0.2s;
+}
+
+/* Cambio de color unificado para hover y estado activo */
+.sidebar li:hover .sidebar-link,
+.sidebar li.active .sidebar-link {
+    color: #ff9100; /* Naranja Corralejo */ 
+}
+
+/* Panel de Contenido Principal */
+.content {
+    width: 100%;
+    max-width: 1100px;        /* <-- Limita el ancho máximo para que no se desparrame en pantallas gigantes */
+    margin: 0 auto;           /* <-- Centra de forma absoluta todo el bloque en la pantalla */
+    padding: 25px 30px;       /* <-- SEPARACIÓN: Crea un colchón interno para que el botón y las tarjetas jamás toquen los bordes */
+    box-sizing: border-box;
+}
+
+.content h1{
+    text-align: center;
+    margin-bottom: 10px;
+    font-size: 28px;
+    color: #212121;
+}
+
+.page-header { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    margin-bottom: 30px; 
+}
+
+.page-heading { 
+    color: #212121; 
+}
+
+.btn-solid-dark {
+    background-color: #212121; 
+    color: #fff; 
+    border-color: #212121; 
+    border-radius: 6px;
+    padding: 10px 20px; 
+    font-weight: 600; 
+    cursor: pointer; 
+    display: flex; 
+    align-items: center; 
+    gap: 8px;
+}
+.btn-solid-dark:hover { 
+    border-color: #ff9100;
+    background-color: #ff9100; 
+}
+
+/* ==========================================
+   GRID Y TARJETAS (BORDES VERDES Y ROJOS)
+   ========================================== */
+.employee-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 25px;
+}
+
+.employee-card {
+    background: #ffffff;
+    border-radius: 10px;
+    padding: 25px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    transition: transform 0.2s;
+    border: 3px solid transparent; /* Base para el borde */
+}
+
+.employee-card:hover { transform: translateY(-3px); }
+
+/* CLASES DE ESTADO (VERDE Y ROJO) */
+.employee-card.border-green { border-color: #2ecc71; } /* Trabajando */
+.employee-card.border-red { border-color: #e74c3c; } /* Inactivo */
+
+.card-avatar {
+    font-size: 3.5rem;
+    color: #ccc;
+    margin-bottom: 15px;
+}
+
+.emp-name {
+    font-size: 1.2rem;
+    color: #212121;
+    margin-bottom: 5px;
+}
+
+.emp-role {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #ff9100;
+    margin-bottom: 15px;
+}
+
+.emp-schedule {
+    background: #f8f9fa;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    color: #444;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 20px;
+    width: 100%;
+    justify-content: center;
+}
+
+/* BOTONES DENTRO DE LA TARJETA */
+.card-actions {
+    display: flex;
+    gap: 15px;
+    width: 100%;
+    justify-content: center;
+    border-top: 1px solid #eee;
+    padding-top: 15px;
+}
+
+.btn-icon {
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.btn-icon.edit { color: #212121; }
+.btn-icon.edit:hover { color: #ff9100; }
+
+.btn-icon.delete { color: #e74c3c; }
+.btn-icon.delete:hover { color: #c0392b; }
+
+/* ==========================================
+   MODAL (FORMULARIO)
+   ========================================== */
+.modal-overlay {
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); 
+    display: flex; 
+    justify-content: center; 
+    align-items: center;
+    z-index: 2000; 
+    opacity: 0; visibility: hidden; 
+    transition: opacity 0.3s ease;
+}
+
+.modal-overlay.active { 
+    opacity: 1; 
+    visibility: visible; 
+}
+
+.modal-content { background-color: #ffffff; width: 400px; max-width: 90%; border-radius: 8px; padding: 30px; }
+.modal-title { font-size: 1.4rem; color: #212121; margin-bottom: 20px; border-bottom: 2px solid #f0f0f0; padding-bottom: 10px; }
+
+.form-group { margin-bottom: 15px; display: flex; flex-direction: column; }
+.form-row { display: flex; gap: 15px; }
+.form-group.half { flex: 1; }
+.form-group label { font-size: 0.9rem; font-weight: 600; color: #444; margin-bottom: 6px; }
+.form-input { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; font-size: 0.95rem; outline: none; }
+.form-input:focus { border-color: #ff9100; }
+
+.modal-footer { display: flex; justify-content: flex-end; gap: 10px; margin-top: 20px; }
+.btn-outline-pill { background: #fff; border: 1px solid #ccc; border-radius: 20px; padding: 8px 20px; cursor: pointer; font-weight: 600; }
+.btn-solid-dark-pill { background: #212121; color: #fff; border: none; border-radius: 20px; padding: 8px 20px; cursor: pointer; font-weight: 600; }
+.btn-solid-dark-pill:hover { background: #ff9100; }
+
+/* ==========================================
+   RESPONSIVE
+   ========================================== */
+@media (max-width: 768px) {
+    .menu-toggle { display: block; }
+    .sidebar { display: none; }
+    .main-content { padding: 20px; }
+    .page-header { flex-direction: column; align-items: flex-start; gap: 15px; }
+    .form-row { flex-direction: column; gap: 0; }
+}
+
+/* Bloques de sección */
+.section-block {
+    margin-bottom: 40px; /* Espaciado amplio entre el bloque de activos e inactivos */
+    width: 100%;
+}
+
+/* Títulos de los grupos */
+.group-heading {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #1f2937;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Pequeña bombilla/círculo de estado al lado del título */
+.status-indicator {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.indicator-green {
+    background-color: #2ecc71;
+    box-shadow: 0 0 8px rgba(46, 204, 113, 0.4);
+}
+
+.indicator-red {
+    background-color: #e74c3c;
+    box-shadow: 0 0 8px rgba(231, 76, 60, 0.4);
+}
+
+/* Mensaje estético por si una sección se queda sin empleados */
+.no-data-msg {
+    color: #9ca3af;
+    font-size: 0.9rem;
+    font-style: italic;
+    padding: 10px 0;
+}

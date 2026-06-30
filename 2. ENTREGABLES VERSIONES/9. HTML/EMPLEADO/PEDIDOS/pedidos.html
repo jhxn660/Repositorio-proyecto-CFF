@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Corralejo Fast Food – Panel de Operaciones</title>
+  <link rel="stylesheet" href="/EMPLEADO/PEDIDOS/css/pedidos.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+</head>
+<body>
+
+<!-- ── HEADER (copiado exactamente del módulo Menú) ── -->
+<header class="header">
+    <div class="logo">
+        <img class="conterimg" src="/EMPLEADO/PEDIDOS/img/imagen fuego.png" alt="Logo Corralejo">
+        <h2>Corralejo <span class="letracolor">Fast Food</span></h2>
+    </div>
+
+    <nav>
+        <ul class="nav-logos">
+            <li class="logo1"><i class="fa-solid fa-bell"></i></li>
+            <li class="logo2"><i class="fa-regular fa-circle-user"></i></li>
+        </ul>
+    </nav>
+</header>
+
+<main class="container">
+
+  <!-- ── SIDEBAR (copiado exactamente del módulo Menú, adaptado a Panel Empleado) ── -->
+  <aside class="sidebar">
+      <h3>Panel Empleado</h3>
+      <ul>
+          <li class="active-link">
+              <a href="pedidos.html" style="color: inherit; text-decoration: none;">
+                  <i class="fa-solid fa-grip"></i> Gestión de Pedidos</a>
+          </li>
+
+          <li>
+              <a href="/EMPLEADO/MENU/index.html" style="color: inherit; text-decoration: none;">
+                  <i class="fa-solid fa-utensils"></i> Menú</a>
+          </li>
+
+          <li>
+              <i class="fa-solid fa-book-open"></i> <a href="/EMPLEADO/VENTAS/ventas1.html" style="color: inherit; text-decoration: none;">Gestión de Ventas</a>
+          </li>
+
+          <li>
+              <i class="fa-solid fa-people-line"></i> <a href="/EMPLEADO/PQRS/pqrs.html" style="color: inherit; text-decoration: none;">Gestión de PQRS</a>
+          </li>
+      </ul>
+  </aside>
+
+  <!-- ── MAIN CONTENT ── -->
+  <div class="main">
+    <h1 class="page-title">Panel de Operaciones</h1>
+    <div class="panels">
+
+      <section class="panel">
+        <div class="panel-header">Pedidos Solicitados</div>
+        <div class="panel-body">
+          <div class="pedidos-toolbar">
+            <span class="fecha" id="fechaActual">Fecha: 04/03/2026</span>
+            <button class="btn-nuevo-pedido" id="btnNuevoPedido" type="button">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+              Nuevo Pedido
+            </button>
+          </div>
+
+          <div id="listaPedidos">
+
+            <div class="pedido-row active" data-id="224" onclick="seleccionarPedido(this)">
+              <div class="pedido-left">
+                <svg viewBox="0 0 24 24" class="pedido-icon"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                <span class="pedido-num">Pedido #224</span>
+              </div>
+              <div class="pedido-mid"><span class="pedido-hora">10:14 AM</span></div>
+              <div class="pedido-right"><span class="badge-estado pendiente">Pendiente</span></div>
+            </div>
+
+            <div class="pedido-row" data-id="223" onclick="seleccionarPedido(this)">
+              <div class="pedido-left">
+                <svg viewBox="0 0 24 24" class="pedido-icon"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                <span class="pedido-num">Pedido #223</span>
+              </div>
+              <div class="pedido-mid"><span class="pedido-hora">09:47 AM</span></div>
+              <div class="pedido-right"><span class="badge-estado resuelto">Resuelto</span></div>
+            </div>
+
+            <div class="pedido-row" data-id="222" onclick="seleccionarPedido(this)">
+              <div class="pedido-left">
+                <svg viewBox="0 0 24 24" class="pedido-icon"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                <span class="pedido-num">Pedido #222</span>
+              </div>
+              <div class="pedido-mid"><span class="pedido-hora">09:21 AM</span></div>
+              <div class="pedido-right"><span class="badge-estado resuelto">Resuelto</span></div>
+            </div>
+
+            <div class="pedido-row" data-id="221" onclick="seleccionarPedido(this)">
+              <div class="pedido-left">
+                <svg viewBox="0 0 24 24" class="pedido-icon"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                <span class="pedido-num">Pedido #221</span>
+              </div>
+              <div class="pedido-mid"><span class="pedido-hora">08:55 AM</span></div>
+              <div class="pedido-right"><span class="badge-estado resuelto">Resuelto</span></div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <div class="right-col">
+        <section class="panel">
+          <div class="panel-header">Detalle del Pedido</div>
+          <div class="panel-body">
+            <div class="detalle-toolbar">
+              <div class="select-wrap">
+                <select class="estado-select">
+                  <option>En preparación</option>
+                  <option>Pendiente</option>
+                  <option>Resuelto</option>
+                </select>
+              </div>
+              <button class="btn-nuevo">Nuevo Producto</button>
+            </div>
+            <table class="productos-table">
+              <thead>
+                <tr><th></th><th>Producto</th><th>Cantidad</th><th>Precio Und</th><th>Precio</th><th></th></tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+            <div class="total-row">TOTAL <strong>$0</strong></div>
+            <div class="detalle-actions" style="margin-top:8px;">
+              <button class="btn-cancelar-pedido">✕ Cancelar Pedido</button>
+              <button class="btn-finalizar">✓ Finalizar y Generar Venta</button>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel">
+          <div class="panel-header">Ventas por Categoría</div>
+          <div class="panel-body ventas-body">
+            <div class="pie-wrap">
+              <svg viewBox="0 0 100 100" class="pie-chart" id="pieChart">
+                <circle r="25" cx="50" cy="50" fill="transparent" stroke="#e3e3e3" stroke-width="50" id="pieEmpty"/>
+                <circle r="16" cx="50" cy="50" fill="#fff"/>
+              </svg>
+            </div>
+            <div class="ventas-legend" id="ventasLegend">
+              <div class="vl-empty">Aún no hay ventas registradas</div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+    </div>
+  </div>
+
+</main>
+
+<!-- ── MODAL ── -->
+<div class="modal-overlay" id="productOverlay">
+  <div class="menu-modal" role="dialog" aria-modal="true">
+    <div class="modal-header">
+      <span>Agregar Producto al Pedido</span>
+      <button class="modal-close" onclick="closeProductModal()">✕</button>
+    </div>
+    <div class="modal-tabs">
+      <button class="tab-btn active" onclick="switchTab('categoria',this)">🗂️ Categoría</button>
+      <button class="tab-btn" onclick="switchTab('bebidas',this)">🥤 Bebidas</button>
+      <button class="tab-btn" onclick="switchTab('acompañamientos',this)">🍟 Acompañamientos</button>
+      <button class="tab-btn" onclick="switchTab('combos',this)">⭐ Combos</button>
+    </div>
+    <div class="modal-body" id="modalBody"></div>
+    <div class="selection-summary" id="selectionSummary"></div>
+    <div class="modal-footer">
+      <div class="footer-total">Subtotal a agregar: <strong id="footerTotal">$0</strong></div>
+      <div class="footer-actions">
+        <button class="btn-cancel-modal" onclick="closeProductModal()">Cancelar</button>
+        <button class="btn-confirm" id="btnConfirm" disabled onclick="confirmSelection()">Agregar al pedido</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+const catalog = {
+  categoria: [
+    { id:'cat-pc', name:'Perros Calientes', desc:'Ver productos →', price:null, emoji:'🌭', isCategory:true, subKey:'perros' },
+    { id:'cat-sp', name:'Salchipapas',      desc:'Ver productos →', price:null, emoji:'🍟', isCategory:true, subKey:'salchipapas' },
+    { id:'cat-hb', name:'Hamburguesas',     desc:'Ver productos →', price:null, emoji:'🍔', isCategory:true, subKey:'hamburguesas' },
+  ],
+  perros: [
+    { id:'pc1', name:'Perro Clásico',    desc:'Salchicha, mostaza, ketchup',           price:8000,  emoji:'🌭' },
+    { id:'pc2', name:'Perro Especial',   desc:'Salchicha, papas trituradas, salsas',   price:10000, emoji:'🌭' },
+    { id:'pc3', name:'Perro Ranchero',   desc:'Salchicha, tocino, queso derretido',    price:12000, emoji:'🌭' },
+    { id:'pc4', name:'Perro Hawaiano',   desc:'Salchicha, piña, mayonesa',             price:11000, emoji:'🌭' },
+  ],
+  salchipapas: [
+    { id:'sp1', name:'Salchipapa Clásica',  desc:'Papa frita, salchicha, salsas',         price:9000,  emoji:'🍟' },
+    { id:'sp2', name:'Salchipapa Especial', desc:'Papa, salchicha, queso, tocineta',       price:13000, emoji:'🍟' },
+    { id:'sp3', name:'Salchipapa XXL',      desc:'Porción doble, 2 salchichas',            price:16000, emoji:'🍟' },
+    { id:'sp4', name:'Salchipapa Pollo',    desc:'Papa, tiras de pollo, salsas',           price:12000, emoji:'🍟' },
+  ],
+  hamburguesas: [
+    { id:'hc',  name:'Hamburguesa Clásica', desc:'Carne, lechuga, tomate, queso',          price:11000, emoji:'🍔' },
+    { id:'hd',  name:'Hamburguesa Doble',   desc:'Doble carne, tocino, queso',             price:15000, emoji:'🍔' },
+    { id:'hp',  name:'Hamburguesa Pollo',   desc:'Pechuga apanada, mayonesa',              price:12000, emoji:'🍗' },
+    { id:'hv',  name:'Hamburguesa Veggie',  desc:'Medallón de lentejas, aguacate',         price:13000, emoji:'🥗' },
+  ],
+  bebidas: [
+    { id:'gs', name:'Gaseosa 250ml',    desc:'Cola, naranja o uva',          price:3000, emoji:'🥤' },
+    { id:'gm', name:'Gaseosa 500ml',    desc:'Cola, naranja o uva',          price:5000, emoji:'🥤' },
+    { id:'li', name:'Limonada Natural', desc:'Limón, azúcar, hielo',         price:5000, emoji:'🍋' },
+    { id:'ml', name:'Malteada',         desc:'Fresa, chocolate o vainilla',  price:8000, emoji:'🥛' },
+    { id:'jn', name:'Jugo Natural',     desc:'Mora, mango o maracuyá',       price:6000, emoji:'🍹' },
+    { id:'ag', name:'Agua Botella',     desc:'300ml sin gas',                price:2500, emoji:'💧' },
+  ],
+  'acompañamientos': [
+    { id:'pf', name:'Papa Francesa',   desc:'Porción mediana con sal',       price:5000, emoji:'🍟' },
+    { id:'pg', name:'Papa Grande',     desc:'Porción grande con sal',        price:7000, emoji:'🍟' },
+    { id:'ar', name:'Aros de Cebolla', desc:'Apanados, con dip ranch',       price:6000, emoji:'🧅' },
+    { id:'ns', name:'Nuggets x6',      desc:'Pollo apanado, salsa BBQ',      price:8000, emoji:'🍗' },
+    { id:'en', name:'Ensalada',        desc:'Lechuga, tomate, zanahoria',    price:5000, emoji:'🥗' },
+  ],
+  combos: [
+    { id:'c1', name:'Combo Clásico',  desc:'Hambur. clásica + papa + gaseosa 250ml',      price:17000, emoji:'⭐' },
+    { id:'c2', name:'Combo Doble',    desc:'Hambur. doble + papa grande + gaseosa 500ml', price:24000, emoji:'🔥' },
+    { id:'c3', name:'Combo Pollo',    desc:'Hambur. pollo + nuggets x6 + limonada',       price:22000, emoji:'🍗' },
+    { id:'c4', name:'Combo Familiar', desc:'2 hamburguesas + 2 papas + 2 gaseosas',       price:38000, emoji:'👨‍👩‍👧' },
+  ]
+};
+
+function clonarItems(items) { return (items||[]).map(i=>({name:i.name,price:i.price,qty:i.qty})); }
+
+const CATEGORIAS_VENTA = {
+  perros: 'Categoría', salchipapas: 'Categoría', hamburguesas: 'Categoría',
+  bebidas: 'Bebida', 'acompañamientos': 'Acompañamiento', combos: 'Combo'
+};
+const productoACategoria = {};
+Object.keys(CATEGORIAS_VENTA).forEach(key=>{
+  (catalog[key]||[]).forEach(p=>{ productoACategoria[p.name] = CATEGORIAS_VENTA[key]; });
+});
+
+const COLOR_CATEGORIA = {
+  'Categoría': '#9ab0c8',
+  'Bebida': '#c8b89a',
+  'Acompañamiento': '#b8c8a0',
+  'Combo': '#d0c8b0'
+};
+
+const ventasPorCategoria = {};
+
+const pedidosStore = {
+  224: { estado:'pendiente', hora:'10:14 AM', items:clonarItems([{ name:'Hamburguesa Clásica', price:11000, qty:1 },{ name:'Gaseosa 250ml', price:3000, qty:1 },{ name:'Papa Francesa', price:5000, qty:1 }]) },
+  223: { estado:'resuelto',  hora:'09:47 AM', items:clonarItems([{ name:'Salchipapa Especial', price:13000, qty:1 },{ name:'Limonada Natural', price:5000, qty:1 }]) },
+  222: { estado:'resuelto',  hora:'09:21 AM', items:clonarItems([{ name:'Combo Doble', price:24000, qty:1 }]) },
+  221: { estado:'resuelto',  hora:'08:55 AM', items:clonarItems([{ name:'Perro Ranchero', price:12000, qty:2 },{ name:'Agua Botella', price:2500, qty:1 }]) },
+};
+
+let currentPedidoId = '224';
+let selection = {};
+let tabHistory = [];
+
+function openProductModal() {
+  selection={}; tabHistory=[];
+  renderTab('categoria'); updateFooter();
+  document.getElementById('productOverlay').classList.add('visible');
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  document.querySelector('.tab-btn').classList.add('active');
+}
+function closeProductModal() {
+  document.getElementById('productOverlay').classList.remove('visible');
+  selection={}; tabHistory=[];
+}
+
+function renderTab(tab) {
+  const body = document.getElementById('modalBody');
+  body.innerHTML = '';
+  if (tabHistory.length > 0) {
+    const back = document.createElement('div');
+    back.style.cssText = 'grid-column:1/-1;display:flex;align-items:center;gap:6px;margin-bottom:4px;';
+    back.innerHTML = '<button onclick="goBack()" style="background:none;border:1px solid #ccc;border-radius:5px;padding:4px 12px;font-size:0.78rem;cursor:pointer;color:#444;">← Volver a Categorías</button>';
+    body.appendChild(back);
+  }
+  catalog[tab].forEach(p => {
+    const qty = selection[p.id]?.qty || 0;
+    const card = document.createElement('div');
+    card.className = 'product-card' + (qty > 0 ? ' selected' : '');
+    if (p.isCategory) {
+      card.innerHTML = '<div class="card-top"><div class="card-emoji">'+p.emoji+'</div><div class="card-info"><div class="card-name">'+p.name+'</div><div class="card-desc">'+p.desc+'</div></div></div>';
+      card.addEventListener('click', ()=>{ tabHistory.push(tab); renderTab(p.subKey); });
+    } else {
+      card.innerHTML = '<div class="card-top"><div class="card-emoji">'+p.emoji+'</div><div class="card-info"><div class="card-name">'+p.name+'</div><div class="card-desc">'+p.desc+'</div></div><div class="card-price">$'+p.price.toLocaleString('es-CO')+'</div></div><div class="card-qty"><button onclick="changeQty(\''+p.id+'\',\''+p.name+'\','+p.price+',-1,event)">−</button><span id="qty-'+p.id+'">'+qty+'</span><button onclick="changeQty(\''+p.id+'\',\''+p.name+'\','+p.price+',1,event)">+</button></div>';
+      card.addEventListener('click', ()=>changeQty(p.id,p.name,p.price,1,null));
+    }
+    body.appendChild(card);
+  });
+}
+function goBack() { renderTab(tabHistory.pop()); }
+
+function changeQty(id,name,price,delta,e) {
+  if (e) e.stopPropagation();
+  if (!selection[id]) selection[id]={name,price,qty:0};
+  selection[id].qty = Math.max(0, selection[id].qty+delta);
+  if (selection[id].qty===0) delete selection[id];
+  const qtyEl = document.getElementById('qty-'+id);
+  if (qtyEl) { qtyEl.textContent=selection[id]?.qty||0; qtyEl.closest('.product-card').classList.toggle('selected',(selection[id]?.qty||0)>0); }
+  updateFooter();
+}
+function updateFooter() {
+  const items=Object.values(selection);
+  const total=items.reduce((s,i)=>s+i.price*i.qty,0);
+  document.getElementById('footerTotal').textContent='$'+total.toLocaleString('es-CO');
+  document.getElementById('btnConfirm').disabled=items.length===0;
+  document.getElementById('selectionSummary').textContent=items.length?items.map(i=>i.qty+'× '+i.name).join(' · '):'';
+}
+function switchTab(tab,btn) {
+  tabHistory=[];
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  renderTab(tab);
+}
+
+function recalcularTotal() {
+  let total=0;
+  document.querySelector('.productos-table tbody').querySelectorAll('tr').forEach(row=>{
+    const c=row.cells[4]; if(c) total+=parseInt(c.getAttribute('data-price')||'0');
+  });
+  document.querySelector('.total-row strong').textContent='$'+total.toLocaleString('es-CO');
+}
+
+function crearFilaProducto(item,pedidoId) {
+  const tr=document.createElement('tr');
+  function pintar() {
+    tr.querySelector('.qty-val').textContent=item.qty;
+    tr.cells[3].textContent='$'+item.price.toLocaleString('es-CO');
+    const t=item.price*item.qty;
+    tr.cells[4].setAttribute('data-price',t);
+    tr.cells[4].textContent='$'+t.toLocaleString('es-CO');
+  }
+  tr.innerHTML='<td><svg viewBox="0 0 24 24" class="prod-icon"><path d="M3 11l19-9-9 19-2-8-8-2z"/></svg></td><td>'+item.name+'</td><td><div class="qty-control"><button class="qty-dec">&lt;</button><span class="qty-val">'+item.qty+'</span><button class="qty-inc">&gt;</button></div></td><td>$'+item.price.toLocaleString('es-CO')+'</td><td data-price="'+(item.price*item.qty)+'">$'+(item.price*item.qty).toLocaleString('es-CO')+'</td><td><button class="btn-del">✕</button></td>';
+  tr.querySelector('.qty-dec').addEventListener('click',()=>{if(item.qty>1){item.qty--;pintar();recalcularTotal();}});
+  tr.querySelector('.qty-inc').addEventListener('click',()=>{item.qty++;pintar();recalcularTotal();});
+  tr.querySelector('.btn-del').addEventListener('click',()=>{
+    const p=pedidosStore[pedidoId]; if(p) p.items=p.items.filter(i=>i!==item);
+    tr.remove(); recalcularTotal();
+  });
+  return tr;
+}
+
+function renderDetalle(pedidoId) {
+  const pedido=pedidosStore[pedidoId]; if(!pedido) return;
+  currentPedidoId=pedidoId;
+  const textoPorEstado={pendiente:'Pendiente',preparacion:'En preparación',resuelto:'Resuelto'};
+  document.querySelector('.estado-select').value=textoPorEstado[pedido.estado]||'Pendiente';
+  const tbody=document.querySelector('.productos-table tbody');
+  tbody.innerHTML='';
+  pedido.items.forEach(item=>tbody.appendChild(crearFilaProducto(item,pedidoId)));
+  recalcularTotal();
+}
+
+function confirmSelection() {
+  const seleccionados=Object.values(selection);
+  const pedido=pedidosStore[currentPedidoId];
+  if(!pedido){closeProductModal();return;}
+  seleccionados.forEach(sel=>{
+    const ex=pedido.items.find(i=>i.name===sel.name);
+    if(ex) ex.qty+=sel.qty; else pedido.items.push({name:sel.name,price:sel.price,qty:sel.qty});
+  });
+  renderDetalle(currentPedidoId); closeProductModal();
+}
+
+function seleccionarPedido(row) {
+  document.querySelectorAll('.pedido-row').forEach(r=>r.classList.remove('active'));
+  row.classList.add('active');
+  renderDetalle(row.dataset.id);
+}
+
+document.querySelector('.estado-select').addEventListener('change', function() {
+  const pedido=pedidosStore[currentPedidoId]; if(!pedido) return;
+  const clasePorTexto={'En preparación':'preparacion','Pendiente':'pendiente','Resuelto':'resuelto'};
+  const clase=clasePorTexto[this.value]; if(!clase) return;
+  pedido.estado=clase;
+  const row=document.querySelector('.pedido-row[data-id="'+currentPedidoId+'"]');
+  const badge=row?.querySelector('.badge-estado');
+  if(badge){badge.className='badge-estado '+clase; badge.textContent=this.value;}
+});
+
+function getCurrentTime() {
+  const now=new Date();
+  let h=now.getHours();
+  const m=String(now.getMinutes()).padStart(2,'0');
+  const ampm=h>=12?'PM':'AM';
+  h=h%12||12;
+  return h+':'+m+' '+ampm;
+}
+
+function nextPedidoNumber() {
+  const nums=[...document.querySelectorAll('.pedido-num')].map(el=>parseInt(el.textContent.replace(/\D/g,''))||0);
+  return (nums.length?Math.max(...nums):220)+1;
+}
+
+function crearPedidoNuevo() {
+  const numero=nextPedidoNumber();
+  const hora=getCurrentTime();
+  pedidosStore[numero]={estado:'pendiente',hora,items:[]};
+  const row=document.createElement('div');
+  row.className='pedido-row active';
+  row.dataset.id=numero;
+  row.setAttribute('onclick','seleccionarPedido(this)');
+  row.innerHTML=
+    '<div class="pedido-left">'+
+      '<svg viewBox="0 0 24 24" class="pedido-icon"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>'+
+      '<span class="pedido-num">Pedido #'+numero+'</span>'+
+    '</div>'+
+    '<div class="pedido-mid">'+
+      '<span class="pedido-hora">'+hora+'</span>'+
+    '</div>'+
+    '<div class="pedido-right">'+
+      '<span class="badge-estado pendiente">Pendiente</span>'+
+    '</div>';
+  document.querySelectorAll('.pedido-row').forEach(r=>r.classList.remove('active'));
+  const lista=document.getElementById('listaPedidos');
+  const first=lista.querySelector('.pedido-row');
+  if(first) lista.insertBefore(row,first); else lista.appendChild(row);
+  renderDetalle(numero);
+}
+
+function actualizarFechaActual() {
+  const el = document.getElementById('fechaActual');
+  if (!el) return;
+  const now = new Date();
+  const dd = String(now.getDate()).padStart(2,'0');
+  const mm = String(now.getMonth()+1).padStart(2,'0');
+  const yyyy = now.getFullYear();
+  el.textContent = 'Fecha: ' + dd + '/' + mm + '/' + yyyy;
+}
+actualizarFechaActual();
+setInterval(actualizarFechaActual, 1000);
+
+function cancelarPedidoActual() {
+  if (!currentPedidoId) return;
+  const row = document.querySelector('.pedido-row[data-id="'+currentPedidoId+'"]');
+  delete pedidosStore[currentPedidoId];
+  if (row) {
+    const lista = document.getElementById('listaPedidos');
+    const siguiente = row.nextElementSibling || row.previousElementSibling;
+    row.remove();
+    if (siguiente && siguiente.classList.contains('pedido-row')) {
+      siguiente.classList.add('active');
+      renderDetalle(siguiente.dataset.id);
+    } else if (lista.querySelector('.pedido-row')) {
+      const primero = lista.querySelector('.pedido-row');
+      primero.classList.add('active');
+      renderDetalle(primero.dataset.id);
+    } else {
+      currentPedidoId = null;
+      document.querySelector('.productos-table tbody').innerHTML = '';
+      document.querySelector('.total-row strong').textContent = '$0';
+    }
+  }
+}
+
+function renderGraficaVentas() {
+  const svg = document.getElementById('pieChart');
+  const legend = document.getElementById('ventasLegend');
+  const categorias = Object.keys(ventasPorCategoria).filter(c=>ventasPorCategoria[c]>0);
+  const total = categorias.reduce((s,c)=>s+ventasPorCategoria[c],0);
+
+  svg.querySelectorAll('.pie-segment').forEach(el=>el.remove());
+  const pieEmpty = document.getElementById('pieEmpty');
+
+  if (total === 0) {
+    pieEmpty.style.display = '';
+    legend.innerHTML = '<div class="vl-empty">Aún no hay ventas registradas</div>';
+    return;
+  }
+
+  pieEmpty.style.display = 'none';
+
+  const circunferencia = 62.8;
+  let offsetAcumulado = 0;
+  let legendHtml = '';
+
+  categorias.forEach(cat=>{
+    const cantidad = ventasPorCategoria[cat];
+    const pct = cantidad/total;
+    const largo = pct*circunferencia;
+    const color = COLOR_CATEGORIA[cat] || '#999';
+
+    const circle = document.createElementNS('http://www.w3.org/2000/svg','circle');
+    circle.setAttribute('class','pie-segment');
+    circle.setAttribute('r','25');
+    circle.setAttribute('cx','50');
+    circle.setAttribute('cy','50');
+    circle.setAttribute('fill','transparent');
+    circle.setAttribute('stroke',color);
+    circle.setAttribute('stroke-width','50');
+    circle.setAttribute('stroke-dasharray', largo.toFixed(2)+' '+circunferencia);
+    circle.setAttribute('stroke-dashoffset', (-offsetAcumulado).toFixed(2));
+    svg.insertBefore(circle, pieEmpty);
+
+    offsetAcumulado += largo;
+    legendHtml += '<div class="vl-item"><span class="vl-dot" style="background:'+color+'"></span> '+cat+' <span class="vl-pct">= '+(pct*100).toFixed(1)+'%</span></div>';
+  });
+
+  legend.innerHTML = legendHtml;
+}
+
+function registrarVenta(pedido) {
+  if (!pedido.cantidadesContadas) pedido.cantidadesContadas = {};
+  pedido.items.forEach(item=>{
+    const yaContado = pedido.cantidadesContadas[item.name] || 0;
+    const nuevas = item.qty - yaContado;
+    if (nuevas > 0) {
+      const cat = productoACategoria[item.name] || 'Otros';
+      ventasPorCategoria[cat] = (ventasPorCategoria[cat]||0) + nuevas;
+    }
+    pedido.cantidadesContadas[item.name] = item.qty;
+  });
+  renderGraficaVentas();
+}
+
+function finalizarPedidoActual() {
+  const pedido = pedidosStore[currentPedidoId];
+  if (!pedido) return;
+  if (pedido.items.length === 0) return;
+  registrarVenta(pedido);
+  pedido.estado = 'resuelto';
+  const row = document.querySelector('.pedido-row[data-id="'+currentPedidoId+'"]');
+  const badge = row?.querySelector('.badge-estado');
+  if (badge) { badge.className='badge-estado resuelto'; badge.textContent='Resuelto'; }
+  document.querySelector('.estado-select').value = 'Resuelto';
+}
+
+renderGraficaVentas();
+
+document.getElementById('btnNuevoPedido').addEventListener('click',crearPedidoNuevo);
+document.getElementById('productOverlay').addEventListener('click',function(e){if(e.target===this)closeProductModal();});
+document.querySelector('.btn-nuevo').addEventListener('click',openProductModal);
+document.querySelector('.btn-cancelar-pedido').addEventListener('click',cancelarPedidoActual);
+document.querySelector('.btn-finalizar').addEventListener('click',finalizarPedidoActual);
+renderDetalle(currentPedidoId);
+</script>
+</body>
+</html>

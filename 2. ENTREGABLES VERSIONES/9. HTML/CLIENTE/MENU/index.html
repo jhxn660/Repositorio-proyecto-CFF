@@ -38,7 +38,7 @@
                             <i class="fa-solid fa-calendar"></i> Horarios
                         </a>
                     </li>
-                    <li class="movimiento">
+                    <li class="activo">
                         <a href="/CLIENTE/MENU/index.html">
                             <i class="fa-solid fa-utensils"></i>Menú
                         </a>
@@ -48,7 +48,7 @@
                             <i class="fa-regular fa-comment"></i> Comentarios
                         </a>
                     </li>
-                    <li class="activo">
+                    <li class="movimiento">
                         <a href="/CLIENTE/PQRS/index.html">
                             <i class="fa-solid fa-users-rectangle"></i> PQRS
                         </a>
@@ -62,8 +62,8 @@
 
             <div class="secencabezado">
                 <div class="encabezado">
-                    <h1>PQRS</h1>
-                    <p>Permite a los clientes enviar petiiones, quejas, relamos y sugerencias facilitando la comunicacion.</p>
+                    <h1>Nuestro Menú</h1>
+                    <p>Descubre una gran variedad de platos, preparados con ingredientes frescos y el mejor sabor para todos los gustos.</p>
                 </div>
 
                 <div class="treencabezado">
@@ -152,74 +152,67 @@
             </div>
 
             <div class="contenido-principal">
-                <div class="cliente-avatar">
-                    <i class="fa-solid fa-user"></i>
-                </div>
 
-                <h2 class="cliente-bienvenida">Bienvenido, cliente</h2>
-                <p class="cliente-subtitulo">¿En qué podemos ayudarte hoy?</p>
-
-                <div class="pqrs-grid">
-
-                    <div class="pqrs-card" data-tipo="peticion">
-                        <i class="fa-solid fa-file-lines"></i>
-                        <span>Petición</span>
+                <div class="cards">
+                    <div class="card">
+                        <a href="CATEGORIAS/entrada.html">
+                            <i class="fa-solid fa-utensils"></i>
+                            <h3>Entradas</h3>
+                            <p>Deliciosos aperitivos ideales para empezar tu comida con el mejor sabor y variedad.</p>
+                        </a>
                     </div>
-
-                    <div class="pqrs-card" data-tipo="queja">
-                        <i class="fa-solid fa-bullhorn"></i>
-                        <span>Queja</span>
+                    <div class="card">
+                        <a href="burger.html">
+                            <i class="fa-solid fa-burger"></i>
+                            <h3>Hamburguesas</h3>
+                            <p>Jugosas hamburguesas preparadas al momento, con ingredientes frescos y mucho sabor.</p>
+                        </a>
                     </div>
-
-                    <div class="pqrs-card" data-tipo="reclamo">
-                        <i class="fa-solid fa-triangle-exclamation"></i>
-                        <span>Reclamo</span>
+                    <div class="card">
+                        <a href="mazorca.html">
+                            <i class="fa-solid fa-bowl-food"></i>
+                            <h3>Mazorcadas</h3>
+                            <p>Mazorcadas llenas de sabor, acompañadas de carnes, salsas y toppings especiales.</p>
+                        </a>
                     </div>
-
-                    <div class="pqrs-card" data-tipo="sugerencia">
-                        <i class="fa-solid fa-lightbulb"></i>
-                        <span>Sugerencia</span>
+                    <div class="card">
+                        <a href="burrito.html">
+                            <i class="fa-solid fa-pepper-hot"></i>
+                            <h3>Burritos</h3>
+                            <p>Burritos rellenos con ingredientes frescos envueltos en tortillas suaves y deliciosas.</p>
+                        </a>
                     </div>
-
-                </div>
-
-                <div class="mis-solicitudes">
-                    <h3>Mis solicitudes</h3>
-                    <div class="lista-pqrs" id="listaPQRS">
-                        <p class="sin-registros" id="sinRegistros">Aún no has enviado ninguna PQRS.</p>
+                    <div class="card">
+                        <a href="tortilla.html">
+                            <i class="fa-solid fa-cookie"></i>
+                            <h3>Tortillas</h3>
+                            <p>Tortillas calientes preparadas, perfectas para acompañar cualquier plato.</p>
+                        </a>
+                    </div>
+                    <div class="card">
+                        <a href="carne.html">
+                            <i class="fa-solid fa-drumstick-bite"></i>
+                            <h3>Carnes</h3>
+                            <p>Cortes de carne tiernos y sazonados, preparados al punto para disfrutar cada bocado.</p>
+                        </a>
+                    </div>
+                    <div class="card">
+                        <a href="bebida.html">
+                            <i class="fa-solid fa-glass-water"></i>
+                            <h3>Bebidas</h3>
+                            <p>Refrescantes bebidas para acompañar tus comidas y disfrutar en cualquier momento.</p>
+                        </a>
+                    </div>
+                    <div class="card">
+                        <a href="adicional.html">
+                            <i class="fa-solid fa-cheese"></i>
+                            <h3>Adicional</h3>
+                            <p>Complementos y extras ideales para personalizar y hacer tu pedido aún más completo.</p>
+                        </a>
                     </div>
                 </div>
             </div>
-
         </main>
-
-    </div>
-    <div class="modal-overlay" id="modalPQRS">
-        <div class="modal-box">
-
-            <div class="modal-header">
-                <i id="modalIcono" class="fa-solid fa-file-lines"></i>
-                <h3 id="modalTitulo">Nueva Petición</h3>
-                <span class="modal-cerrar" id="cerrarModal">&times;</span>
-            </div>
-
-            <form id="formPQRS">
-                <input type="hidden" id="pqrsId">
-                <input type="hidden" id="pqrsTipo">
-
-                <label for="pqrsAsunto">Asunto</label>
-                <input type="text" id="pqrsAsunto" placeholder="Escribe un breve asunto" required>
-
-                <label for="pqrsDescripcion">Descripción</label>
-                <textarea id="pqrsDescripcion" rows="4" placeholder="Cuéntanos los detalles..." required></textarea>
-
-                <div class="modal-acciones">
-                    <button type="button" class="btn-cancelar" id="btnCancelar">Cancelar</button>
-                    <button type="submit" class="btn-enviar" id="btnEnviar">Enviar</button>
-                </div>
-            </form>
-
-        </div>
     </div>
 
     <footer class="custom-footer">

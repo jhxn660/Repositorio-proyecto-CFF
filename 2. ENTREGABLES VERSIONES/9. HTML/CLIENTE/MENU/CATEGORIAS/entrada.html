@@ -29,7 +29,7 @@
                         </a>
                     </li>
                     <li class="movimiento">
-                        <a href="/CLIENTE/UBICACION/index.html">
+                        <a href="/CLIENTE">
                             <i class="fa-solid fa-location-dot"></i> Ubicación
                         </a>
                     </li>
@@ -38,7 +38,7 @@
                             <i class="fa-solid fa-calendar"></i> Horarios
                         </a>
                     </li>
-                    <li class="movimiento">
+                    <li class="activo">
                         <a href="/CLIENTE/MENU/index.html">
                             <i class="fa-solid fa-utensils"></i>Menú
                         </a>
@@ -48,7 +48,7 @@
                             <i class="fa-regular fa-comment"></i> Comentarios
                         </a>
                     </li>
-                    <li class="activo">
+                    <li class="movimiento">
                         <a href="/CLIENTE/PQRS/index.html">
                             <i class="fa-solid fa-users-rectangle"></i> PQRS
                         </a>
@@ -62,8 +62,8 @@
 
             <div class="secencabezado">
                 <div class="encabezado">
-                    <h1>PQRS</h1>
-                    <p>Permite a los clientes enviar petiiones, quejas, relamos y sugerencias facilitando la comunicacion.</p>
+                    <h1>Nuestro Menú</h1>
+                    <p>Descubre una gran variedad de platos, preparados con ingredientes frescos y el mejor sabor para todos los gustos.</p>
                 </div>
 
                 <div class="treencabezado">
@@ -122,7 +122,7 @@
                             <hr class="dropdown-divider">
                             
                             <div class="roles-section">
-                                <a href="/ADMIN/INFORMACION/informacion.html" class="role-item">
+                                <a href="#" class="role-item">
                                     <i class="fa-solid fa-rotate"></i>
                                     <p>Administrador</p>
                                 </a>
@@ -152,74 +152,114 @@
             </div>
 
             <div class="contenido-principal">
-                <div class="cliente-avatar">
-                    <i class="fa-solid fa-user"></i>
-                </div>
-
-                <h2 class="cliente-bienvenida">Bienvenido, cliente</h2>
-                <p class="cliente-subtitulo">¿En qué podemos ayudarte hoy?</p>
-
-                <div class="pqrs-grid">
-
-                    <div class="pqrs-card" data-tipo="peticion">
-                        <i class="fa-solid fa-file-lines"></i>
-                        <span>Petición</span>
+                <div class="contenedormadre">
+                
+                    <div class="productos-grid" id="gridProductos">
+                        
+                        <div class="contenedorpo" data-categoria="entradas" data-precio="12000" data-relevancia="2" data-calificacion="5">
+                            <div class="badge-precio">$12.500</div>
+                            <div class="moderclass"><i class="fa-solid fa-utensils"></i></div>
+                            <div class="presinfo">
+                                <h3>Salchipapa Sencilla</h3>
+                                <h5>⭐⭐⭐⭐⭐</h5>
+                            </div>
+                            <br>
+                            <p>Papa francesa con salchicha Zenú acompañada de salsas...</p>
+                            <br>
+                            <button type="button" class="btn-secon btn-combo">
+                                <i class="fa-solid fa-circle-plus"></i> Ver Combo Disponible.
+                            </button>
+                        </div>
+    
+                        <div class="contenedorone" data-categoria="entradas" data-precio="16500" data-relevancia="1" data-calificacion="4">
+                            <div class="badge-precio">$20.000</div>
+                            <div class="moderclass"><i class="fa-solid fa-utensils"></i></div>
+                            <div class="presinfo">
+                                <h3>Salchipapa Especial</h3>
+                                <h5>⭐⭐⭐⭐☆</h5>
+                            </div>
+                            <br>
+                            <p>Papa francesa con salchicha zenú, maíz, jamón y queso doble crema...</p>
+                            <br>
+                            <button type="button" class="btn-secon btn-combo">
+                                <i class="fa-solid fa-circle-plus"></i> Ver Combo Disponible.
+                            </button>
+                        </div>
+    
+                        <div class="contenedorpo" data-categoria="entradas" data-precio="22000" data-relevancia="4" data-calificacion="5">
+                            <div class="badge-precio">$36.500</div>
+                            <div class="moderclass"><i class="fa-solid fa-utensils"></i></div>
+                            <div class="presinfo"> 
+                                <h3>Mega Salchipapa</h3>
+                                <h5>⭐⭐⭐⭐⭐</h5>
+                            </div>
+                            <br>
+                            <p>Papa francesa con salchicha zenú, maíz, carne, pollo, queso doble...</p>
+                            <br>
+                            <button type="button" class="btn-secon btn-combo">
+                                <i class="fa-solid fa-circle-plus"></i> Ver Combo Disponible.
+                            </button>
+                        </div>
+    
+                        <div class="contenedorpo" data-categoria="entradas" data-precio="19500" data-relevancia="3" data-calificacion="3">
+                            <div class="badge-precio">$11.500</div>
+                            <div class="moderclass"><i class="fa-solid fa-utensils"></i></div>
+                            <div class="presinfo"> 
+                                <h3>Cheese Bacon</h3>
+                                <h5>⭐⭐⭐☆☆</h5>
+                            </div>
+                            <br>
+                            <p>Papas a la francesa con queso cheddar derretido y tocineta...</p>
+                            <br>
+                            <button type="button" class="btn-secon btn-combo">
+                                <i class="fa-solid fa-circle-plus"></i> Ver Combo Disponible.
+                            </button>
+                        </div>
+    
                     </div>
-
-                    <div class="pqrs-card" data-tipo="queja">
-                        <i class="fa-solid fa-bullhorn"></i>
-                        <span>Queja</span>
-                    </div>
-
-                    <div class="pqrs-card" data-tipo="reclamo">
-                        <i class="fa-solid fa-triangle-exclamation"></i>
-                        <span>Reclamo</span>
-                    </div>
-
-                    <div class="pqrs-card" data-tipo="sugerencia">
-                        <i class="fa-solid fa-lightbulb"></i>
-                        <span>Sugerencia</span>
-                    </div>
-
-                </div>
-
-                <div class="mis-solicitudes">
-                    <h3>Mis solicitudes</h3>
-                    <div class="lista-pqrs" id="listaPQRS">
-                        <p class="sin-registros" id="sinRegistros">Aún no has enviado ninguna PQRS.</p>
+    
+                    <div class="contenedornav">
+                        <div class="conteninf">
+                            <h3>Categorías</h3>
+                            <br>
+                            <div class="contenorden-horizontal">
+                                <select class="selectone" name="categoria" id="selectCategoria">
+                                    <option value="entradas">Entradas</option>
+                                    <option value="hamburguesa">Hamburguesa</option>
+                                    <option value="mazorcadas">Mazorcadas</option>
+                                    <option value="burritos">Burritos</option>
+                                    <option value="tortillas">Tortillas</option>
+                                    <option value="carnes">Carnes</option>
+                                    <option value="bebidas">Bebidas</option>
+                                </select>
+    
+                                <select class="selectone" name="orden" id="selectOrden">
+                                    <option value="defecto">Orden</option>
+                                    <option value="precio">Precio</option>
+                                    <option value="relevancia">Relevancia</option>
+                                    <option value="calificacion">Calificación</option>
+                                </select>
+                            </div>
+                        </div>
+    
+                        <div class="conteninf">
+                            <h3>Comentarios</h3>
+                            <br>
+                            <h4>María G. ⭐⭐⭐⭐⭐</h4>
+                            <p>“Las hamburguesas son increíbles, la carne es muy jugosa y los ingredientes se sienten frescos.”</p> 
+                            <br>
+                            <h4>Andrés P. ⭐⭐⭐⭐⭐</h4>
+                            <p>“Me gustó mucho el diseño de la página, se ve moderno y es fácil encontrar.”</p>
+                            <br>
+                            <h4>Laura M. ⭐⭐⭐⭐☆</h4>
+                            <p>“Me gustó mucho el diseño de la página, se ve moderno y es fácil encontrar.”</p>
+                            <br>
+                            <a href="/CLIENTE/COMENTARIO/index.html" class="contercomentar" style="text-decoration: none; display: inline-block; text-align: center;">Comentarios</a>
+                        </div>
                     </div>
                 </div>
             </div>
-
         </main>
-
-    </div>
-    <div class="modal-overlay" id="modalPQRS">
-        <div class="modal-box">
-
-            <div class="modal-header">
-                <i id="modalIcono" class="fa-solid fa-file-lines"></i>
-                <h3 id="modalTitulo">Nueva Petición</h3>
-                <span class="modal-cerrar" id="cerrarModal">&times;</span>
-            </div>
-
-            <form id="formPQRS">
-                <input type="hidden" id="pqrsId">
-                <input type="hidden" id="pqrsTipo">
-
-                <label for="pqrsAsunto">Asunto</label>
-                <input type="text" id="pqrsAsunto" placeholder="Escribe un breve asunto" required>
-
-                <label for="pqrsDescripcion">Descripción</label>
-                <textarea id="pqrsDescripcion" rows="4" placeholder="Cuéntanos los detalles..." required></textarea>
-
-                <div class="modal-acciones">
-                    <button type="button" class="btn-cancelar" id="btnCancelar">Cancelar</button>
-                    <button type="submit" class="btn-enviar" id="btnEnviar">Enviar</button>
-                </div>
-            </form>
-
-        </div>
     </div>
 
     <footer class="custom-footer">
@@ -254,6 +294,29 @@
           </div>
         </div>
     </footer>
+
+    <div id="comboModal" class="modal-overlay">
+        <div class="modal-card">
+            <div class="modal-header">
+                <h3><i class="fa-solid fa-hamburger"></i> ¡Mejora tu Pedido!</h3>
+            </div>
+            <div class="modal-body">
+                <p class="modal-promo-text">Este espectacular combo está compuesto por:</p>
+                <div class="combo-item">
+                    <span><i class="fa-solid fa-circle-check"></i> Papa Francesa</span>
+                    <strong class="precio-adicional">+$6.000</strong>
+                </div>
+                <div class="combo-item">
+                    <span><i class="fa-solid fa-circle-check"></i> Gaseosa 250 ml</span>
+                    <strong class="precio-adicional">+$4.000</strong>
+                </div>
+                <p class="modal-footer-text">Este combo esta por un valor total de <strong>$10.000</strong> ¿no te gustaria ordenar este combo tan espectacular?.</p>
+            </div>
+            <div class="modal-actions">
+                <button type="button" id="btnCancelarCombo" class="modal-btn btn-cancelar">Cancelar</button>
+            </div>
+        </div>
+    </div>
 
     <script src="js/script.js"></script>
 

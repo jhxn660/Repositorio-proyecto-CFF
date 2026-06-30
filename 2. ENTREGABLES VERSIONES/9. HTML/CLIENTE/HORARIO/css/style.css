@@ -1,0 +1,977 @@
+@import url('https://fonts.googleapis.com/css2?family=Albert+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap');
+
+/* --- CONFIGURACIÓN GENERAL --- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Albert Sans', sans-serif;
+}
+
+body {
+    background: linear-gradient(to top, #f8fbff , #edf4ff );
+    min-height: 100vh;
+}
+
+/* CONTENEDOR GENERAL */
+.contenedor {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* SIDEBAR */
+.sidebar {
+    width: 260px;
+    background: #2c2c2c;
+    color: white;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+}
+
+.logo {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.imglogo {
+    width: 80px;
+}
+
+.logo h2 {
+    color: #ff9100;
+    margin-bottom: 5px;
+}
+
+.sidebar ul {
+    list-style: none;
+}
+
+.sidebar li {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.sidebar li a {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    width: 100%;
+    text-decoration: none;
+    color: white;
+}
+
+.sidebar li:hover {
+    background: #3c3c3c;
+}
+
+.sidebar li.activo {
+    background: #ff9100;
+    color: white;
+    border-radius: 30px;
+}
+
+.activo:hover {
+    transform: translateY(-5px);
+}
+
+.movimiento:hover {
+    border-radius: 30px;
+    transform: translateY(-5px);
+}
+
+.sidebar li i {
+    font-size: 18px;
+    color: inherit;
+}
+
+/* CONTENIDO */
+.contenido {
+    flex: 1;
+    padding: 20px;
+}
+
+/* CABECERA */
+.secencabezado {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 10px 20px;
+    margin-bottom: 15px;
+}
+
+.encabezado {
+    flex: 1;
+    min-width: 250px;
+}
+
+.encabezado h1 {
+    color: #333;
+}
+
+.encabezado p {
+    color: #666;
+    margin-top: 5px;
+}
+
+.treencabezado {
+    gap: 30px;
+    display: flex;
+    align-items: center;
+}
+
+.logo1, .logo2 {
+    font-size: 40px;
+    color: #2c2c2c;
+    cursor: pointer;
+    list-style: none;
+    transition: transform 0.2s;
+}
+
+.logo1:hover, .logo2:hover {
+    transform: scale(1.2);
+}
+
+/* Contenedor Principal (Panel Blanco) */
+.contenido-principal {
+    background: white;
+    min-height: 600px;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 4px 20px rgba(0,0,0,.08);    
+}
+
+.contenido-secundario {
+    background: white;
+    border-radius: 20px;
+    padding: 30px;
+    padding-bottom: 80px;
+    box-shadow: 0 4px 20px rgba(0,0,0,.08);
+}
+
+/* Layout de dos columnas */
+.container {
+    display: flex;
+    width: 100%;
+    margin: 0 auto;
+    gap: 10px;
+}
+
+.left-column {
+    flex: 1;
+    padding-right: 20px;
+}
+
+.right-column {
+    flex: 1;
+    padding-left: 20px;
+}
+
+/* Divisor central */
+.vertical-divider {
+    width: 4px;
+    background-color: #d1d5db;
+    border-radius: 10px;
+    align-self: stretch;
+}
+
+/* --- COLUMNA IZQUIERDA: CALENDARIO --- */
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    font-weight: bold;
+    font-size: 22px;
+    color: #2c3e50;
+}
+
+.month-year-selector {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.arrow-icon {
+    font-size: 14px;
+    transition: transform 0.2s;
+    color: #2c3e50;
+}
+
+.arrow-icon.rotated {
+    transform: rotate(180deg);
+}
+
+.dots-menu {
+    letter-spacing: 2px;
+    cursor: pointer;
+    color: #555;
+}
+
+.calendar-wrapper {
+    position: relative;
+    margin-bottom: 25px;
+}
+
+/* Rejillas del Calendario */
+.weekdays-grid, .days-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    text-align: center;
+    gap: 12px 0;
+}
+
+.weekdays-grid {
+    font-weight: bold;
+    border-bottom: 2px solid #2c3e50;
+    padding-bottom: 8px;
+    margin-bottom: 12px;
+    font-size: 14px;
+}
+
+.weekdays-grid div {
+    color: #2c3e50;
+}
+
+.day-cell {
+    height: 38px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 500;
+    font-size: 15px;
+    position: relative;
+    color: #2c3e50;
+}
+
+.rest-day {
+    color: #c0392b !important;
+}
+
+.interactive-day {
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* Modificado para alineación perfecta del círculo de selección gris */
+.interactive-day.selected::before {
+    content: "";
+    position: absolute;
+    width: 34px;
+    height: 34px;
+    background-color: #bdc3c7;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.interactive-day span {
+    position: relative;
+    z-index: 2;
+}
+
+/* --- PANELES FLOTANTES --- */
+.dropdown-panel {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: #ffffff;
+    border: 1.5px solid #2c3e50;
+    border-radius: 6px;
+    z-index: 10;
+    padding: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* Grid de Años */
+.years-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 12px;
+    text-align: center;
+    font-size: 14px;
+}
+
+.year-item {
+    cursor: pointer;
+    padding: 4px 0;
+    color: #2c3e50;
+}
+
+.year-item:hover {
+    background-color: #f0f0f0;
+    border-radius: 4px;
+}
+
+.year-item.active {
+    color: #27ae60;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+/* Grid de Meses */
+.months-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+.month-btn {
+    background: #ffffff;
+    border: 1.5px solid #7f8c8d;
+    border-radius: 6px;
+    padding: 8px 0;
+    font-size: 13.5px;
+    cursor: pointer;
+    font-weight: 500;
+    color: #2c3e50;
+}
+
+.month-btn:hover {
+    background-color: #f9f9f9;
+}
+
+.month-btn.active {
+    border-color: #27ae60;
+    color: #27ae60;
+    font-weight: bold;
+}
+
+/* --- CUADRO INFORMATIVO (INFO CARD) --- */
+.info-card {
+    border: 1.5px solid #2c3e50;
+    border-radius: 8px;
+    padding: 15px;
+    min-height: 140px;
+    background: #ffffff;
+}
+
+.info-card h3 {
+    font-size: 16px;
+    margin-bottom: 12px;
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+.info-content {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.burger-icon {
+    font-size: 50px;
+}
+
+.info-content p {
+    font-size: 14px;
+    line-height: 1.4;
+    font-weight: 500;
+    color: #2c3e50;
+}
+
+/* --- COLUMNA DERECHA: HORARIOS --- */
+.legend-container {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    margin-bottom: 30px;
+    margin-top: 5px;
+}
+
+.legend-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+}
+
+.dot {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+}
+
+/* Colores de los círculos */
+.red-dot { background-color: #c0392b; }
+.blue-dot { background-color: #2980b9; } /* <-- ESTA ES LA CLASE QUE TE FALTABA */
+.grey-dot { background-color: #95a5a6; }
+
+.legend-box {
+    border: 1.5px solid #2c3e50;
+    border-radius: 6px;
+    padding: 4px 10px;
+    font-size: 11px;
+    text-align: center;
+    font-weight: bold;
+    background: #fff;
+    line-height: 1.2;
+    color: #2c3e50;
+}
+
+.schedule-container h2 {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #2c3e50;
+}
+
+.schedule-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    border-bottom: 5px solid #22313f;
+    margin-bottom: 12px;
+    padding-bottom: 6px;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.schedule-row span {
+    color: #2c3e50;
+}
+
+.schedule-row.closed .day-name,
+.schedule-row.closed .time-value {
+    color: #c0392b;
+}
+
+/* Estilos Generales del Footer */
+.custom-footer {
+    background-color: #2c2c2c;
+    font-family: Arial, sans-serif;
+    color: #ffffff;
+    padding: 0;
+    overflow: hidden;
+    width: 100%;
+}
+
+.footer-container {
+    display: flex;
+    flex-direction: column; 
+    width: 100%;
+}
+
+/* Sección de Información de Contacto (Primero en móviles) */
+.footer-info {
+    background-color: #2e2e2e;
+    padding: 30px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    order: 1; 
+    position: relative; 
+}
+
+.footer-title {
+    color: #ff9100;
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 0;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+}
+
+.contact-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.contact-list li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+    font-size: 15px;
+    color: #cccccc;
+}
+
+.contact-list .icon {
+    margin-right: 10px;
+    font-size: 16px;
+    display: inline-block;
+    width: 20px;
+    text-align: center;
+}
+
+/* Botón Ver en el Mapa */
+.map-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #ff9100;
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 14px;
+    padding: 10px 20px;
+    border-radius: 6px;
+    margin-top: 20px;
+    width: 160px;
+    transition: background-color 0.3s ease;
+}
+
+.map-button:hover {
+    color: #2c2c2c;
+    background-color: #ffffff;
+}
+
+.map-button .arrow {
+    font-size: 18px;
+    line-height: 1;
+}
+
+/* Sección del Mapa (Segundo en móviles) */
+.footer-map {
+    width: 100%;
+    height: 250px;
+    order: 2; 
+}
+
+.footer-map iframe {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+  
+  /* Diseño Responsivo y Ajuste de la Línea Diagonal (Escritorio) */
+  @media (min-width: 768px) {
+    .footer-container {
+      flex-direction: row; 
+      height: 260px; 
+    }
+  
+    .footer-info {
+      width: 35%;
+      padding: 20px 40px;
+      order: 1; /* Pasa a la izquierda */
+      background: #2e2e2e;
+      position: relative;
+      z-index: 2;
+      /* Línea naranja se mueve al lado derecho del bloque */
+      box-shadow: 8px 0 0 0 #ff9100; 
+    }
+  
+    .footer-map {
+      width: 65%; 
+      height: 100%;
+      order: 2; /* Pasa a la derecha */
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+    .vertical-divider {
+        display: none;
+    }
+    .left-column, .right-column {
+        padding: 0;
+    }
+}
+
+/* segundo apartado de horario */
+/* ==========================================
+   PANEL DE CONCURRENCIA (CORREGIDO)
+   ========================================== */
+
+   .titulo-concurrencia-centrado {
+    text-align: center;
+    font-size: 24px;
+    font-weight: 600;
+    margin: 30px 0 15px 0;
+    color: #2c2c2c;
+}
+
+.concurrency-panel {
+    background-color: #ffffff; 
+    color: #2c2c2c;
+    border: 2px solid #2c2c2c;
+    border-radius: 12px;
+    padding: 20px 24px 15px 24px; /* Reducido el padding inferior */
+    margin-top: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,.05);
+    display: flex;
+    flex-direction: column;
+}
+
+/* Selector de días */
+.days-selector {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 2px solid #2c2c2c;
+    padding-bottom: 6px;
+    margin-bottom: 20px;
+}
+
+.day-tab {
+    font-size: 14px;
+    color: #777777;
+    cursor: pointer;
+    padding: 6px 8px;
+    font-weight: 600;
+    position: relative;
+    transition: color 0.2s;
+}
+
+.day-tab:hover {
+    color: #000000;
+}
+
+.day-tab.active {
+    color: #ff9100; 
+}
+
+.day-tab.active::after {
+    content: "";
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background-color: #ff9100;
+    border-radius: 4px 4px 0 0;
+}
+
+.closed-text-alert {
+    text-align: center;
+    font-style: italic;
+    color: #777777;
+    font-size: 16px;
+    padding: 20px 0;
+}
+
+/* Gráfico con desborde oculto superior para contener la línea punteada */
+.chart-wrapper {
+    position: relative;
+    height: 130px;        /* Un poco más de holgura para barras altas */
+    margin-bottom: 0px;   /* Eliminado margen innecesario */
+    overflow: hidden;     /* ¡SOLUCIÓN! Evita que la línea punteada flote en el aire fuera del gráfico */
+}
+
+.grid-lines {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    pointer-events: none;
+}
+
+.grid-lines .line {
+    width: 100%;
+    height: 1px;
+    background-color: #e0e0e0;
+}
+
+.bars-container {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-around; 
+    padding: 0 10px;
+    z-index: 2;
+}
+
+/* Barras */
+.bar {
+    width: 18px;
+    background-color: #ffffff; 
+    border: 2px solid #2c2c2c; 
+    border-radius: 4px 4px 0 0;
+    transition: height 0.3s ease, background-color 0.3s ease;
+    cursor: pointer;
+    position: relative;
+}
+
+/* Barra destacada */
+.bar.highlighted {
+    background-color: #ff9100; /* Cambiado a tu naranja de marca para mantener uniformidad */
+    border: 2px solid #2c2c2c;
+}
+
+/* Línea punteada corregida */
+.bar.highlighted::before {
+    content: "";
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 1px;
+    height: 200px; /* Suficiente para llegar al tope sin importar la altura */
+    border-left: 2px dotted #ff9100; /* Del mismo color que tu barra activa */
+    pointer-events: none;
+}
+
+/* Eje de tiempos sin márgenes excesivos */
+.time-axis {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    color: #2c2c2c;
+    font-weight: 600;
+    padding-top: 8px;
+    margin-top: 4px;
+    border-top: 2px solid #2c2c2c;
+}
+
+
+
+/* ==========================================
+   ESTILOS CORREGIDOS PARA EL PANEL DE USUARIO
+   ========================================== */
+
+/* Contenedor relativo estricto para no alterar el flexbox de la cabecera */
+.user-profile-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+/* Regresamos tus iconos a su comportamiento original */
+.treencabezado {
+    gap: 30px;
+    display: flex;
+    align-items: center;
+}
+
+/* Caja del menú flotante alineada perfectamente */
+.user-dropdown-panel {
+    position: absolute;
+    top: 45px; /* Controla la distancia hacia abajo respecto al icono */
+    right: 0;  /* Alinea el borde derecho del panel con el borde derecho del avatar */
+    width: 260px;
+    background-color: #ffffff;
+    border: 2px solid #2c2c2c;
+    border-radius: 12px;
+    padding: 15px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    z-index: 1000; /* Asegura que se superponga a cualquier otro elemento */
+    
+    /* Configuración interna interna */
+    display: flex;
+    flex-direction: column;
+}
+
+/* Ocultar el panel por defecto usando la clase hidden */
+.user-dropdown-panel.hidden {
+    display: none !important;
+}
+
+/* Estilos de los elementos internos */
+.dropdown-header {
+    text-align: center;
+    padding: 5px 0;
+}
+
+.user-avatar {
+    font-size: 45px;
+    color: #2c2c2c;
+    margin-bottom: 5px;
+}
+
+.user-email {
+    font-size: 14px;
+    font-weight: 600;
+    color: #2b6cb0;
+    text-decoration: underline;
+    word-break: break-all;
+}
+
+.dropdown-divider {
+    border: 0;
+    border-top: 1.5px solid #2c2c2c;
+    margin: 10px 0;
+}
+
+.roles-section {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.role-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    color: #718096;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 6px 8px;
+    border-radius: 6px;
+    transition: background 0.2s, color 0.2s;
+}
+
+.role-item i {
+    font-size: 16px;
+    transform: scaleX(-1);
+}
+
+.role-item:hover {
+    background-color: #f7fafc;
+    color: #2c2c2c;
+}
+
+.actions-section {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 5px;
+}
+
+.btn-dropdown {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    text-decoration: none;
+    color: #ffffff;
+    background-color: #2c2c2c;
+    border: 2px solid #2c2c2c;
+    border-radius: 8px;
+    padding: 10px 12px;
+    font-size: 14px;
+    font-weight: bold;
+    transition: background 0.2s, color 0.2s;
+}
+
+.btn-dropdown:hover {
+    background-color: #ff9100; /* Color de marca naranja CFF */
+    border-color: #2c2c2c;
+    color: #ffffff;
+}
+
+.dropdown-arrow-close {
+    display: flex;
+    justify-content: flex-end;
+    color: #2c2c2c;
+    font-size: 12px;
+    margin-top: 5px;
+    cursor: pointer;
+}
+
+/* ==========================================
+   PANEL DESPLEGABLE DE NOTIFICACIONES
+   ========================================== */
+
+/* Envoltorio relativo para la campana */
+.notification-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+/* Caja principal del menú de notificaciones */
+.notification-dropdown-panel {
+    position: absolute;
+    top: 45px; /* Distancia hacia abajo desde el icono */
+    right: -60px; /* Desplazamiento estratégico para que caiga centrado respecto a la campana */
+    width: 290px; /* Un poco más ancho para albergar cómodamente el texto informativo */
+    background-color: #ffffff;
+    border: 2px solid #2c2c2c;
+    border-radius: 12px;
+    padding: 15px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Ocultar el panel por defecto */
+.notification-dropdown-panel.hidden {
+    display: none !important;
+}
+
+/* Encabezado del título */
+.dropdown-title-text {
+    font-size: 16px;
+    font-weight: bold;
+    color: #2c2c2c;
+    margin: 5px 0 0 0;
+}
+
+.notification-icon-title {
+    font-size: 24px;
+    color: #2c2c2c;
+}
+
+/* Contenedor de las tarjetas de notificación */
+.notifications-section {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 5px;
+}
+
+/* Cuadros Negros Interactivos de Notificación */
+.btn-notification-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    color: #ffffff;
+    background-color: #2c2c2c;
+    border: 2px solid #2c2c2c;
+    border-radius: 8px;
+    padding: 12px;
+    text-align: left;
+    transition: background-color 0.2s, border-color 0.2s;
+}
+
+/* Iconos dentro de las notificaciones */
+.btn-notification-item i {
+    font-size: 18px;
+    min-width: 20px;
+    text-align: center;
+}
+
+/* Textos dentro de la notificación */
+.notification-content {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.notification-content strong {
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.notification-content p {
+    font-size: 11px;
+    color: #e0e0e0; /* Color gris claro para texto secundario */
+    line-height: 1.3;
+    margin: 0;
+}
+
+/* Hover interactivo con el color naranja de la marca */
+.btn-notification-item:hover {
+    background-color: #ff9100;
+    border-color: #2c2c2c;
+}
+
+.btn-notification-item:hover .notification-content p {
+    color: #ffffff; /* El texto secundario se vuelve completamente blanco en hover */
+}

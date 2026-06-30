@@ -1,0 +1,1752 @@
+@import url('https://fonts.googleapis.com/css2?family=Albert+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: 'Albert Sans', sans-serif;
+}
+
+body{
+    background: #f5f5f5;
+}
+
+
+.contenedor{
+    display: flex;
+    min-height: 100vh;
+}
+
+
+.sidebar{
+    width: 260px;
+    background: #2c2c2c;
+    color: white;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+}
+
+.logo{
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.imglogo{
+    width: 80px;
+}
+
+.logo h2{
+    color: #ff9100;
+    margin-bottom: 5px;
+}
+
+.logo span{
+    font-size: 14px;
+    color :#ccc;
+}
+
+.sidebar ul{
+    list-style: none;
+}
+
+.sidebar li{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.sidebar li a {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    width: 100%;
+    text-decoration: none;
+    color: white;
+}
+
+.sidebar li:hover{
+    background: #3c3c3c;
+}
+
+.sidebar li.activo{
+    background: #ff9100;
+    color: white;
+    border-radius: 30px;
+}
+
+.activo:hover{
+    transform: translateY(-5px);
+}
+
+.movimiento:hover{
+    border-radius: 30px;
+    transform: translateY(-5px);
+}
+
+.sidebar li i{
+    font-size: 18px;
+}
+
+
+
+.contenido{
+    flex: 1;
+    padding: 20px;
+}
+
+
+
+.secencabezado{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 10px 20px;
+}
+
+.encabezado{
+    display: block;
+}
+
+.encabezado h1{
+    color: #333;
+}
+
+.encabezado input{
+    width: 350px;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 30px;
+    background: white;
+    box-shadow: 0 2px 10px rgba(0,0,0,.08);
+}
+
+.treencabezado{
+    gap: 30px;
+    display: flex;
+    align-items: center;
+}
+
+.logo1,
+.logo2 {
+    font-size: 40px;
+    color: #2c2c2c;
+    cursor: pointer;
+    list-style: none;
+    transition: transform 0.2s;
+}
+
+.logo1:hover,
+.logo2:hover {
+    transform: scale(1.2);
+}
+
+
+
+.contenido-principal{
+    background: white;
+    min-height: 600px;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 4px 20px rgba(0,0,0,.08);
+}
+
+
+.cards{
+    display: flex;
+    flex-wrap: wrap;
+    padding-top: 20px;
+    padding-bottom: 10px;
+    justify-content: center;
+    gap: 20px;
+}
+
+.card{
+    background: white;
+    border: 1px solid #8b8b8b;
+    border-radius: 5px;
+    text-align: center;
+    cursor: pointer;
+    padding: 20px;
+    width: 220px;
+    position: relative;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover{
+    transform: translateY(-5px);
+    box-shadow: 0 8px 18px rgba(0,0,0,.15);
+}
+
+.card i{
+    font-size: 60px;
+    color: #3d3d3d;
+    margin-bottom: 15px;
+}
+
+.card h3{
+    margin-bottom: 10px;
+}
+
+.card p{
+    font-size: 14px;
+    line-height: 1.4;
+    color: #444;
+}
+
+.card::after{
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 70%;
+    height: 8px;
+    background: #ff9100;
+    border-radius: 10px;
+}
+
+a{
+    text-decoration: none;
+    color: #212121;
+}
+
+
+@media (min-width: 1400px) {
+    .contenido-principal {
+        max-width: 95%; 
+        margin: 0 auto;
+    }
+}
+
+
+@media (max-width: 992px) {
+    .contenedor {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px 20px;
+    }
+
+    .logo {
+        margin-bottom: 0;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .sidebar ul {
+        display: flex;
+        gap: 5px;
+        overflow-x: auto;
+        padding-bottom: 5px;
+    }
+
+    .sidebar li {
+        margin-bottom: 0;
+        padding: 10px 15px;
+        white-space: nowrap;
+    }
+}
+
+@media (max-width: 576px) {
+    .sidebar {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .sidebar ul {
+        width: 100%;
+        justify-content: start;
+    }
+
+    .secencabezado {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .cards {
+        gap: 15px;
+    }
+
+    .card {
+        width: 100%;
+        max-width: none;
+    }
+}
+
+
+.panel-cliente{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 50px 20px;
+}
+
+.cliente-avatar{
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    background: #2c2c2c;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.cliente-avatar i{
+    font-size: 42px;
+    color: white;
+}
+
+.cliente-bienvenida{
+    color: #1f3c88;
+    margin-bottom: 5px;
+}
+
+.cliente-subtitulo{
+    color: #ff9100;
+    font-weight: 600;
+    margin-bottom: 35px;
+    text-align: center;
+}
+
+.pqrs-grid{
+    display: grid;
+    grid-template-columns: repeat(2, 180px);
+    gap: 20px;
+}
+
+.pqrs-card{
+    height: 110px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    cursor: pointer;
+    transition: transform .2s, box-shadow .2s, border-color .2s, background .2s;
+}
+
+.pqrs-card:hover{
+    transform: translateY(-5px);
+    box-shadow: 0 8px 18px rgba(0,0,0,.12);
+    border-color: #ff9100;
+}
+
+.pqrs-card i{
+    font-size: 26px;
+    color: #2c2c2c;
+}
+
+.pqrs-card[data-tipo="queja"] i{
+    color: #000000;
+}
+
+.pqrs-card span{
+    font-weight: 600;
+    color: #333;
+    font-size: 15px;
+}
+
+.pqrs-card.seleccionada{
+    border-color: #ff9100;
+    background: #fff5f0;
+}
+
+.pqrs-card.seleccionada i{
+    color: #ff9100;
+}
+
+@media (max-width: 480px){
+    .pqrs-grid{
+        grid-template-columns: 1fr;
+    }
+
+    .pqrs-card{
+        width: 100%;
+    }
+}
+
+
+
+.modal-overlay{
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.5);
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: 20px;
+}
+
+.modal-overlay.activo{
+    display: flex;
+}
+
+.modal-box{
+    background: white;
+    width: 100%;
+    max-width: 420px;
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0 10px 30px rgba(0,0,0,.25);
+}
+
+.modal-header{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 10px;
+}
+
+.modal-header i{
+    font-size: 20px;
+    color: #ff9100;
+}
+
+.modal-header h3{
+    flex: 1;
+    color: #2c2c2c;
+}
+
+.modal-cerrar{
+    font-size: 26px;
+    line-height: 1;
+    cursor: pointer;
+    color: #888;
+}
+
+.modal-cerrar:hover{
+    color: #ff9100;
+}
+
+#formPQRS label{
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 6px;
+    margin-top: 14px;
+}
+
+#formPQRS input[type="text"],
+#formPQRS textarea{
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 14px;
+    resize: vertical;
+}
+
+#formPQRS input[type="text"]:focus,
+#formPQRS textarea:focus{
+    outline: none;
+    border-color: #ff9100;
+}
+
+#formPQRS input[readonly],
+#formPQRS textarea[readonly]{
+    background: #f5f5f5;
+    color: #555;
+}
+
+.modal-acciones{
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 22px;
+}
+
+.btn-cancelar,
+.btn-enviar{
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: .2s;
+}
+
+.btn-cancelar{
+    background: #eee;
+    color: #333;
+}
+
+.btn-cancelar:hover{
+    background: #ddd;
+}
+
+.btn-enviar{
+    background: #ff9100;
+    color: white;
+}
+
+.btn-enviar:hover{
+    background: #ff9100;
+}
+
+
+.mis-solicitudes{
+    width: 100%;
+    max-width: 700px;
+    margin: 45px auto 0;
+}
+
+.mis-solicitudes h3{
+    color: #2c2c2c;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.sin-registros{
+    text-align: center;
+    color: #999;
+    font-style: italic;
+}
+
+.lista-pqrs{
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.registro-pqrs{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    padding: 14px 18px;
+    background: #fafafa;
+    flex-wrap: wrap;
+}
+
+.registro-pqrs .icono-tipo{
+    font-size: 22px;
+    color: #ff9100;
+    width: 28px;
+    text-align: center;
+}
+
+.registro-info{
+    flex: 1;
+    min-width: 150px;
+}
+
+.registro-info .registro-asunto{
+    font-weight: 600;
+    color: #2c2c2c;
+}
+
+.registro-info .registro-meta{
+    font-size: 12px;
+    color: #888;
+    margin-top: 3px;
+}
+
+.estado-badge{
+    font-size: 12px;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 20px;
+    white-space: nowrap;
+}
+
+.estado-pendiente{
+    background: #fff3e0;
+    color: #ff9100;
+}
+
+.estado-revision{
+    background: #e3f2fd;
+    color: #1976d2;
+}
+
+.estado-resuelto{
+    background: #e8f5e9;
+    color: #2e7d32;
+}
+
+.registro-acciones{
+    display: flex;
+    gap: 8px;
+}
+
+.registro-acciones button{
+    background: white;
+    border: 1px solid #ddd;
+    width: 32px;
+    height: 32px;
+    border-radius: 6px;
+    cursor: pointer;
+    color: #555;
+    transition: .2s;
+}
+
+.registro-acciones button:hover{
+    border-color: #ff9100;
+    color: #ff9100;
+}
+
+.registro-acciones .btn-eliminar:hover{
+    border-color: #d32f2f;
+    color: #d32f2f;
+}
+
+@media (max-width: 576px){
+    .registro-pqrs{
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .registro-acciones{
+        align-self: flex-end;
+    }
+}
+
+/* ===================================================
+   CFF - ESTILOS PARA EL MODAL ORGANIZADO (2 COLUMNAS)
+   =================================================== */
+
+/* Ampliar el contenedor del modal para la distribución en rejilla */
+.modal-box--ancho {
+    max-width: 680px !important;
+    padding: 30px !important;
+}
+
+/* Encabezado centrado y estilizado */
+.modal-header-nuevo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 12px;
+}
+
+.modal-header-nuevo h2 {
+    font-size: 22px;
+    color: #2c2c2c;
+    font-weight: 700;
+    width: 100%;
+    text-align: center;
+}
+
+/* Estructura Grid principal (Inputs a la izquierda, Media a la derecha) */
+.modal-cuerpo-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 30px;
+    align-items: start;
+}
+
+/* Columna de campos de texto */
+.modal-col-inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.grupo-input {
+    display: flex;
+    flex-direction: column;
+}
+
+.grupo-input label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #444;
+    margin-bottom: 6px;
+}
+
+.grupo-input input {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+/* Enfoque llamativo con el color institucional */
+.grupo-input input:focus {
+    outline: none;
+    border-color: #ff6a35;
+    box-shadow: 0 0 0 3px rgba(255, 106, 53, 0.15);
+}
+
+/* Estilo para los campos de lectura ("Actuales") */
+.grupo-input input[readonly] {
+    background: #f9f9f9;
+    color: #777;
+    border-color: #e2e2e2;
+    cursor: not-allowed;
+}
+
+/* Columna derecha: Avatar, Checkbox y Notas */
+.modal-col-media {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+    padding-top: 10px;
+}
+
+.avatar-cambio-contenedor,
+.contrasena-cambio-contenedor {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.avatar-cambio-contenedor span,
+.contrasena-cambio-contenedor span {
+    font-size: 14px;
+    font-weight: 600;
+    color: #2c2c2c;
+}
+
+/* Vista previa circular del perfil */
+.avatar-preview {
+    width: 95px;
+    height: 95px;
+    border: 2px solid #2c2c2c;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    background: #ffffff;
+    transition: background 0.2s, border-color 0.2s;
+}
+
+.avatar-preview:hover {
+    background: #fdf5f2;
+    border-color: #ff6a35;
+}
+
+.avatar-preview i {
+    font-size: 42px;
+    color: #2c2c2c;
+    transition: color 0.2s;
+}
+
+.avatar-preview:hover i {
+    color: #ff6a35;
+}
+
+/* Checkbox personalizado cuadrado idéntico a tu boceto */
+.checkbox-personalizado {
+    position: relative;
+    display: inline-block;
+    width: 26px;
+    height: 26px;
+    cursor: pointer;
+}
+
+.checkbox-personalizado input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 26px;
+    width: 26px;
+    background-color: #ffffff;
+    border: 2px solid #2c2c2c;
+    border-radius: 4px;
+    transition: background-color 0.2s, border-color 0.2s;
+}
+
+.checkbox-personalizado input:checked + .checkmark {
+    background-color: #ff6a35;
+    border-color: #ff6a35;
+}
+
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.checkbox-personalizado input:checked + .checkmark:after {
+    display: block;
+}
+
+/* Checkmark (Check blanco interno) */
+.checkbox-personalizado .checkmark:after {
+    left: 8px;
+    top: 4px;
+    width: 6px;
+    height: 11px;
+    border: solid #ffffff;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+/* Texto de advertencia de los 60 días */
+.nota-informativa {
+    font-size: 12px;
+    color: #666;
+    text-align: center;
+    line-height: 1.4;
+    margin-top: 5px;
+    max-width: 210px;
+}
+
+/* Barra inferior del formulario de acciones */
+.modal-acciones-nuevas {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 30px;
+    border-top: 1px solid #eee;
+    padding-top: 20px;
+}
+
+/* Botón CONFIRMAR CAMBIOS */
+.btn-enviar-confirmar {
+    padding: 12px 32px;
+    border: 2px solid #2c2c2c;
+    background: #ffffff;
+    color: #2c2c2c;
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.5px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-enviar-confirmar:hover {
+    background: #ff6a35;
+    color: #ffffff;
+    border-color: #ff6a35;
+    box-shadow: 0 4px 10px rgba(255, 106, 53, 0.25);
+}
+
+/* Reglas de Adaptabilidad (Celulares y tablets pequeñas) */
+@media (max-width: 600px) {
+    .modal-box--ancho {
+        padding: 20px !important;
+    }
+    .modal-cuerpo-grid {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+    .modal-col-media {
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: flex-start;
+        border-top: 1px dashed #ddd;
+        padding-top: 25px;
+        width: 100%;
+    }
+    .nota-informativa {
+        max-width: 100%;
+        width: 100%;
+        grid-column: 1 / -1;
+        text-align: left;
+    }
+    .modal-acciones-nuevas {
+        flex-direction: column-reverse;
+        width: 100%;
+    }
+    .modal-acciones-nuevas button {
+        width: 100%;
+    }
+}
+
+/* ===================================================
+   CFF - CONTROL DINÁMICO DE ANIMACIÓN DE CONTRASEÑA
+   =================================================== */
+
+/* Estado inicial: Completamente invisible y colapsado */
+.grupo-contrasena-oculto {
+    width: 100%;
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease, opacity 0.3s ease, margin-top 0.3s ease;
+}
+
+/* Estado activo: Se ejecuta al marcar el checkbox */
+.grupo-contrasena-oculto.mostrar-campos {
+    max-height: 180px; /* Espacio ideal para que quepan ambos inputs */
+    opacity: 1;
+    margin-top: 5px;
+    border-top: 1px dashed #ddd;
+    padding-top: 15px;
+}
+
+/* Forzar simetría y alineación limpia en la columna multimedia */
+.modal-col-media {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+
+/* ===== Comentarios y Opiniones ===== */
+
+.comentarios-grid{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+    padding: 10px 0 10px;
+}
+
+.comentario-card{
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    background: #fafafa;
+    padding: 18px;
+    display: flex;
+    flex-direction: column;
+    transition: transform .2s, box-shadow .2s;
+}
+
+.comentario-card:hover{
+    transform: translateY(-4px);
+    box-shadow: 0 8px 18px rgba(0,0,0,.10);
+}
+
+.comentario-cabecera{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 10px;
+}
+
+.comentario-avatar{
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: #2c2c2c;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.comentario-avatar i{
+    font-size: 18px;
+}
+
+.comentario-nombre{
+    font-weight: 700;
+    color: #1f3c88;
+    font-size: 15px;
+}
+
+.comentario-texto{
+    font-size: 13px;
+    line-height: 1.5;
+    color: #444;
+    flex: 1;
+    margin-bottom: 14px;
+    word-break: break-word;
+}
+
+.comentario-pie{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+
+.comentario-meta{
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.comentario-id{
+    font-size: 11px;
+    color: #aaa;
+}
+
+.comentario-fecha{
+    font-size: 11px;
+    color: #999;
+}
+
+.comentario-like{
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #555;
+    font-weight: 600;
+    font-size: 13px;
+}
+
+.comentario-like i{
+    color: #2c2c2c;
+    transition: color .2s, transform .2s;
+}
+
+.comentario-like:hover i{
+    transform: scale(1.15);
+}
+
+.comentario-like.activo i{
+    color: #ff9100;
+}
+
+.comentario-acciones-card{
+    display: flex;
+    gap: 6px;
+    margin-left: 8px;
+}
+
+.comentario-acciones-card button{
+    background: white;
+    border: 1px solid #ddd;
+    width: 26px;
+    height: 26px;
+    border-radius: 6px;
+    cursor: pointer;
+    color: #888;
+    font-size: 11px;
+    transition: .2s;
+}
+
+.comentario-acciones-card button:hover{
+    border-color: #ff9100;
+    color: #ff9100;
+}
+
+.comentario-acciones-card .btn-eliminar-comentario:hover{
+    border-color: #d32f2f;
+    color: #d32f2f;
+}
+
+.sin-comentarios{
+    text-align: center;
+    color: #999;
+    font-style: italic;
+    padding: 30px 0;
+}
+
+.comentarios-titulo{
+    color: #2c2c2c;
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.aviso-comentario{
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    background: #fff5f0;
+    border-radius: 14px;
+    padding: 18px 22px;
+    margin-top: 25px;
+}
+
+.aviso-icono{
+    width: 48px;
+    height: 48px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    background: #ff9100;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+}
+
+.aviso-texto{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.aviso-texto strong{
+    color: #2c2c2c;
+    font-size: 15px;
+}
+
+.aviso-texto span{
+    font-size: 13px;
+    color: #777;
+}
+
+.aviso-btn{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: #ff9100;
+    color: white;
+    border: none;
+    padding: 11px 20px;
+    border-radius: 30px;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: .2s;
+}
+
+.aviso-btn:hover{
+    background: #ff9100;
+    transform: translateY(-2px);
+}
+
+@media (max-width: 576px){
+    .aviso-comentario{
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .aviso-btn{
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 992px){
+    .comentarios-grid{
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 576px){
+    .comentarios-grid{
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ===== Ubicación ===== */
+
+.ubicacion-layout{
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 35px;
+    align-items: start;
+}
+
+.ubicacion-eyebrow{
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: #fff0e8;
+    color: #ff9100;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    padding: 5px 12px;
+    border-radius: 20px;
+    margin-bottom: 16px;
+}
+
+.ubicacion-titulo{
+    font-size: 30px;
+    font-weight: 800;
+    color: #2c2c2c;
+    line-height: 1.2;
+    margin-bottom: 14px;
+}
+
+.ubicacion-titulo span{
+    color: #ff9100;
+}
+
+.ubicacion-desc{
+    font-size: 14px;
+    color: #555;
+    line-height: 1.7;
+    margin-bottom: 22px;
+}
+
+.ubicacion-beneficios{
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+.ubicacion-beneficios li{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    color: #333;
+}
+
+.ubicacion-beneficios li i{
+    color: #ff9100;
+    font-size: 16px;
+    flex-shrink: 0;
+}
+
+.ubicacion-auth-btns{
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.btn-auth{
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 11px 22px;
+    border-radius: 30px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform .2s, box-shadow .2s;
+    border: none;
+}
+
+.btn-login{
+    background: #ff9100;
+    color: white;
+}
+
+.btn-login:hover{
+    background: #ff9100;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255,106,53,.35);
+}
+
+.btn-register{
+    background: white;
+    color: #2c2c2c;
+    border: 2px solid #2c2c2c;
+}
+
+.btn-register:hover{
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,.12);
+}
+
+/* Mapa derecho */
+.mapa-header{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+    color: #2c2c2c;
+    margin-bottom: 12px;
+    font-size: 15px;
+}
+
+.mapa-header i{
+    color: #ff9100;
+    font-size: 18px;
+}
+
+.mapa-header-titulo{
+    flex: 1;
+    font-weight: 700;
+    color: #2c2c2c;
+}
+
+.mapa-header-ciudad{
+    font-size: 13px;
+    color: #666;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.mapa-header-ciudad i{
+    font-size: 13px;
+    color: #333;
+}
+
+.mapa-iframe{
+    width: 100%;
+    height: 360px;
+    border: none;
+    border-radius: 14px;
+    box-shadow: 0 4px 20px rgba(0,0,0,.10);
+    margin-bottom: 14px;
+}
+
+.ubicacion-contacto-btns{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.btn-contacto{
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 9px 16px;
+    border-radius: 30px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background .2s, color .2s, border-color .2s, transform .2s, box-shadow .2s;
+    border: 1.5px solid #2c2c2c;
+    background: #2c2c2c;
+    color: white;
+}
+
+.btn-contacto:hover,
+.btn-contacto:active{
+    background: #ff9100;
+    border-color: #ff9100;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255,106,53,.35);
+}
+
+@media (max-width: 992px){
+    .ubicacion-layout{
+        grid-template-columns: 1fr;
+    }
+
+    .mapa-iframe{
+        height: 300px;
+    }
+}
+
+@media (max-width: 576px){
+    .ubicacion-titulo{
+        font-size: 22px;
+    }
+
+    .mapa-iframe{
+        height: 240px;
+    }
+
+    .ubicacion-auth-btns{
+        flex-direction: column;
+    }
+
+    .btn-auth{
+        justify-content: center;
+    }
+}
+
+
+/* ===== Configuración de usuario ===== */
+
+.config-seccion {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px 40px;
+    padding: 10px 0;
+}
+
+.config-grupo-titulo {
+    font-size: 17px;
+    font-weight: 700;
+    color: #2c2c2c;
+    margin-bottom: 12px;
+}
+
+.config-card {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    border: 1.5px solid #d6d6d6;
+    border-radius: 10px;
+    padding: 16px 18px;
+    background: #fff;
+    transition: box-shadow .2s, transform .2s;
+    margin-bottom: 22px;
+}
+
+.config-card:hover {
+    box-shadow: 0 6px 16px rgba(0,0,0,.10);
+    transform: translateY(-3px);
+}
+
+.config-card--accion,
+.config-card--peligro {
+    cursor: pointer;
+}
+
+.config-card-icono {
+    width: 42px;
+    height: 42px;
+    border-radius: 8px;
+    background: #f0f0f0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.config-card-icono i {
+    font-size: 20px;
+    color: #2c2c2c;
+}
+
+.config-card-icono--peligro {
+    background: #fdecea;
+}
+
+.config-card-icono--peligro i {
+    color: #d32f2f;
+}
+
+.config-card-info {
+    flex: 1;
+}
+
+.config-card-info h3 {
+    font-size: 14px;
+    font-weight: 700;
+    color: #ff9100;
+    margin-bottom: 4px;
+}
+
+.config-card-info p {
+    font-size: 12px;
+    color: #555;
+    line-height: 1.5;
+}
+
+/* Toggle switch */
+.toggle {
+    position: relative;
+    display: inline-block;
+    width: 46px;
+    height: 26px;
+    flex-shrink: 0;
+    cursor: pointer;
+}
+
+.toggle input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.toggle-slider {
+    position: absolute;
+    inset: 0;
+    background: #ccc;
+    border-radius: 26px;
+    transition: background .3s;
+}
+
+.toggle-slider::before {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    left: 3px;
+    bottom: 3px;
+    background: white;
+    border-radius: 50%;
+    transition: transform .3s;
+    box-shadow: 0 1px 4px rgba(0,0,0,.2);
+}
+
+.toggle input:checked + .toggle-slider {
+    background: #ff9100;
+}
+
+.toggle input:checked + .toggle-slider::before {
+    transform: translateX(20px);
+}
+
+/* Botón acción dentro de la card */
+.config-btn-accion {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 26px;
+    color: #2c2c2c;
+    flex-shrink: 0;
+    transition: color .2s, transform .2s;
+}
+
+.config-btn-accion:hover {
+    color: #ff9100;
+    transform: scale(1.15);
+}
+
+.config-btn-accion--peligro {
+    color: #d32f2f;
+}
+
+.config-btn-accion--peligro:hover {
+    color: #b71c1c;
+}
+
+@media (max-width: 768px) {
+    .config-seccion {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+
+/* ==========================================
+   ESTILOS CORREGIDOS PARA EL PANEL DE USUARIO
+   ========================================== */
+
+/* Contenedor relativo estricto para no alterar el flexbox de la cabecera */
+.user-profile-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+/* Regresamos tus iconos a su comportamiento original */
+.treencabezado {
+    gap: 30px;
+    display: flex;
+    align-items: center;
+}
+
+/* Caja del menú flotante alineada perfectamente */
+.user-dropdown-panel {
+    position: absolute;
+    top: 45px; /* Controla la distancia hacia abajo respecto al icono */
+    right: 0;  /* Alinea el borde derecho del panel con el borde derecho del avatar */
+    width: 260px;
+    background-color: #ffffff;
+    border: 2px solid #2c2c2c;
+    border-radius: 12px;
+    padding: 15px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    z-index: 1000; /* Asegura que se superponga a cualquier otro elemento */
+    
+    /* Configuración interna interna */
+    display: flex;
+    flex-direction: column;
+}
+
+/* Ocultar el panel por defecto usando la clase hidden */
+.user-dropdown-panel.hidden {
+    display: none !important;
+}
+
+/* Estilos de los elementos internos */
+.dropdown-header {
+    text-align: center;
+    padding: 5px 0;
+}
+
+.user-avatar {
+    font-size: 45px;
+    color: #2c2c2c;
+    margin-bottom: 5px;
+}
+
+.user-email {
+    font-size: 14px;
+    font-weight: 600;
+    color: #2b6cb0;
+    text-decoration: underline;
+    word-break: break-all;
+}
+
+.dropdown-divider {
+    border: 0;
+    border-top: 1.5px solid #2c2c2c;
+    margin: 10px 0;
+}
+
+.roles-section {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.role-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    color: #718096;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 6px 8px;
+    border-radius: 6px;
+    transition: background 0.2s, color 0.2s;
+}
+
+.role-item i {
+    font-size: 16px;
+    transform: scaleX(-1);
+}
+
+.role-item:hover {
+    background-color: #f7fafc;
+    color: #2c2c2c;
+}
+
+.actions-section {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 5px;
+}
+
+.btn-dropdown {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    text-decoration: none;
+    color: #ffffff;
+    background-color: #2c2c2c;
+    border: 2px solid #2c2c2c;
+    border-radius: 8px;
+    padding: 10px 12px;
+    font-size: 14px;
+    font-weight: bold;
+    transition: background 0.2s, color 0.2s;
+}
+
+.btn-dropdown:hover {
+    background-color: #ff9100; /* Color de marca naranja CFF */
+    border-color: #2c2c2c;
+    color: #ffffff;
+}
+
+.dropdown-arrow-close {
+    display: flex;
+    justify-content: flex-end;
+    color: #2c2c2c;
+    font-size: 12px;
+    margin-top: 5px;
+    cursor: pointer;
+}
+
+/* ==========================================
+   PANEL DESPLEGABLE DE NOTIFICACIONES
+   ========================================== */
+
+/* Envoltorio relativo para la campana */
+.notification-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+/* Caja principal del menú de notificaciones */
+.notification-dropdown-panel {
+    position: absolute;
+    top: 45px; /* Distancia hacia abajo desde el icono */
+    right: -60px; /* Desplazamiento estratégico para que caiga centrado respecto a la campana */
+    width: 290px; /* Un poco más ancho para albergar cómodamente el texto informativo */
+    background-color: #ffffff;
+    border: 2px solid #2c2c2c;
+    border-radius: 12px;
+    padding: 15px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Ocultar el panel por defecto */
+.notification-dropdown-panel.hidden {
+    display: none !important;
+}
+
+/* Encabezado del título */
+.dropdown-title-text {
+    font-size: 16px;
+    font-weight: bold;
+    color: #2c2c2c;
+    margin: 5px 0 0 0;
+}
+
+.notification-icon-title {
+    font-size: 24px;
+    color: #2c2c2c;
+}
+
+/* Contenedor de las tarjetas de notificación */
+.notifications-section {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 5px;
+}
+
+/* Cuadros Negros Interactivos de Notificación */
+.btn-notification-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    color: #ffffff;
+    background-color: #2c2c2c;
+    border: 2px solid #2c2c2c;
+    border-radius: 8px;
+    padding: 12px;
+    text-align: left;
+    transition: background-color 0.2s, border-color 0.2s;
+}
+
+/* Iconos dentro de las notificaciones */
+.btn-notification-item i {
+    font-size: 18px;
+    min-width: 20px;
+    text-align: center;
+}
+
+/* Textos dentro de la notificación */
+.notification-content {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.notification-content strong {
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.notification-content p {
+    font-size: 11px;
+    color: #e0e0e0; /* Color gris claro para texto secundario */
+    line-height: 1.3;
+    margin: 0;
+}
+
+/* Hover interactivo con el color naranja de la marca */
+.btn-notification-item:hover {
+    background-color: #ff9100;
+    border-color: #2c2c2c;
+}
+
+.btn-notification-item:hover .notification-content p {
+    color: #ffffff; /* El texto secundario se vuelve completamente blanco en hover */
+}

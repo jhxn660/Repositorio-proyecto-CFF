@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Corralejo Fast Food - Ubicación</title>
+    <title>Corralejo Fast Food</title>
 
     <link rel="stylesheet" href="css/style.css">
 
@@ -28,8 +28,8 @@
                             <i class="fa-solid fa-circle-info"></i> Información
                         </a>
                     </li>
-                    <li class="activo">
-                        <a href="/CLIENTE">
+                    <li class="movimiento">
+                        <a href="/CLIENTE/UBICACION/index.html">
                             <i class="fa-solid fa-location-dot"></i> Ubicación
                         </a>
                     </li>
@@ -43,7 +43,7 @@
                             <i class="fa-solid fa-utensils"></i>Menú
                         </a>
                     </li>
-                    <li class="movimiento">
+                    <li class="activo">
                         <a href="/CLIENTE/COMENTARIO/index.html">
                             <i class="fa-regular fa-comment"></i> Comentarios
                         </a>
@@ -62,8 +62,8 @@
 
             <div class="secencabezado">
                 <div class="encabezado">
-                    <h1>Nuestra Ubicación</h1>
-                    <p>Encuéntranos en el corazón de la ciudad. Estamos listos para atenderte con el mejor sabor.</p>
+                    <h1>Comentarios y Opiniones</h1>
+                    <p>Conoce las experiencias de nuestros clientes y comparte tu opinión para ayudarnos a seguir mejorando.</p>
                 </div>
 
                 <div class="treencabezado">
@@ -153,55 +153,57 @@
 
             <div class="contenido-principal">
 
-                <div class="ubicacion-layout">
+                <h2 class="comentarios-titulo">Lo que dicen nuestros clientes</h2>
 
-                    <!-- Panel izquierdo: texto, beneficios, botones login -->
-                    <div class="ubicacion-info">
-                        <span class="ubicacion-eyebrow"><i class="fa-solid fa-location-dot"></i> ENCUÉNTRANOS</span>
-                        <h2 class="ubicacion-titulo">Descubre el mejor<br><span>sabor de la ciudad</span></h2>
-                        <p class="ubicacion-desc">¿Buscas dónde disfrutar de la mejor comida rápida con ingredientes frescos y sabores auténticos? Estamos ubicados en el corazón de la ciudad, listos para ofrecerte una experiencia gastronómica que no olvidarás. Ven y descubre por qué somos el favorito de cientos de clientes.</p>
+                <div class="comentarios-grid" id="listaComentarios">
+                    <!-- Los comentarios se generan dinámicamente con JS -->
+                </div>
 
-                        <ul class="ubicacion-beneficios">
-                            <li><i class="fa-solid fa-circle-check"></i> Fácil acceso y estacionamiento disponible</li>
-                            <li><i class="fa-solid fa-circle-check"></i> A pocas cuadras de la estación de transporte</li>
-                            <li><i class="fa-solid fa-circle-check"></i> Servicio a domicilio en la zona</li>
-                            <li><i class="fa-solid fa-circle-check"></i> Reservas disponibles vía WhatsApp</li>
-                        </ul>
+                <p class="sin-comentarios" id="sinComentarios">Aún no hay comentarios. ¡Sé el primero en opinar!</p>
+
+                <div class="aviso-comentario" id="avisoComentario">
+                    <div class="aviso-icono"><i class="fa-regular fa-comment-dots"></i></div>
+                    <div class="aviso-texto">
+                        <strong>No has realizado tu comentario</strong>
+                        <span>Cuéntanos cómo fue tu experiencia, ¡tu opinión nos ayuda a mejorar!</span>
                     </div>
-
-                    <!-- Panel derecho: header mapa + mapa + botones contacto -->
-                    <div class="ubicacion-mapa-wrap">
-                        <div class="mapa-header">
-                            <i class="fa-solid fa-signs-post"></i>
-                            <span class="mapa-header-titulo">Nuestra ubicación</span>
-                            <span class="mapa-header-ciudad"><i class="fa-solid fa-location-dot"></i> Bogotá, Colombia</span>
-                        </div>
-                        <iframe
-                            class="mapa-iframe"
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3977.0392348398457!2d-74.10398322523777!3d4.587391995387431!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f9919fcd7c191%3A0xc48fe33ee5ecf5c9!2sCl.%2032%20Sur%20%2323f-14%2C%20Bogot%C3%A1!5e0!3m2!1ses!2sco!4v1717616000000!5m2!1ses!2sco" 
-                            allowfullscreen=""
-                            loading="lazy"
-                            referrerpolicy="no-referrer-when-downgrade">
-                        </iframe>
-                        <div class="ubicacion-contacto-btns">
-                            <a href="tel:+573000000000" class="btn-contacto btn-telefono">
-                                <i class="fa-solid fa-phone"></i> +57 300 000 0000
-                            </a>
-                            <a href="https://wa.me/573000000000" target="_blank" class="btn-contacto btn-whatsapp">
-                                <i class="fa-brands fa-whatsapp"></i> WhatsApp
-                            </a>
-                            <span class="btn-contacto btn-domicilio">
-                                <i class="fa-solid fa-motorcycle"></i> Domicilios
-                            </span>
-                        </div>
-                    </div>
-
+                    <button class="aviso-btn" id="btnPublicar">
+                        <i class="fa-solid fa-pen"></i>
+                        Comentar
+                    </button>
                 </div>
 
             </div>
 
         </main>
 
+    </div>
+
+    <div class="modal-overlay" id="modalComentario">
+        <div class="modal-box">
+
+            <div class="modal-header">
+                <i class="fa-regular fa-comment"></i>
+                <h3 id="modalComentarioTitulo">Nuevo comentario</h3>
+                <span class="modal-cerrar" id="cerrarModalComentario">&times;</span>
+            </div>
+
+            <form id="formComentario">
+                <input type="hidden" id="comentarioId">
+
+                <label for="comentarioNombre">Tu nombre</label>
+                <input type="text" id="comentarioNombre" placeholder="Escribe tu nombre" required>
+
+                <label for="comentarioTexto">Comentario</label>
+                <textarea id="comentarioTexto" rows="4" placeholder="Cuéntanos tu experiencia..." required></textarea>
+
+                <div class="modal-acciones">
+                    <button type="button" class="btn-cancelar" id="btnCancelarComentario">Cancelar</button>
+                    <button type="submit" class="btn-enviar" id="btnEnviarComentario">Publicar</button>
+                </div>
+            </form>
+
+        </div>
     </div>
 
     <footer class="custom-footer">
@@ -236,6 +238,8 @@
           </div>
         </div>
     </footer>
+
+    
 
     <script src="js/script.js"></script>
 

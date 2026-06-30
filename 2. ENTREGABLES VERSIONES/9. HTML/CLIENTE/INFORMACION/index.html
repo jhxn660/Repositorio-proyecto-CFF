@@ -1,21 +1,23 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Corralejo Fast Food</title>
 
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/info.css">
 
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
 <body>
-
     <div class="contenedor">
 
-        <aside class="sidebar">
+        <button class="menu-toggle" id="menuToggle">
+            <i class="fa-solid fa-bars"></i>
+        </button>
 
+        <aside class="sidebar" id="sidebar">
             <div class="logo">
                 <img class="imglogo" src="img/imagen fuego.png" alt="">
                 <h2>CFF</h2>
@@ -23,7 +25,7 @@
 
             <nav>
                 <ul>
-                    <li class="movimiento">
+                    <li class="activo">
                         <a href="/CLIENTE/INFORMACION/index.html">
                             <i class="fa-solid fa-circle-info"></i> Información
                         </a>
@@ -48,22 +50,21 @@
                             <i class="fa-regular fa-comment"></i> Comentarios
                         </a>
                     </li>
-                    <li class="activo">
+                    <li class="movimiento">
                         <a href="/CLIENTE/PQRS/index.html">
                             <i class="fa-solid fa-users-rectangle"></i> PQRS
                         </a>
                     </li>
                 </ul>
             </nav>
-
         </aside>
 
         <main class="contenido">
 
             <div class="secencabezado">
                 <div class="encabezado">
-                    <h1>PQRS</h1>
-                    <p>Permite a los clientes enviar petiiones, quejas, relamos y sugerencias facilitando la comunicacion.</p>
+                    <h1>Información Sobre CFF</h1>
+                    <p>Este espacio reúne de forma clara y accesible toda la información clave que te puede proporcionar CFF.</p>
                 </div>
 
                 <div class="treencabezado">
@@ -152,41 +153,51 @@
             </div>
 
             <div class="contenido-principal">
-                <div class="cliente-avatar">
-                    <i class="fa-solid fa-user"></i>
+
+                <div class="conterpre grid-mision-vision">
+                    <div class="dobles">
+                        <h1>
+                            <i class="fa-solid fa-thumbtack"></i> NUESTRA MISIÓN
+                        </h1>
+                        <br>
+                        <p>
+                            En Corralejo Fast Food creamos momentos mágicos alrededor de la mesa, uniendo a parejas y amigos a través del poder de la auténtica comida rápida. Nos dedicamos a deleitar cada paladar con sabores irresistibles y legendarios —como nuestras icónicas Costillas BBQ—, ofreciendo una experiencia acogedora, alegre y cercana, ya sea en nuestro punto físico o en la comodidad de su hogar.
+                        </p>
+                    </div>
+
+                    <div class="dobles">
+                        <h1>
+                            <i class="fa-solid fa-eye"></i> VISIÓN
+                        </h1>
+                        <br>
+                        <p>
+                            Para el futuro, nos consolidamos como el epicentro del sabor y la celebración en nuestra comunidad, siendo reconocidos por nuestra capacidad de innovar, evolucionar y crecer junto a nuestros clientes. Aspiramos a expandir nuestro legado gastronómico, manteniendo siempre la calidez de nuestra atención, el espíritu festivo en cada temporada y la promesa de llevar la mejor comida rápida a cada mesa.
+                        </p>
+                    </div>
                 </div>
 
-                <h2 class="cliente-bienvenida">Bienvenido, cliente</h2>
-                <p class="cliente-subtitulo">¿En qué podemos ayudarte hoy?</p>
-
-                <div class="pqrs-grid">
-
-                    <div class="pqrs-card" data-tipo="peticion">
-                        <i class="fa-solid fa-file-lines"></i>
-                        <span>Petición</span>
-                    </div>
-
-                    <div class="pqrs-card" data-tipo="queja">
-                        <i class="fa-solid fa-bullhorn"></i>
-                        <span>Queja</span>
-                    </div>
-
-                    <div class="pqrs-card" data-tipo="reclamo">
-                        <i class="fa-solid fa-triangle-exclamation"></i>
-                        <span>Reclamo</span>
-                    </div>
-
-                    <div class="pqrs-card" data-tipo="sugerencia">
-                        <i class="fa-solid fa-lightbulb"></i>
-                        <span>Sugerencia</span>
-                    </div>
-
-                </div>
-
-                <div class="mis-solicitudes">
-                    <h3>Mis solicitudes</h3>
-                    <div class="lista-pqrs" id="listaPQRS">
-                        <p class="sin-registros" id="sinRegistros">Aún no has enviado ninguna PQRS.</p>
+                <div class="conterpre">
+                    <div class="conterdobles">
+                        <h1>NARRATIVA CREATIVA</h1>
+                        <br>
+                        <p>
+                            En Corralejo Fast Food creamos momentos mágicos alrededor de la mesa, uniendo a parejas y amigos a través del poder de la auténtica comida rápida. Nos dedicamos a deleitar cada paladar con sabores irresistibles y legendarios —como nuestras icónicas Costillas BBQ—, ofreciendo una experiencia acogedora, alegre y cercana, ya sea en nuestro punto físico o en la comodidad de su hogar.
+                        </p>
+                        
+                        <ul class="botones-narrativa">
+                            <li class="btn-click" data-modal="modal-origen">
+                                <a href="#">El Origen</a>
+                            </li>
+                            <li class="btn-click" data-modal="modal-secreto">
+                                <a href="#">El Secreto del Banquete</a>
+                            </li>
+                            <li class="btn-click" data-modal="modal-comunidad">
+                                <a href="#">La Comunidad Gastronómica</a>
+                            </li>
+                            <li class="btn-click" data-modal="modal-lema">
+                                <a href="#">El Lema de la Casa</a>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -194,34 +205,43 @@
         </main>
 
     </div>
-    <div class="modal-overlay" id="modalPQRS">
-        <div class="modal-box">
 
-            <div class="modal-header">
-                <i id="modalIcono" class="fa-solid fa-file-lines"></i>
-                <h3 id="modalTitulo">Nueva Petición</h3>
-                <span class="modal-cerrar" id="cerrarModal">&times;</span>
-            </div>
-
-            <form id="formPQRS">
-                <input type="hidden" id="pqrsId">
-                <input type="hidden" id="pqrsTipo">
-
-                <label for="pqrsAsunto">Asunto</label>
-                <input type="text" id="pqrsAsunto" placeholder="Escribe un breve asunto" required>
-
-                <label for="pqrsDescripcion">Descripción</label>
-                <textarea id="pqrsDescripcion" rows="4" placeholder="Cuéntanos los detalles..." required></textarea>
-
-                <div class="modal-acciones">
-                    <button type="button" class="btn-cancelar" id="btnCancelar">Cancelar</button>
-                    <button type="submit" class="btn-enviar" id="btnEnviar">Enviar</button>
-                </div>
-            </form>
-
+    <div id="modal-origen" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>El Origen</h2>
+            <p>En las crónicas de las Tierras del Sabor, se habla de un antiguo y místico lugar conocido como El Corralejo. No era un sitio cualquiera; era un refugio legendario donde los guerreros, los viajeros y los enamorados de los reinos cercanos guardaban sus armas para sentarse uno al lado del otro. Tras un tiempo de misterioso silencio en el que el refugio cerró sus portales, los fuegos de la gran cocina se han vuelto a encender. ¡El Corralejo ha vuelto! Y sus puertas están abiertas de par en par para recibir a todos los clanes en su punto físico, o enviando sus tesoros culinarios a través de veloces mensajeros directamente a sus castillos.</p>
         </div>
     </div>
 
+    <div id="modal-secreto" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>El Secreto del Banquete</h2>
+            <p>El gran orgullo del refugio es una receta custodiada por los maestros del fuego: La Salchipapa Especial. Dicen las leyendas que aquellos que se atreven a probarlas experimentan una explosión de misticismo, acompañadas por las Hamburguesas Clásicas de la Corraleja, si falta alguna de su combo especial donde acompañan las papas francesas sagradas de la casa y un elixir de bebidas frescas.</p>
+        </div>
+    </div>
+
+    <div id="modal-comunidad" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>La Comunidad Gastronómica</h2>
+            <p>Corralejo no es solo comida; es un lugar de celebración. Cada año terráqueo, el refugio se transforma. Cuando llega la época de la luna, el lugar se viste de hechizos y misterio, invitando a las almas a compartir bajo una atmósfera mágica. Los guardianes de Corralejo no olvidan a quienes los apoyan: celebran sus aniversarios repartiendo cofres de recompensa y grandes sorteos para agradecer a la comunidad que los ayuda a crecer día a día.</p>
+        </div>
+    </div>
+
+    <div id="modal-lema" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>El Lema de la Casa</h2>
+            <p>“No importa de qué rincón del reino vengas, ni si vienes a compartir un romance o una victoria con tus amigos; en Corralejo, la mejor comida rápida siempre encontrará el camino hacia tu mesa.”</p>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+
+
+    <!-- Pie de pagina cff -->
     <footer class="custom-footer">
         <div class="footer-container">
           <div class="footer-info">
@@ -253,9 +273,6 @@
             </iframe>
           </div>
         </div>
-    </footer>
-
-    <script src="js/script.js"></script>
-
+      </footer>
 </body>
 </html>

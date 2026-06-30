@@ -1,0 +1,187 @@
+@import url('https://fonts.googleapis.com/css2?family=Albert+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Albert Sans', sans-serif;
+}
+
+/* Contenedor completo con tu imagen de fondo real de lado a lado */
+.main-wrapper {
+    width: 100vw;
+    height: 100vh;
+    background: url('/LOGIN/REGISTRO/img/1769a4c6-236c-4268-95e7-d111b93a4d0d.png') no-repeat center center;
+    background-size: cover;
+    display: flex;
+    justify-content: flex-end; 
+    align-items: center;
+    padding-right: 15%; 
+}
+
+/* Caja del formulario blanca que flota sobre tu fondo */
+.form-box {
+    width: 100%;
+    max-width: 420px;
+    background: #ffffff; 
+    padding: 45px 35px;
+    border-radius: 16px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2); 
+    border: 1px solid #ebebeb;
+    position: relative;
+    z-index: 10;
+}
+
+/* Decoraciones naranjas de la tarjeta blanca */
+.form-box::before {
+    content: '';
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    width: 55px;
+    height: 6px;
+    background-color: #ff9800;
+    border-radius: 10px;
+}
+
+.form-box::after {
+    content: '';
+    position: absolute;
+    bottom: 20px;
+    left: 35px;
+    width: 55px;
+    height: 6px;
+    background-color: #ff9800;
+    border-radius: 10px;
+}
+
+/* Cabecera interna del Formulario */
+.header-form {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+/* Mini Logo Circular flotante en la esquina del login */
+.logo-circle {
+    width: 75px;
+    height: 75px;
+    background-color: #222222;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #ffffff;
+    position: absolute;
+    top: -12px;
+    left: -12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.img-logo {
+    width: 70px;
+}
+
+.header-form h1 {
+    font-size: 1.7rem;
+    color: #222222;
+    font-weight: 700;
+    margin-top: 5px;
+}
+
+.brand-subtitle {
+    font-size: 0.9rem;
+    color: #555555;
+    font-weight: 600;
+}
+
+.brand-subtitle .highlight {
+    color: #ff9800;
+}
+
+/* Estilos de los Inputs */
+.input-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.input-group label {
+    display: block;
+    font-size: 0.85rem;
+    color: #333333;
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid #dddddd;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    color: #333333;
+    background-color: #ffffff;
+    transition: all 0.3s ease;
+}
+
+.input-group input:focus {
+    outline: none;
+    border-color: #ff9800;
+    box-shadow: 0 0 0 3px rgba(255, 111, 0, 0.15);
+}
+
+.input-group input::placeholder {
+    color: #c0c0c0;
+    font-size: 0.85rem;
+}
+
+/* Botón de Registro */
+.btn-submit {
+    width: 100%;
+    padding: 14px;
+    background-color: #2b2b2b;
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    margin-top: 10px;
+}
+
+.btn-submit:hover {
+    background-color: #151515;
+}
+
+.btn-submit a{
+    color: #ffffff;
+    text-decoration: none;
+}
+
+/* Enlaces del pie */
+.footer-link {
+    text-align: center;
+    margin-top: 25px;
+    font-size: 0.85rem;
+}
+
+.footer-link span {
+    color: #ff9800;
+    font-weight: 600;
+}
+
+.footer-link a {
+    color: #222222;
+    text-decoration: underline;
+    font-weight: 600;
+    margin-left: 4px;
+}
+
+/* Ajustes para Pantallas Celulares */
+@media (max-width: 768px) {
+    .main-wrapper {
+        justify-content: center; /* Centra el login en móviles */
+        padding-right: 0;
+        padding: 20px;
+    }
+}

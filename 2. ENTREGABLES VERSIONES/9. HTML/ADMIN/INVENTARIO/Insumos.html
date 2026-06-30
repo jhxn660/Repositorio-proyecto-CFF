@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Corralejo Fast Food – Gestión de Inventario</title>
+  <link rel="stylesheet" href="css/Insumos.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+ 
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="logo">
+      <img class="conterimg" src="img/imagen fuego.png" alt="Logo Corralejo">
+      <h2>Corralejo <span class="letracolor">Fast Food</span></h2>
+    </div>
+    <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">
+      <i class="fa-solid fa-bars"></i>
+    </button>
+    <nav>
+      <ul class="nav-logos">
+        <li class="logo1"><i class="fa-solid fa-bell"></i></li>
+        <li class="logo2"><i class="fa-regular fa-circle-user"></i></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="container">
+
+    <aside class="sidebar">
+      <h3>Administrador</h3>
+
+      <ul>
+          <li>
+              <a href="/ADMIN/INFORMACION/informacion.html" class="sidebar-link">
+                  <i class="fa-solid fa-circle-info"></i> Gestión de Información
+              </a>
+          </li>
+          <li class="active">
+              <a href="/ADMIN/INVENTARIO/Insumos.html" class="sidebar-link">
+                  <i class="fa-solid fa-paste"></i> Gestión de Inventario
+              </a>
+          </li>
+          <li>
+              <a href="/ADMIN/MENU/index.html" class="sidebar-link">
+                  <i class="fa-solid fa-utensils"></i> Gestión de Menú
+              </a>
+          </li>
+          <li>
+              <a href="/ADMIN/ESTADISTICA/estadistica.html" class="sidebar-link">
+                  <i class="fa-solid fa-arrow-trend-up"></i> Estadísticas de Negocio
+              </a>
+          </li>
+          <li>
+              <a href="/ADMIN/EMPLEADO/gestion.html" class="sidebar-link">
+                  <i class="fa-solid fa-people-line"></i> Gestión de Empleados
+              </a>
+          </li>
+      </ul>
+  </aside>
+
+    <!-- CONTENT -->
+    <main class="content">
+      <h1>Gestión de inventario</h1>
+
+      <div class="toolbar">
+        <div class="search-box">
+          <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input type="text" id="searchInput" placeholder="Buscar insumos...">
+        </div>
+        <select class="filter-select" id="filterCategoria">
+          <option value="Todos">Todos</option>
+          <option value="Harinas">Harinas</option>
+          <option value="Lácteos">Lácteos</option>
+          <option value="Aceites">Aceites</option>
+        </select>
+        <div class="legend">
+          <span class="legend-item"><span class="dot dot-green"></span> Stock suficiente</span>
+          <span class="legend-item"><span class="dot dot-red"></span> Stock bajo</span>
+        </div>
+      </div>
+
+      <div class="list-header">
+        <h2>Lista de insumos</h2>
+        <button class="btn-add" id="btnAddInsumo">Añadir insumo</button>
+      </div>
+
+      <div id="insumosList"></div>
+
+      <div class="footer-bar">
+        <span id="footerInfo">Mostrando 0 a 0 de 0 insumos</span>
+        <div class="pagination" id="paginationContainer"></div>
+      </div>
+    </main>
+  </main>
+
+  <!-- MODAL -->
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h3 id="modalTitle">Añadir insumo</h3>
+        <button type="button" class="modal-close" id="modalClose" aria-label="Cerrar">&times;</button>
+      </div>
+      <form id="insumoForm" class="modal-form">
+        <input type="hidden" id="insumoId">
+        <div class="form-row">
+          <label for="fieldNombre">Nombre</label>
+          <input type="text" id="fieldNombre" required>
+        </div>
+        <div class="form-row">
+          <label for="fieldDescripcion">Descripción</label>
+          <textarea id="fieldDescripcion" rows="2"></textarea>
+        </div>
+        <div class="form-grid">
+          <div class="form-row">
+            <label for="fieldCategoria">Categoría</label>
+            <select id="fieldCategoria" required>
+              <option value="Harinas">Harinas</option>
+              <option value="Lácteos">Lácteos</option>
+              <option value="Aceites">Aceites</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <label for="fieldUnidad">Unidad</label>
+            <select id="fieldUnidad" required>
+              <option value="Kilogramos (kg)">Kilogramos (kg)</option>
+              <option value="Litros (L)">Litros (L)</option>
+              <option value="Gramos (g)">Gramos (g)</option>
+              <option value="Unidades (u)">Unidades (u)</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <label for="fieldEstado">Estado</label>
+            <select id="fieldEstado" required>
+              <option value="Disponible">Disponible</option>
+              <option value="Fuera de stock">Fuera de stock</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <label for="fieldStockActual">Stock actual</label>
+            <input type="number" step="0.01" min="0" id="fieldStockActual" required>
+          </div>
+          <div class="form-row">
+            <label for="fieldStockMinimo">Stock mínimo</label>
+            <input type="number" step="0.01" min="0" id="fieldStockMinimo" required>
+          </div>
+          <div class="form-row">
+            <label for="fieldCosto">Costo unitario ($)</label>
+            <input type="number" step="0.01" min="0" id="fieldCosto" required>
+          </div>
+          <div class="form-row">
+            <label for="fieldVencimiento">Fecha de vencimiento</label>
+            <input type="date" id="fieldVencimiento">
+          </div>
+          <div class="form-row">
+            <label for="fieldPesoUnidad">Peso por unidad</label>
+            <input type="text" id="fieldPesoUnidad" placeholder="Ej: 500 g o ---">
+          </div>
+          <div class="form-row">
+            <label for="fieldCalorias">Calorías por 100g</label>
+            <input type="text" id="fieldCalorias" placeholder="Ej: 364 kcal">
+          </div>
+        </div>
+        <div class="modal-actions">
+          <button type="button" class="btn-cancel" id="modalCancel">Cancelar</button>
+          <button type="submit" class="btn-save">Guardar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="js/script.js"></script>
+
+</body>
+</html>

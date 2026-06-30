@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendario de Apertura - CFF</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body>
+    <div class="contenedor">
+
+        <aside class="sidebar" id="sidebar">
+            <div class="logo">
+                <img class="imglogo" src="img/imagen fuego.png" alt="Logo CFF">
+                <h2>CFF</h2>
+            </div>
+
+            <nav>
+                <ul>
+                    <li class="movimiento">
+                        <a href="/CLIENTE/INFORMACION/index.html">
+                            <i class="fa-solid fa-circle-info"></i> Información
+                        </a>
+                    </li>
+                    <li class="movimiento">
+                        <a href="/CLIENTE/UBICACION/index.html">
+                            <i class="fa-solid fa-location-dot"></i> Ubicación
+                        </a>
+                    </li>
+                    <li class="activo">
+                        <a href="/CLIENTE/HORARIO/index.html">
+                            <i class="fa-solid fa-calendar"></i> Horarios
+                        </a>
+                    </li>
+                    <li class="movimiento">
+                        <a href="/CLIENTE/MENU/index.html">
+                            <i class="fa-solid fa-utensils"></i>Menú
+                        </a>
+                    </li>
+                    <li class="movimiento">
+                        <a href="/CLIENTE/COMENTARIO/index.html">
+                            <i class="fa-regular fa-comment"></i> Comentarios
+                        </a>
+                    </li>
+                    <li class="movimiento">
+                        <a href="/CLIENTE/PQRS/index.html">
+                            <i class="fa-solid fa-users-rectangle"></i> PQRS
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="contenido">
+
+            <div class="secencabezado">
+                <div class="encabezado">
+                    <h1>Calendario</h1>
+                    <p>Aquí podrás consultar la disponibilidad en tiempo real para que gestiones tu tiempo de forma fácil y rápida.</p>
+                </div>
+
+                <div class="treencabezado">
+                    <div class="notification-wrapper">
+                        <li class="logo1" id="notification-menu-btn"><i class="fa-solid fa-bell"></i></li>
+                        
+                        <div class="notification-dropdown-panel hidden" id="notification-dropdown">
+                            <div class="dropdown-header">
+                                <div class="notification-icon-title">
+                                    <i class="fa-solid fa-bell"></i>
+                                </div>
+                                <p class="dropdown-title-text">Notificaciones</p>
+                            </div>
+                            
+                            <hr class="dropdown-divider">
+                            
+                            <div class="notifications-section">
+                                <a href="/CLIENTE/INFORMACION/index.html" class="btn-notification-item">
+                                    <i class="fa-solid fa-shop"></i>
+                                    <div class="notification-content">
+                                        <strong>¡Visita nuestro local!</strong>
+                                        <p>Disfruta del mejor ambiente y el sabor único de CFF.</p>
+                                    </div>
+                                </a>
+                                
+                                <a href="/CLIENTE/MENU/index.html" class="btn-notification-item">
+                                    <i class="fa-solid fa-utensils"></i>
+                                    <div class="notification-content">
+                                        <strong>Menú del Día disponible</strong>
+                                        <p>¡No te quedes sin probar nuestras especialidades de hoy!</p>
+                                    </div>
+                                </a>
+                                
+                                <a href="/PANEL DE CONFI/index.html" class="btn-notification-item">
+                                    <i class="fa-solid fa-user-pen"></i>
+                                    <div class="notification-content">
+                                        <strong>Mantén tus datos al día</strong>
+                                        <p>Actualiza tu perfil para recibir promociones exclusivas.</p>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="user-profile-wrapper">
+                        <li class="logo2" id="user-menu-btn"><i class="fa-regular fa-circle-user"></i></li>
+                        
+                        <div class="user-dropdown-panel hidden" id="user-dropdown">
+                            <div class="dropdown-header">
+                                <div class="user-avatar">
+                                    <i class="fa-solid fa-circle-user"></i>
+                                </div>
+                                <p class="user-email">Karen pinzón</p>
+                            </div>
+                            
+                            <hr class="dropdown-divider">
+                            
+                            <div class="roles-section">
+                                <a href="/ADMIN/INFORMACION/informacion.html" class="role-item">
+                                    <i class="fa-solid fa-rotate"></i>
+                                    <p>Administrador</p>
+                                </a>
+                                <a href="/EMPLEADO/PEDIDOS/pedidos.html" class="role-item">
+                                    <i class="fa-solid fa-rotate"></i>
+                                    <p>Empleado</p>
+                                </a>
+                                <a href="#" class="role-item role-item">
+                                    <i class="fa-solid fa-rotate"></i>
+                                    <p>Cliente</p>
+                                </a>
+                            </div>
+                            
+                            <hr class="dropdown-divider">
+                            
+                            <div class="actions-section">
+                                <a href="/PANEL DE CONFI/index.html" class="btn-dropdown btn-config">
+                                    <i class="fa-solid fa-gear"></i> Configuración
+                                </a>
+                                <a href="/LOGIN/INICIO/index.html" class="btn-dropdown btn-logout">
+                                    <i class="fa-solid fa-arrow-right-from-bracket"></i> Cerrar Sesión
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contenido-principal">
+                <div class="container">
+        
+                    <div class="left-column">
+                        
+                        <div class="calendar-header">
+                            <div class="month-year-selector" id="month-year-selector">
+                                <p id="current-month-year-text">Marzo, 2026</p>
+                                <p class="arrow-icon" id="arrow-icon">▼</p>
+                            </div>
+                            <div class="dots-menu" id="dots-toggle">•••</div>
+                        </div>
+            
+                        <div class="calendar-wrapper">
+                            
+                            <div class="dropdown-panel hidden" id="years-panel">
+                                <div class="years-grid">
+                                    <p class="year-item active" data-year="2026">2026</p>
+                                    <p class="year-item" data-year="2025">2025</p>
+                                    <p class="year-item" data-year="2024">2024</p>
+                                    <p class="year-item" data-year="2023">2023</p>
+                                    <p class="year-item" data-year="2022">2022</p>
+                                    <p class="year-item" data-year="2021">2021</p>
+                                    <p class="year-item" data-year="2020">2020</p>
+                                    <p class="year-item" data-year="2019">2019</p>
+                                    <p class="year-item" data-year="2018">2018</p>
+                                    <p class="year-item" data-year="2017">2017</p>
+                                    <p class="year-item" data-year="2016">2016</p>
+                                    <p class="year-item" data-year="2015">2015</p>
+                                    <p class="year-item" data-year="2014">2014</p>
+                                    <p class="year-item" data-year="2013">2013</p>
+                                    <p class="year-item" data-year="2012">2012</p>
+                                    <p class="year-item" data-year="2011">2011</p>
+                                    <p class="year-item" data-year="2010">2010</p>
+                                    <p class="year-item" data-year="2009">2009</p>
+                                </div>
+                            </div>
+            
+                            <div class="dropdown-panel hidden" id="months-panel">
+                                <div class="months-grid">
+                                    <button class="month-btn" data-month="Enero">Enero</button>
+                                    <button class="month-btn" data-month="Febrero">Febrero</button>
+                                    <button class="month-btn active" data-month="Marzo">Marzo</button>
+                                    <button class="month-btn" data-month="Abril">Abril</button>
+                                    <button class="month-btn" data-month="Mayo">Mayo</button>
+                                    <button class="month-btn" data-month="Junio">Junio</button>
+                                    <button class="month-btn" data-month="Julio">Julio</button>
+                                    <button class="month-btn" data-month="Agosto">Agosto</button>
+                                    <button class="month-btn" data-month="Septiembre">Septiembre</button>
+                                    <button class="month-btn" data-month="Octubre">Octubre</button>
+                                    <button class="month-btn" data-month="Noviembre">Noviembre</button>
+                                    <button class="month-btn" data-month="Diciembre">Diciembre</button>
+                                </div>
+                            </div>
+            
+                            <div class="weekdays-grid">
+                                <div>LU</div><div>MA</div><div>MI</div><div>JU</div><div>VI</div><div>SA</div><div>DO</div>
+                            </div>
+            
+                            <div class="days-grid">
+                                <div class="day-cell rest-day">1</div>
+                                <div class="day-cell">2</div>
+                                <div class="day-cell">3</div>
+                                <div class="day-cell interactive-day selected" data-day="4"><span>4</span></div>
+                                <div class="day-cell interactive-day" data-day="5"><span>5</span></div>
+                                <div class="day-cell interactive-day" data-day="6"><span>6</span></div>
+                                <div class="day-cell">7</div>
+                                <div class="day-cell rest-day">8</div>
+                                <div class="day-cell">9</div>
+                                <div class="day-cell">10</div>
+                                <div class="day-cell">11</div>
+                                <div class="day-cell">12</div>
+                                <div class="day-cell">13</div>
+                                <div class="day-cell">14</div>
+                                <div class="day-cell rest-day">15</div>
+                                <div class="day-cell">16</div>
+                                <div class="day-cell">17</div>
+                                <div class="day-cell">18</div>
+                                <div class="day-cell">19</div>
+                                <div class="day-cell">20</div>
+                                <div class="day-cell">21</div>
+                                <div class="day-cell rest-day">22</div>
+                                <div class="day-cell">23</div>
+                                <div class="day-cell">24</div>
+                                <div class="day-cell">25</div>
+                                <div class="day-cell">26</div>
+                                <div class="day-cell">27</div>
+                                <div class="day-cell">28</div>
+                                <div class="day-cell rest-day">29</div>
+                                <div class="day-cell">30</div>
+                                <div class="day-cell">31</div>
+                            </div>
+                        </div>
+            
+                        <div class="info-card">
+                            <h3 id="info-date">Marzo, 04 / 03 / 26</h3>
+                            <div class="info-content">
+                                <div class="burger-icon">
+                                    <i class="fa-solid fa-comment-dots"></i>
+                                </div>
+                                <p id="info-text">La hamburguesa clásica fue el mejor plato valorado, ya que cuenta con ingredientes frescos y de mucho sabor para el paladar.</p>
+                            </div>
+                        </div>
+            
+                    </div>
+            
+                    <div class="vertical-divider"></div>
+            
+                    <div class="right-column">
+                        
+                        <div class="legend-container">
+                            <div class="legend-item">
+                                <p class="dot red-dot"></p>
+                                <div class="legend-box">Restaurante<br>Cerrado</div>
+                            </div>
+                            <div class="legend-item">
+                                <p class="dot blue-dot"></p>
+                                <div class="legend-box">Día<br>Mantenimiento</div>
+                            </div>
+                            <div class="legend-item">
+                                <p class="dot grey-dot"></p>
+                                <div class="legend-box">Día<br>Seleccionado</div>
+                            </div>
+                        </div>
+            
+                        <div class="schedule-container">
+                            <h2>Horario de apertura</h2>
+                            
+                            <div class="schedule-row closed">
+                                <p class="day-name">Lunes</p>
+                                <p class="time-value">CERRADO</p>
+                            </div>
+                            <div class="schedule-row">
+                                <p class="day-name">Martes</p>
+                                <p class="time-value">2:00p. m. - 9:30p. m.</p>
+                            </div>
+                            <div class="schedule-row">
+                                <p class="day-name">Miércoles</p>
+                                <p class="time-value">2:00p. m. - 9:30p. m.</p>
+                            </div>
+                            <div class="schedule-row">
+                                <p class="day-name">Jueves</p>
+                                <p class="time-value">2:00p. m. - 9:30p. m.</p>
+                            </div>
+                            <div class="schedule-row">
+                                <p class="day-name">Viernes</p>
+                                <p class="time-value">2:00p. m. - 9:30p. m.</p>
+                            </div>
+                            <div class="schedule-row">
+                                <p class="day-name">Sábado</p>
+                                <p class="time-value">2:00p. m. - 9:30p. m.</p>
+                            </div>
+                            <div class="schedule-row">
+                                <p class="day-name">Domingo</p>
+                                <p class="time-value">2:00p. m. - 8:45p. m.</p>
+                            </div>
+                        </div>
+            
+                    </div>
+            
+                </div>
+            </div>
+
+            <br>
+
+            <div class="contenido-secundario">
+                <h2 class="titulo-concurrencia-centrado">Horario de mayor concurrencia</h2>
+
+                <div class="concurrency-panel">
+                    
+                    <div class="days-selector">
+                        <span class="day-tab" data-day="LUN">LUN</span>
+                        <span class="day-tab active" data-day="MAR">MAR</span>
+                        <span class="day-tab" data-day="MIÉ">MIÉ</span>
+                        <span class="day-tab" data-day="JUE">JUE</span>
+                        <span class="day-tab" data-day="VIE">VIE</span>
+                        <span class="day-tab" data-day="SÁB">SÁB</span>
+                        <span class="day-tab" data-day="DOM">DOM</span>
+                    </div>
+
+                    <div id="closed-message-container"></div>
+
+                    <div class="chart-wrapper">
+                        <div class="grid-lines">
+                            <div class="line"></div>
+                            <div class="line"></div>
+                            <div class="line"></div>
+                            <div class="line"></div>
+                        </div>
+
+                        <div class="bars-container" id="bars-container"></div>
+                    </div>
+
+                    <div class="time-axis">
+                        <div>1p. m.</div>
+                        <div>4p. m.</div>
+                        <div>7p. m.</div>
+                        <div>10p. m.</div>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <footer class="custom-footer">
+        <div class="footer-container">
+          <div class="footer-info">
+            <h2 class="footer-title">CONTACTO</h2>
+            <ul class="contact-list">
+              <li>
+                <p><i class="fa-solid fa-location-arrow"></i> Cl. 32 Sur #23 F 14, Bogotá, Colombia</p>
+              </li>
+              <li>
+                <p><i class="fa-solid fa-phone"></i> +57 311 8370904</p>
+              </li>
+              <li>
+                <p><i class="fa-solid fa-clock"></i> Martes a Domingo de 2 pm a 10 pm</p>
+              </li>
+            </ul>
+            <a href="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3977.0392348398457!2d-74.10398322523777!3d4.587391995387431!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f9919fcd7c191%3A0xc48fe33ee5ecf5c9!2sCl.%2032%20Sur%20%2323f-14%2C%20Bogot%C3%A1!5e0!3m2!1ses!2sco!4v1717616000000!5m2!1ses!2sco" target="_blank" class="map-button">
+              Ver en el mapa <p class="arrow">›</p>
+            </a>
+          </div>
+      
+          <div class="footer-map">
+            <iframe 
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3977.0392348398457!2d-74.10398322523777!3d4.587391995387431!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f9919fcd7c191%3A0xc48fe33ee5ecf5c9!2sCl.%2032%20Sur%20%2323f-14%2C%20Bogot%C3%A1!5e0!3m2!1ses!2sco!4v1717616000000!5m2!1ses!2sco" 
+              width="100%" 
+              height="100%" 
+              style="border:0;" 
+              allowfullscreen="" 
+              loading="lazy">
+            </iframe>
+          </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
