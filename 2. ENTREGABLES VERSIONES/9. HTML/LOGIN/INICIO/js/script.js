@@ -1,3 +1,11 @@
+// ============================================================
+// LOGIN - LÓGICA DE VALIDACIÓN (CFF)
+// Nota: la validación de credenciales es JS puro (Bootstrap no
+// interviene aquí), pero el mensaje de error que se inyecta en
+// el DOM SÍ usa clases de utilidad de Bootstrap (alert, mt-*, etc.)
+// para que combine visualmente con el resto del formulario.
+// ============================================================
+
 document.addEventListener("DOMContentLoaded", () => {
     const loginForm = document.getElementById("loginForm");
 
@@ -19,7 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
             // ==========================================
             // 3. DEFINICIÓN DE CREDENCIALES Y RUTAS
             // ==========================================
-            
+
             // Datos del Cliente (Index 1)
             const clientEmail = "diegor@correo.com";
             const clientPass = "2103";
@@ -33,7 +41,7 @@ document.addEventListener("DOMContentLoaded", () => {
             // ==========================================
             // 4. LÓGICA DE REDIRECCIÓN Y VALIDACIÓN
             // ==========================================
-            
+
             if (email === clientEmail) {
                 // Si el correo coincide con el del Cliente
                 if (password === clientPass) {
@@ -41,7 +49,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 } else {
                     showError("Contraseña incorrecta");
                 }
-            } 
+            }
             else if (email === adminEmail) {
                 // Si el correo coincide con el del Administrador
                 if (password === adminPass) {
@@ -49,7 +57,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 } else {
                     showError("Contraseña incorrecta");
                 }
-            } 
+            }
             else {
                 // Si digitan cualquier otro correo electrónico
                 showError("Correo inexistente");
@@ -58,22 +66,25 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 });
 
-// Función para pintar los errores elegantemente en la tarjeta
+/**
+ * Pinta el mensaje de error dentro de la tarjeta de login.
+ * Usamos clases de Bootstrap (text-center, fw-bold, mb-3) para
+ * el espaciado/tipografía y nuestra clase custom "error-message"
+ * (definida en style.css) para el color de marca.
+ */
 function showError(message) {
     const form = document.getElementById("loginForm");
     const button = form.querySelector(".btn-submit");
-    
+
+    // Creamos el contenedor del error
     const errorDiv = document.createElement("div");
     errorDiv.id = "error-message";
+
+    // Clases de Bootstrap para alineación y tipografía +
+    // clase custom "error-message" para el color naranja de marca
+    errorDiv.className = "error-message text-center fw-bold mb-3";
     errorDiv.innerText = message;
-    
-    // Estilos para el texto de advertencia
-    errorDiv.style.color = "#ff9100"; // Color naranja de tu marca Corralejo Fast Food
-    errorDiv.style.fontSize = "0.9rem";
-    errorDiv.style.fontWeight = "700";
-    errorDiv.style.textAlign = "center";
-    errorDiv.style.marginBottom = "15px";
-    errorDiv.style.marginTop = "-5px";
-    
+
+    // Insertamos el mensaje justo antes del botón de "Iniciar Sesión"
     form.insertBefore(errorDiv, button);
 }
