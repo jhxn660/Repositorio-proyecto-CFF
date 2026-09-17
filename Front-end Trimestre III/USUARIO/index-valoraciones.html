@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Corralejo Fast Food — Valoraciones</title>
+
+  <!-- Font Awesome CDN -->
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+        crossorigin="anonymous" />
+
+  <!-- Hoja de estilos principal -->
+  <link rel="stylesheet" href="Css/styles.css" />
+</head>
+<body>
+
+  <!-- ══════════════════════════════════════════════════
+       ENCABEZADO SUPERIOR
+  ═══════════════════════════════════════════════════ -->
+  <header class="site-header" role="banner">
+    <div class="brand">
+      <span class="brand__name">
+        <i class="fa-solid fa-burger" aria-hidden="true"></i>
+        Corralejo <span>Fast Food</span>
+      </span>
+      <span class="brand__tagline">El inicio de tu viaje gastronómico comienza aquí</span>
+    </div>
+
+    <nav aria-label="Acciones de usuario">
+      <div style="display:flex;gap:.5rem;">
+        <a href="/LOGIN/INICIO/index.html" class="btn btn--outline" style="padding:.45rem 1rem;font-size:.8rem;">
+          <i class="fa-regular fa-user" aria-hidden="true"></i> Iniciar Sesión
+        </a>
+        <a href="/LOGIN/REGISTRO/index.html" class="btn btn--primary" style="padding:.45rem 1rem;font-size:.8rem;">
+          <i class="fa-solid fa-user-plus" aria-hidden="true"></i> Registrarse
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ══════════════════════════════════════════════════
+       BARRA DE BIENVENIDA
+  ═══════════════════════════════════════════════════ -->
+  <div class="welcome-bar">
+    <h1 class="welcome-bar__title">¡Bienvenido/a!</h1>
+    <p class="welcome-bar__desc">
+      Explora nuestros productos o gestiona tu cuenta con tan solo un click.
+    </p>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════
+       NAVEGACIÓN PRINCIPAL
+  ═══════════════════════════════════════════════════ -->
+  <nav class="site-nav" aria-label="Navegación principal">
+    <ul class="site-nav__list" role="list">
+
+      <li class="site-nav__item">
+        <a href="indexubicación.html">
+          <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+          Ubicación
+        </a>
+      </li>
+
+      <li class="site-nav__item">
+        <a href="index-horarios.html">
+          <i class="fa-regular fa-clock" aria-hidden="true"></i>
+          Horarios
+        </a>
+      </li>
+
+      <li class="site-nav__item">
+        <a href="index-menu.html">
+          <i class="fa-solid fa-utensils" aria-hidden="true"></i>
+          Menú
+        </a>
+      </li>
+
+      <li class="site-nav__item">
+        <a href="#" class="active" aria-current="page">
+          <i class="fa-solid fa-star" aria-hidden="true"></i>
+          Valoraciones
+        </a>
+      </li>
+
+    </ul>
+  </nav>
+
+  <!-- ══════════════════════════════════════════════════
+       CONTENIDO PRINCIPAL
+  ═══════════════════════════════════════════════════ -->
+  <main class="page-main" id="main-content">
+
+    <!-- ── SECCIÓN 1: Lista Top ──────────────────────────── -->
+    <section aria-labelledby="top-heading">
+
+      <div class="valoraciones-intro">
+        <h2 id="top-heading">Lista top</h2>
+        <p class="subtitle">La categoría mejor valorada del mes de Marzo por los usuarios de Corralejo Fast Food</p>
+      </div>
+
+      <div class="ratings-grid" role="list">
+
+        <!-- Tarjeta 1 — Mixto (Burrito) -->
+        <article class="rating-card" role="listitem" aria-label="Producto: Mixto, 5 estrellas">
+          <div class="rating-card__rank rank--2" aria-label="Posición 2">2</div>
+          <div class="rating-card__visual">
+            <i class="fa-solid fa-stroopwafel" aria-hidden="true"></i>
+            <span class="food-label">Burrito</span>
+          </div>
+          <div class="rating-card__body">
+            <p class="rating-card__product">Mixto</p>
+            <div class="stars" aria-label="5 de 5 estrellas">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <span class="rating-num">5.0</span>
+            </div>
+            <p class="rating-card__price">$18,000</p>
+            <p class="rating-card__desc">
+              Disfruta de la combinación de carne y pollo, lechuga, tomate, queso doble crema, maíz…
+            </p>
+            <div class="rating-card__comments">
+              <i class="fa-regular fa-comment" aria-hidden="true"></i>
+              24 comentarios
+            </div>
+          </div>
+          <div class="rating-card__footer">
+            <a href="index-menu.html" class="btn btn--primary">Ver nuestro menú</a>
+          </div>
+        </article>
+
+        <!-- Tarjeta 2 — Clásica (Hamburguesa) — DESTACADA (centro) -->
+        <article class="rating-card rating-card--featured" role="listitem" aria-label="Producto: Clásica, 5 estrellas, más popular">
+          <div class="rating-card__rank rank--1" aria-label="Posición 1">1</div>
+          <div class="rating-card__visual">
+            <i class="fa-solid fa-burger" aria-hidden="true"></i>
+            <span class="food-label">Hamburguesa</span>
+          </div>
+          <div class="rating-card__body">
+            <p class="rating-card__product">Clásica</p>
+            <div class="stars" aria-label="4.5 de 5 estrellas">
+              <i class="fa-solid fa-star filled"></i>
+              <i class="fa-solid fa-star filled"></i>
+              <i class="fa-solid fa-star filled"></i>
+              <i class="fa-solid fa-star filled"></i>
+              <i class="fa-solid fa-star-half-stroke half"></i>
+              <span class="rating-num">4.5</span>
+            </div>
+            <p class="rating-card__price">$11,000</p>
+            <p class="rating-card__desc">
+              Pan artesanal, 125gr de carne de res artesana, queso cheddar, tomate, cebolla y lechuga.
+            </p>
+            <div class="rating-card__comments">
+              <i class="fa-regular fa-comment" aria-hidden="true"></i>
+              38 comentarios
+            </div>
+          </div>
+          <div class="rating-card__footer">
+            <a href="index-menu.html" class="btn btn--primary">Ver nuestro menú</a>
+          </div>
+        </article>
+
+        <!-- Tarjeta 3 — Clásica (Carne) -->
+        <article class="rating-card" role="listitem" aria-label="Producto: Clásica carne, 4 estrellas">
+          <div class="rating-card__rank rank--3" aria-label="Posición 3">3</div>
+          <div class="rating-card__visual">
+            <i class="fa-solid fa-drumstick-bite" aria-hidden="true"></i>
+            <span class="food-label">Carne</span>
+          </div>
+          <div class="rating-card__body">
+            <p class="rating-card__product">Pollo Frances</p>
+            <div class="stars" aria-label="4 de 5 estrellas">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-regular fa-star empty"></i>
+              <span class="rating-num">4.0</span>
+            </div>
+            <p class="rating-card__price">$15,000</p>
+            <p class="rating-card__desc">
+              Pollo de 75g con lechuga, tomate y mayonesa.
+            </p>
+            <div class="rating-card__comments">
+              <i class="fa-regular fa-comment" aria-hidden="true"></i>
+              19 comentarios
+            </div>
+          </div>
+          <div class="rating-card__footer">
+            <a href="index-menu.html" class="btn btn--primary">Ver nuestro menú</a>
+          </div>
+        </article>
+
+      </div><!-- /ratings-grid -->
+
+    </section>
+
+    <!-- ── SECCIÓN 2: Carrusel de comentarios ────────────── -->
+    <section aria-labelledby="comentarios-heading" class="comentarios-section">
+
+      <h2 id="comentarios-heading" class="sr-only">Comentarios de usuarios</h2>
+
+      <!-- Botón subir -->
+      <div class="carousel-nav-top">
+        <button class="carousel-arrow" id="btn-carousel-prev" aria-label="Ver comentarios anteriores">
+          <i class="fa-solid fa-chevron-up" aria-hidden="true"></i>
+        </button>
+      </div>
+
+      <!-- Lista de comentarios -->
+      <div class="comentarios-list" id="comentarios-list" role="list" aria-live="polite">
+        <!-- Se renderiza por JS -->
+      </div>
+
+      <!-- Botón bajar -->
+      <div class="carousel-nav-bottom">
+        <button class="carousel-arrow" id="btn-carousel-next" aria-label="Ver más comentarios">
+          <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+        </button>
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- ══════════════════════════════════════════════════
+       FOOTER
+  ═══════════════════════════════════════════════════ -->
+  <footer class="site-footer" role="contentinfo">
+    <p>© 2026 <span>Corralejo Fast Food</span> — Todos los derechos reservados.</p>
+  </footer>
+
+  <!-- ══════════════════════════════════════════════════
+       ESTILOS ESPECÍFICOS DE ESTA PÁGINA
+  ═══════════════════════════════════════════════════ -->
+  <style>
+    /* Tarjeta destacada (1er lugar) */
+    .rating-card--featured {
+      transform: translateY(-10px);
+      box-shadow: var(--shadow-lg);
+      border: 2px solid var(--color-accent);
+    }
+
+    .rating-card--featured:hover {
+      transform: translateY(-16px);
+    }
+
+    /* Sección de comentarios */
+    .comentarios-section {
+      margin-top: var(--gap-lg);
+      background: var(--color-white);
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-sm);
+      padding: var(--gap-md) var(--gap-lg);
+    }
+
+    .carousel-nav-top,
+    .carousel-nav-bottom {
+      display: flex;
+      justify-content: center;
+      padding: .5rem 0;
+    }
+
+    .carousel-arrow {
+      background: none;
+      border: none;
+      color: var(--color-carbon);
+      font-size: 1.1rem;
+      cursor: pointer;
+      padding: .4rem .8rem;
+      border-radius: var(--radius-sm);
+      transition: color var(--transition), background var(--transition);
+    }
+
+    .carousel-arrow:hover {
+      color: var(--color-accent);
+      background: rgba(232,78,15,.08);
+    }
+
+    /* Comentarios list */
+    .comentarios-list {
+      display: flex;
+      flex-direction: column;
+      gap: var(--gap-md);
+      overflow: hidden;
+    }
+
+    /* Comentario individual */
+    .comentario-row {
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: start;
+      gap: var(--gap-md);
+      padding: var(--gap-md);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      background: var(--color-bg);
+      transition: box-shadow var(--transition);
+    }
+
+    .comentario-row:hover {
+      box-shadow: var(--shadow-sm);
+    }
+
+    /* Avatar */
+    .comentario-avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: var(--color-carbon);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-white);
+      font-size: 1.3rem;
+      flex-shrink: 0;
+    }
+
+    /* Contenido */
+    .comentario-content {
+      display: flex;
+      flex-direction: column;
+      gap: .3rem;
+    }
+
+    .comentario-header {
+      display: flex;
+      align-items: center;
+      gap: var(--gap-md);
+      flex-wrap: wrap;
+    }
+
+    .comentario-name {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--color-carbon);
+    }
+
+    .comentario-stars {
+      display: flex;
+      gap: .15rem;
+    }
+
+    .comentario-stars i {
+      font-size: .85rem;
+      color: var(--color-gray-light);
+    }
+
+    .comentario-stars i.filled {
+      color: #FFD700;
+    }
+
+    .comentario-text {
+      font-size: .875rem;
+      color: var(--color-gray-mid);
+      line-height: 1.6;
+      font-style: italic;
+    }
+
+    /* Imagen del producto comentado */
+    .comentario-visual {
+      width: 80px;
+      height: 80px;
+      border-radius: var(--radius-sm);
+      background: linear-gradient(135deg, #2d2d2d 0%, #1a1a1a 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .comentario-visual i {
+      font-size: 2.2rem;
+      color: var(--color-accent);
+      opacity: .9;
+    }
+
+    @media (max-width: 600px) {
+      .comentario-row {
+        grid-template-columns: auto 1fr;
+      }
+      .comentario-visual { display: none; }
+      .comentarios-section { padding: var(--gap-md) var(--gap-sm); }
+    }
+  </style>
+
+  <!-- ══════════════════════════════════════════════════
+       SCRIPT — Carrusel de comentarios
+  ═══════════════════════════════════════════════════ -->
+  <script>
+    (function () {
+
+      const COMENTARIOS = [
+        {
+          nombre: "Camilo Perdomo",
+          estrellas: 0,
+          texto: "\"Me encantó la hamburguesa, la carne estaba súper jugosa y en su punto, el pan fresco y los ingredientes muy bien combinados. Se nota que todo es preparado al momento. Sin duda, volvería a pedirla. ¡Totalmente recomendada!\"",
+          icono: "fa-solid fa-burger"
+        },
+        {
+          nombre: "Juan Costa",
+          estrellas: 0,
+          texto: "\"La hamburguesa estaba deliciosa, con un sabor increíble y porción perfecta. Me gustó mucho la frescura de los ingredientes y lo bien sazonada que estaba la carne. El servicio también fue rápido. ¡Muy recomendada!\"",
+          icono: "fa-solid fa-burger"
+        },
+        {
+          nombre: "Antonio Carmona",
+          estrellas: 0,
+          texto: "\"El burrito estaba muy rico, bien relleno y con ingredientes frescos. La combinación de sabores me gustó bastante, aunque me hubiera gustado que estuviera un poco más caliente. Aun así, lo disfrutaría de nuevo.\"",
+          icono: "fa-solid fa-stroopwafel"
+        },
+        {
+          nombre: "Laura Méndez",
+          estrellas: 0,
+          texto: "\"Las mazorcadas son increíbles, muy bien preparadas y con una sazón especial. Los toppings le dan un toque único. Definitivamente el plato que más recomendaría a quien visita por primera vez.\"",
+          icono: "fa-solid fa-seedling"
+        },
+        {
+          nombre: "Carlos Ruiz",
+          estrellas: 0,
+          texto: "\"El servicio fue rápido y amable. La carne estaba bien sazonada y el ambiente del lugar es agradable. Volveré pronto con mi familia. Todo estuvo a la altura de las expectativas.\"",
+          icono: "fa-solid fa-drumstick-bite"
+        },
+        {
+          nombre: "Sofía Torres",
+          estrellas: 0,
+          texto: "\"Las entradas son una delicia, perfectas para compartir. Los sabores son auténticos y se nota que usan ingredientes de calidad. Sin duda uno de mis lugares favoritos para comer en Bogotá.\"",
+          icono: "fa-solid fa-leaf"
+        }
+      ];
+
+      const VISIBLE = 3;
+      let startIndex = 0;
+
+      const listEl   = document.getElementById("comentarios-list");
+      const btnPrev  = document.getElementById("btn-carousel-prev");
+      const btnNext  = document.getElementById("btn-carousel-next");
+
+      function buildStars(count) {
+        let html = '';
+        for (let i = 1; i <= 5; i++) {
+          if (count >= i) {
+            html += `<i class="fa-solid fa-star filled" aria-hidden="true"></i>`;
+          } else if (count >= i - 0.5) {
+            html += `<i class="fa-solid fa-star-half-stroke half" aria-hidden="true"></i>`;
+          } else {
+            html += `<i class="fa-regular fa-star empty" aria-hidden="true"></i>`;
+          }
+        }
+        return html;
+      }
+
+      function render() {
+        listEl.innerHTML = '';
+
+        const slice = [];
+        for (let i = 0; i < VISIBLE; i++) {
+          slice.push(COMENTARIOS[(startIndex + i) % COMENTARIOS.length]);
+        }
+
+        slice.forEach(function(c) {
+          const div = document.createElement('div');
+          div.className = 'comentario-row';
+          div.setAttribute('role', 'listitem');
+          div.setAttribute('aria-label', 'Comentario de ' + c.nombre);
+
+          div.innerHTML = `
+            <div class="comentario-avatar" aria-hidden="true">
+              <i class="fa-solid fa-user"></i>
+            </div>
+            <div class="comentario-content">
+              <div class="comentario-header">
+                <span class="comentario-name">${c.nombre}</span>
+                <div class="comentario-stars" aria-label="${c.estrellas ? c.estrellas + ' de 5 estrellas' : 'Sin calificación de estrellas'}">
+                  ${buildStars(c.estrellas)}
+                </div>
+              </div>
+              <p class="comentario-text">${c.texto}</p>
+            </div>
+            <div class="comentario-visual" aria-hidden="true">
+              <i class="${c.icono}"></i>
+            </div>
+          `;
+
+          listEl.appendChild(div);
+        });
+
+        btnPrev.disabled = startIndex === 0;
+        btnPrev.style.opacity = startIndex === 0 ? '.35' : '1';
+      }
+
+      btnPrev.addEventListener('click', function () {
+        if (startIndex > 0) {
+          startIndex--;
+          render();
+        }
+      });
+
+      btnNext.addEventListener('click', function () {
+        if (startIndex + VISIBLE < COMENTARIOS.length) {
+          startIndex++;
+          render();
+        }
+      });
+
+      render();
+    })();
+  </script>
+
+</body>
+</html>
