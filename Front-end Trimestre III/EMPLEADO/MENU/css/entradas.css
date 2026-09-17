@@ -1,0 +1,794 @@
+@import url('https://fonts.googleapis.com/css2?family=Albert+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Albert Sans', sans-serif;
+}
+
+/* ========================
+   HEADER
+======================== */
+.header{
+    background-color: #212121;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    height: 80px;
+    padding: 5px 3%;
+    position: relative;
+    z-index: 100;
+}
+
+.header .logo{
+    cursor: pointer;
+    margin-right: auto;
+    color: #fff;
+    display: flex;
+    align-items: center;
+}
+
+.conterimg {
+    width: 50px;
+    border-radius: 20px;
+    flex-shrink: 0;
+}
+
+.logo h2 {
+    color: #fff;
+    margin: 10px;
+    font-size: clamp(14px, 2.5vw, 22px);
+    white-space: nowrap;
+}
+
+.letracolor {
+    color: #ff9100 ;
+}
+
+.nav-logos {
+    display: flex;
+    gap: 24px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.logo h2 {
+    color: #fff;
+    margin: 10px;
+    font-size: clamp(14px, 2.5vw, 22px);
+    white-space: nowrap;
+}
+
+.letracolor {
+    color: #ff9100;
+}
+
+.nav-logos {
+    display: flex;
+    gap: 24px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.logo1,
+.logo2 {
+    font-size: 30px;
+    color: #fff;
+    cursor: pointer;
+    list-style: none; /* Quita los círculos o viñetas por completo */
+    display: inline-block; /* Asegura un comportamiento de caja limpio */
+    transition: transform 0.2s;
+}
+
+.logo1:hover,
+.logo2:hover {
+    transform: scale(1.2);
+}
+
+/* ========================
+   CONTENEDOR ESTRUCTURAL
+======================== */
+.container{
+    display: flex; 
+    min-height: calc(100vh - 80px); 
+    width: 100%; 
+}
+
+/* ========================
+   SIDEBAR (desktop/tablet)
+======================== */
+.sidebar {
+    width: 250px;
+    flex-shrink: 0;
+    background: white;
+    border: 1px solid #d9d9d9;
+    margin: 10px;
+    border-radius: 5px;
+    padding: 20px;
+}
+
+.sidebar h3 {
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+    color: #0b1f3f;
+}
+
+.sidebar ul {
+    list-style: none;
+}
+
+.sidebar li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 25px;
+    cursor: pointer;
+}
+
+/* Estilos base para el enlace interno */
+.sidebar-link {
+    text-decoration: none;
+    color: #666;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: color 0.2s;
+}
+
+/* Cambio de color unificado para hover y estado activo */
+.sidebar li:hover .sidebar-link,
+.sidebar li.active .sidebar-link {
+    color: #ff9100; /* Naranja Corralejo */ 
+}
+
+/* Panel de Contenido Principal */
+.content {
+    width: 100%;
+    max-width: 1100px;        /* <-- Limita el ancho máximo para que no se desparrame en pantallas gigantes */
+    margin: 0 auto;           /* <-- Centra de forma absoluta todo el bloque en la pantalla */
+    padding: 25px 30px;       /* <-- SEPARACIÓN: Crea un colchón interno para que el botón y las tarjetas jamás toquen los bordes */
+    box-sizing: border-box;
+}
+
+.content h1{
+    text-align: center;
+    margin-bottom: 10px;
+    font-size: 28px;
+    color: #212121;
+}
+
+.descripcion {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #555;
+}
+
+/* Contenedor Flexible Madre */
+.contenedormadre {
+    display: flex; 
+    gap: 30px;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+}
+
+/* Rejilla de productos */
+.productos-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+    flex: 1;
+}
+
+/* Estilos de Tarjetas de Productos */
+.contenedorpo, .contenedorone {
+    padding: 35px 20px 20px 20px;
+    background: white;
+    border: 1px solid #8b8b8b;
+    border-radius: 10px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-top: 15px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+/* Cuadro de Precio Superior */
+.badge-precio {
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #ff9100 ;
+    color: white;
+    padding: 6px 20px;
+    font-weight: bold;
+    font-size: 14px;
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    white-space: nowrap;
+    z-index: 10;
+}
+
+.moderclass {
+    text-align: center;
+    font-size: 80px;
+    color: #3d3d3d;
+    margin-bottom: 10px;
+}
+
+.presinfo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.presinfo h3 {
+    font-size: 16px;
+}
+
+.presinfo h5 {
+    color: #ff9100 ;
+}
+
+/* Botón Incluir Combo Corregido (Ocupa el 100% de la tarjeta) */
+.btn-secon {
+    width: 100%;
+    padding: 12px 15px;
+    cursor: pointer;
+    border: none;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 12px;
+    background-color: #cdcdcd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: background 0.2s, transform 0.1s;
+    box-sizing: border-box;
+}
+
+.btn-secon:hover {
+    background-color: #b5b5b5;
+    transform: scale(1.01);
+}
+
+hr {
+    border: 0;
+    height: 1px;
+    background: #dbdbdb;
+}
+
+/* Controles de Cantidad */
+.cart-controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px; 
+}
+  
+.quantity-selector {
+    display: flex;
+    align-items: center;
+    border-radius: 50px;
+    overflow: hidden; 
+    height: 38px;
+    width: 110px;
+    border: 1px solid #8b8b8b;
+    background: #fff;
+}
+  
+.qty-btn {
+    border: none;
+    cursor: pointer;
+    height: 100%;
+    width: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: #fff;
+    font-size: 14px;
+    background-color: #212121;
+    transition: background 0.2s;
+}
+
+.qty-btn.minus {
+    background-color: #8b8b8b;
+}
+
+.qty-btn:hover {
+    background-color: #ff9100 ;
+}
+
+.qty-number {
+    flex: 1;
+    text-align: center;
+    font-weight: bold;
+    font-size: 14px;
+    color: #212121;
+}
+  
+.add-to-cart-btn {
+    background-color: #ff9100 ;
+    color: #fff;
+    border: none;
+    border-radius: 20px;
+    padding: 0 20px;
+    height: 38px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 13px;
+    transition: background 0.2s;
+}
+  
+.add-to-cart-btn:hover {
+    background-color: #212121;
+}
+
+/* ====================================
+   BLOQUES LATERALES DERECHOS (STICKY)
+====================================== */
+.contenedornav {
+    width: 360px; 
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    flex-shrink: 0;
+    position: sticky;
+    top: 95px; 
+    max-height: calc(100vh - 120px);
+}
+
+.conteninf {
+    padding: 22px;
+    background: white;
+    border: 1px solid #8b8b8b;
+    border-radius: 5px;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+/* Acomodación Horizontal Selectores */
+.contenorden-horizontal {
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+    justify-content: space-between;
+}
+
+.selectone {
+    padding: 10px 12px;
+    color: #fff;
+    cursor: pointer;
+    border: 2px solid #585858;
+    border-radius: 20px;
+    background-color: #212121;
+    flex: 1;
+    font-size: 13px;
+    transition: transform 0.2s;
+    min-width: 0;
+}
+
+.selectone:hover {
+    transform: translateY(-2px);
+}
+
+.contercomentar {
+    padding: 10px 25px;
+    border-radius: 20px;
+    border: none;
+    color: #fff;
+    font-weight: bold;
+    background-color: #ff9100 ;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.contercomentar:hover {
+    background-color: #212121;
+}
+
+/* ========================
+   VENTANA EMERGENTE (MODAL)
+======================== */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.modal-overlay.show {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.modal-card {
+    background: white;
+    width: 100%;
+    max-width: 420px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    transform: translateY(-20px);
+    transition: transform 0.3s ease;
+}
+
+.modal-overlay.show .modal-card {
+    transform: translateY(0);
+}
+
+.modal-header {
+    background-color: #212121;
+    color: white;
+    padding: 15px 20px;
+    text-align: center;
+}
+
+.modal-header h3 {
+    font-size: 18px;
+    color: #ff9100 ;
+}
+
+.modal-body {
+    padding: 20px;
+}
+
+.modal-promo-text {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 15px;
+}
+
+.combo-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px dashed #ddd;
+    font-size: 14px;
+}
+
+.combo-item i {
+    color: #ff9100 ;
+    margin-right: 5px;
+}
+
+.precio-adicional {
+    color: #212121;
+}
+
+.modal-footer-text {
+    margin-top: 15px;
+    font-size: 13px;
+    line-height: 1.5;
+    text-align: center;
+}
+
+.modal-actions {
+    display: flex;
+    border-top: 1px solid #eee;
+}
+
+.modal-btn {
+    flex: 1;
+    padding: 15px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 14px;
+    transition: background 0.2s;
+}
+
+.btn-cancelar {
+    background-color: #f5f5f5;
+    color: #666;
+}
+
+.btn-cancelar:hover {
+    background-color: #e8e8e8;
+}
+
+.btn-aceptar {
+    background-color: #ff9100 ;
+    color: white;
+}
+
+.btn-aceptar:hover {
+    background-color: #ff9100 ;
+}
+
+/* ========================
+   MEDIA QUERIES (RESPONSIVE)
+======================== */
+
+@media (max-width: 1200px) {
+    .contenedormadre {
+        flex-direction: column;
+        align-items: center;
+        gap: 25px;
+    }
+    .productos-grid {
+        width: 100%;
+    }
+    .contenedornav {
+        width: 100%;
+        position: static; 
+        max-height: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        display: none;
+    }
+    .productos-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .contenorden-horizontal {
+        flex-direction: column;
+    }
+}
+
+/* ==========================================
+   ESTILOS CORREGIDOS PARA EL PANEL DE USUARIO
+   ========================================== */
+   .menu-toggle {
+    display: none; 
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 24px;
+    cursor: pointer;
+    margin-right: 15px; /* Separación si llega a aparecer en celular */
+}
+/* Contenedor relativo estricto para no alterar el flexbox de la cabecera */
+.user-profile-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+/* Regresamos tus iconos a su comportamiento original */
+.treencabezado {
+    gap: 30px;
+    display: flex;
+    align-items: center;
+}
+
+/* Caja del menú flotante alineada perfectamente */
+.user-dropdown-panel {
+    position: absolute;
+    top: 45px; /* Controla la distancia hacia abajo respecto al icono */
+    right: 0;  /* Alinea el borde derecho del panel con el borde derecho del avatar */
+    width: 260px;
+    background-color: #ffffff;
+    border: 2px solid #2c2c2c;
+    border-radius: 12px;
+    padding: 15px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    z-index: 1000; /* Asegura que se superponga a cualquier otro elemento */
+    
+    /* Configuración interna interna */
+    display: flex;
+    flex-direction: column;
+}
+
+/* Ocultar el panel por defecto usando la clase hidden */
+.user-dropdown-panel.hidden {
+    display: none !important;
+}
+
+/* Estilos de los elementos internos */
+.dropdown-header {
+    text-align: center;
+    padding: 5px 0;
+}
+
+.user-avatar {
+    font-size: 45px;
+    color: #2c2c2c;
+    margin-bottom: 5px;
+}
+
+.user-email {
+    font-size: 14px;
+    font-weight: 600;
+    color: #2b6cb0;
+    text-decoration: underline;
+    word-break: break-all;
+}
+
+.dropdown-divider {
+    border: 0;
+    border-top: 1.5px solid #2c2c2c;
+    margin: 10px 0;
+}
+
+.roles-section {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.role-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    color: #718096;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 6px 8px;
+    border-radius: 6px;
+    transition: background 0.2s, color 0.2s;
+}
+
+.role-item i {
+    font-size: 16px;
+    transform: scaleX(-1);
+}
+
+.role-item:hover {
+    background-color: #f7fafc;
+    color: #2c2c2c;
+}
+
+.actions-section {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 5px;
+}
+
+.btn-dropdown {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    text-decoration: none;
+    color: #ffffff;
+    background-color: #2c2c2c;
+    border: 2px solid #2c2c2c;
+    border-radius: 8px;
+    padding: 10px 12px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.btn-dropdown:hover {
+    background-color: #ff9100; /* Color de marca naranja CFF */
+    border-color: #ff9100;
+    color: #ffffff;
+}
+
+.dropdown-arrow-close {
+    display: flex;
+    justify-content: flex-end;
+    color: #2c2c2c;
+    font-size: 12px;
+    margin-top: 5px;
+    cursor: pointer;
+}
+
+/* ==========================================
+   PANEL DESPLEGABLE DE NOTIFICACIONES
+   ========================================== */
+
+/* Envoltorio relativo para la campana */
+.notification-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+/* Caja principal del menú de notificaciones */
+.notification-dropdown-panel {
+    position: absolute;
+    top: 45px; /* Distancia hacia abajo desde el icono */
+    right: -60px; /* Desplazamiento estratégico para que caiga centrado respecto a la campana */
+    width: 290px; /* Un poco más ancho para albergar cómodamente el texto informativo */
+    background-color: #ffffff;
+    border: 2px solid #2c2c2c;
+    border-radius: 12px;
+    padding: 15px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Ocultar el panel por defecto */
+.notification-dropdown-panel.hidden {
+    display: none !important;
+}
+
+/* Encabezado del título */
+.dropdown-title-text {
+    font-size: 16px;
+    font-weight: bold;
+    color: #2c2c2c;
+    margin: 5px 0 0 0;
+}
+
+.notification-icon-title {
+    font-size: 24px;
+    color: #2c2c2c;
+}
+
+/* Contenedor de las tarjetas de notificación */
+.notifications-section {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 5px;
+}
+
+/* Cuadros Negros Interactivos de Notificación */
+.btn-notification-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    color: #ffffff;
+    background-color: #2c2c2c;
+    border: 2px solid #2c2c2c;
+    border-radius: 8px;
+    padding: 12px;
+    text-align: left;
+}
+
+/* Iconos dentro de las notificaciones */
+.btn-notification-item i {
+    font-size: 18px;
+    min-width: 20px;
+    text-align: center;
+}
+
+/* Textos dentro de la notificación */
+.notification-content {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.notification-content strong {
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.notification-content p {
+    font-size: 11px;
+    color: #e0e0e0; /* Color gris claro para texto secundario */
+    line-height: 1.3;
+    margin: 0;
+}
+
+/* Hover interactivo con el color naranja de la marca */
+.btn-notification-item:hover {
+    background-color: #ff9100;
+    border-color: #ff9100;
+}
+
+.btn-notification-item:hover .notification-content p {
+    color: #ffffff; /* El texto secundario se vuelve completamente blanco en hover */
+}

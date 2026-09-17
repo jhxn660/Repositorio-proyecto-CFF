@@ -1,0 +1,942 @@
+@import url('https://fonts.googleapis.com/css2?family=Albert+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: 'Albert Sans', sans-serif;
+}
+
+body{
+    background: linear-gradient(to top, #f8fbff , #edf4ff );
+}
+
+/* CONTENEDOR GENERAL */
+
+.contenedor{
+    display: flex;
+    min-height: 100vh;
+}
+
+/* SIDEBAR */
+
+.sidebar{
+    width: 260px;
+    background: #2c2c2c;
+    color: white;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+}
+
+.logo{
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.imglogo{
+    width: 80px;
+}
+
+.logo h2{
+    color: #ff9100;
+    margin-bottom: 5px;
+}
+
+.logo span{
+    font-size: 14px;
+    color :#ccc;
+}
+
+.sidebar ul{
+    list-style: none;
+}
+
+.sidebar li{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+.sidebar li a {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    width: 100%;
+    text-decoration: none;
+    color: white;
+}
+
+.sidebar li:hover{
+    background: #3c3c3c;
+}
+
+.sidebar li.activo{
+    background: #ff9100;
+    color: white;
+    border-radius: 30px;
+}
+
+.activo:hover{
+    transform: translateY(-5px);
+}
+
+.movimiento:hover{
+    border-radius: 30px;
+    transform: translateY(-5px);
+}
+
+.sidebar li i{
+    font-size: 18px;
+}
+
+/* CONTENIDO */
+
+.contenido{
+    flex: 1;
+    padding: 20px;
+}
+
+/* CABECERA */
+
+.secencabezado{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 10px 20px;
+}
+
+.encabezado{
+    display: block;
+}
+
+.encabezado h1{
+    color: #333;
+}
+
+.encabezado input{
+    width: 350px;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 30px;
+    background: white;
+    box-shadow: 0 2px 10px rgba(0,0,0,.08);
+}
+
+.treencabezado{
+    gap: 30px;
+    display: flex;
+    align-items: center;
+}
+
+.logo1,
+.logo2 {
+    font-size: 40px;
+    color: #2c2c2c;
+    cursor: pointer;
+    list-style: none;
+    transition: transform 0.2s;
+}
+
+.logo1:hover,
+.logo2:hover {
+    transform: scale(1.2);
+}
+
+
+
+.contenido-principal{
+    background: white;
+    min-height: 600px;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 4px 20px rgba(0,0,0,.08);
+}
+
+
+.cards{
+    display: flex;
+    flex-wrap: wrap;
+    padding-top: 20px;
+    padding-bottom: 10px;
+    justify-content: center;
+    gap: 20px;
+}
+
+.card{
+    background: white;
+    border: 1px solid #8b8b8b;
+    border-radius: 5px;
+    text-align: center;
+    cursor: pointer;
+    padding: 20px;
+    width: 220px;
+    position: relative;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover{
+    transform: translateY(-5px);
+    box-shadow: 0 8px 18px rgba(0,0,0,.15);
+}
+
+.card i{
+    font-size: 60px;
+    color: #3d3d3d;
+    margin-bottom: 15px;
+}
+
+.card h3{
+    margin-bottom: 10px;
+}
+
+.card p{
+    font-size: 14px;
+    line-height: 1.4;
+    color: #444;
+}
+
+.card::after{
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 70%;
+    height: 8px;
+    background: #ff9100;
+    border-radius: 10px;
+}
+
+a{
+    text-decoration: none;
+    color: #212121;
+}
+
+
+/* CAJA CENTRAL */
+
+.contenido-principal{
+    background: white;
+    min-height: 600px;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 4px 20px rgba(0,0,0,.08);
+}
+
+/* ========================
+   DISEÑO RESPONSIVO
+======================== */
+
+@media (min-width: 1400px) {
+    .contenido-principal {
+        max-width: 95%;
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 992px) {
+    .contenedor {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px 20px;
+    }
+
+    .logo {
+        margin-bottom: 0;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .sidebar ul {
+        display: flex;
+        gap: 5px;
+        overflow-x: auto;
+        padding-bottom: 5px;
+    }
+
+    .sidebar li {
+        margin-bottom: 0;
+        padding: 10px 15px;
+        white-space: nowrap;
+    }
+}
+
+@media (max-width: 576px) {
+    .sidebar {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .sidebar ul {
+        width: 100%;
+        justify-content: start;
+    }
+
+    .secencabezado {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .cards {
+        gap: 15px;
+    }
+
+    .card {
+        width: 100%;
+        max-width: none;
+    }
+}
+
+/* Contenedor Flexible Madre */
+.contenedormadre {
+    display: flex; 
+    gap: 30px;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+}
+
+/* Rejilla de productos */
+.productos-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+    flex: 1;
+}
+
+/* Estilos de Tarjetas de Productos */
+.contenedorpo, .contenedorone {
+    padding: 35px 20px 20px 20px;
+    background: white;
+    border: 1px solid #8b8b8b;
+    border-radius: 10px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-top: 15px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+/* Cuadro de Precio Superior */
+.badge-precio {
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #ff9100 ;
+    color: white;
+    padding: 6px 20px;
+    font-weight: bold;
+    font-size: 14px;
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    white-space: nowrap;
+    z-index: 10;
+}
+
+.moderclass {
+    text-align: center;
+    font-size: 80px;
+    color: #3d3d3d;
+    margin-bottom: 10px;
+}
+
+.presinfo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.presinfo h3 {
+    font-size: 16px;
+}
+
+.presinfo h5 {
+    color: #ff9100 ;
+}
+
+/* Botón Incluir Combo Corregido (Ocupa el 100% de la tarjeta) */
+.btn-secon {
+    width: 100%;
+    padding: 12px 15px;
+    cursor: pointer;
+    border: none;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 12px;
+    background-color: #cdcdcd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: background 0.2s, transform 0.1s;
+    box-sizing: border-box;
+}
+
+.btn-secon:hover {
+    background-color: #b5b5b5;
+    transform: scale(1.01);
+}
+
+hr {
+    border: 0;
+    height: 1px;
+    background: #dbdbdb;
+}
+
+/* ====================================
+   BLOQUES LATERALES DERECHOS (STICKY)
+====================================== */
+.contenedornav {
+    width: 360px; 
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.conteninf {
+    padding: 22px;
+    background: white;
+    border: 1px solid #8b8b8b;
+    border-radius: 5px;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+/* Acomodación Horizontal Selectores */
+.contenorden-horizontal {
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+    justify-content: space-between;
+}
+
+.selectone {
+    padding: 10px 12px;
+    color: #fff;
+    cursor: pointer;
+    border: 2px solid #585858;
+    border-radius: 20px;
+    background-color: #212121;
+    flex: 1;
+    font-size: 13px;
+    transition: transform 0.2s;
+    min-width: 0;
+}
+
+.selectone:hover {
+    transform: translateY(-2px);
+}
+
+.contercomentar {
+    padding: 10px 25px;
+    border-radius: 20px;
+    border: none;
+    color: #fff;
+    font-weight: bold;
+    background-color: #ff9100 ;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.contercomentar:hover {
+    background-color: #212121;
+}
+
+/* ========================
+   VENTANA EMERGENTE (MODAL)
+======================== */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.modal-overlay.show {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.modal-card {
+    background: white;
+    width: 100%;
+    max-width: 420px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    transform: translateY(-20px);
+    transition: transform 0.3s ease;
+}
+
+.modal-overlay.show .modal-card {
+    transform: translateY(0);
+}
+
+.modal-header {
+    background-color: #212121;
+    color: white;
+    padding: 15px 20px;
+    text-align: center;
+}
+
+.modal-header h3 {
+    font-size: 18px;
+    color: #ff9100 ;
+}
+
+.modal-body {
+    padding: 20px;
+}
+
+.modal-promo-text {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 15px;
+}
+
+.combo-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px dashed #ddd;
+    font-size: 14px;
+}
+
+.combo-item i {
+    color: #ff9100 ;
+    margin-right: 5px;
+}
+
+.combo-modal-overlay.show-modal {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.precio-adicional {
+    color: #212121;
+}
+
+.modal-footer-text {
+    margin-top: 15px;
+    font-size: 13px;
+    line-height: 1.5;
+    text-align: center;
+}
+
+.modal-actions {
+    display: flex;
+    border-top: 1px solid #eee;
+}
+
+.modal-btn {
+    flex: 1;
+    padding: 15px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 14px;
+    transition: background 0.2s;
+}
+
+.btn-cancelar {
+    background-color: #f5f5f5;
+    color: #666;
+}
+
+.btn-cancelar:hover {
+    background-color: #e8e8e8;
+}
+
+.btn-aceptar {
+    background-color: #ff9100 ;
+    color: white;
+}
+
+.btn-aceptar:hover {
+    background-color: #ff9100 ;
+}
+
+/* Estilos Generales del Footer */
+.custom-footer {
+    background-color: #2c2c2c;
+    font-family: Arial, sans-serif;
+    color: #ffffff;
+    padding: 0;
+    overflow: hidden;
+    width: 100%;
+}
+
+.footer-container {
+    display: flex;
+    flex-direction: column; 
+    width: 100%;
+}
+
+/* Sección de Información de Contacto (Primero en móviles) */
+.footer-info {
+    background-color: #2e2e2e;
+    padding: 30px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    order: 1; 
+    position: relative; 
+}
+
+.footer-title {
+    color: #ff9100;
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 0;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+}
+
+.contact-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.contact-list li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+    font-size: 15px;
+    color: #cccccc;
+}
+
+.contact-list .icon {
+    margin-right: 10px;
+    font-size: 16px;
+    display: inline-block;
+    width: 20px;
+    text-align: center;
+}
+
+/* Botón Ver en el Mapa */
+.map-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #ff9100;
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 14px;
+    padding: 10px 20px;
+    border-radius: 6px;
+    margin-top: 20px;
+    width: 160px;
+    transition: background-color 0.3s ease;
+}
+
+.map-button:hover {
+    color: #2c2c2c;
+    background-color: #ffffff;
+}
+
+.map-button .arrow {
+    font-size: 18px;
+    line-height: 1;
+}
+
+/* Sección del Mapa (Segundo en móviles) */
+.footer-map {
+    width: 100%;
+    height: 250px;
+    order: 2; 
+}
+
+.footer-map iframe {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+  
+  /* Diseño Responsivo y Ajuste de la Línea Diagonal (Escritorio) */
+  @media (min-width: 768px) {
+    .footer-container {
+      flex-direction: row; 
+      height: 260px; 
+    }
+  
+    .footer-info {
+      width: 35%;
+      padding: 20px 40px;
+      order: 1; /* Pasa a la izquierda */
+      background: #2e2e2e;
+      position: relative;
+      z-index: 2;
+      /* Línea naranja se mueve al lado derecho del bloque */
+      box-shadow: 8px 0 0 0 #ff9100; 
+    }
+  
+    .footer-map {
+      width: 65%; 
+      height: 100%;
+      order: 2; /* Pasa a la derecha */
+    }
+}
+
+/* ==========================================
+   ESTILOS CORREGIDOS PARA EL PANEL DE USUARIO
+   ========================================== */
+
+/* Contenedor relativo estricto para no alterar el flexbox de la cabecera */
+.user-profile-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+/* Regresamos tus iconos a su comportamiento original */
+.treencabezado {
+    gap: 30px;
+    display: flex;
+    align-items: center;
+}
+
+/* Caja del menú flotante alineada perfectamente */
+.user-dropdown-panel {
+    position: absolute;
+    top: 45px; /* Controla la distancia hacia abajo respecto al icono */
+    right: 0;  /* Alinea el borde derecho del panel con el borde derecho del avatar */
+    width: 260px;
+    background-color: #ffffff;
+    border: 2px solid #2c2c2c;
+    border-radius: 12px;
+    padding: 15px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    z-index: 1000; /* Asegura que se superponga a cualquier otro elemento */
+    
+    /* Configuración interna interna */
+    display: flex;
+    flex-direction: column;
+}
+
+/* Ocultar el panel por defecto usando la clase hidden */
+.user-dropdown-panel.hidden {
+    display: none !important;
+}
+
+/* Estilos de los elementos internos */
+.dropdown-header {
+    text-align: center;
+    padding: 5px 0;
+}
+
+.user-avatar {
+    font-size: 45px;
+    color: #2c2c2c;
+    margin-bottom: 5px;
+}
+
+.user-email {
+    font-size: 14px;
+    font-weight: 600;
+    color: #2b6cb0;
+    text-decoration: underline;
+    word-break: break-all;
+}
+
+.dropdown-divider {
+    border: 0;
+    border-top: 1.5px solid #2c2c2c;
+    margin: 10px 0;
+}
+
+.roles-section {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.role-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    color: #718096;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 6px 8px;
+    border-radius: 6px;
+    transition: background 0.2s, color 0.2s;
+}
+
+.role-item i {
+    font-size: 16px;
+    transform: scaleX(-1);
+}
+
+.role-item:hover {
+    background-color: #f7fafc;
+    color: #2c2c2c;
+}
+
+.actions-section {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 5px;
+}
+
+.btn-dropdown {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    text-decoration: none;
+    color: #ffffff;
+    background-color: #2c2c2c;
+    border: 2px solid #2c2c2c;
+    border-radius: 8px;
+    padding: 10px 12px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.btn-dropdown:hover {
+    background-color: #ff9100; /* Color de marca naranja CFF */
+    border-color: #ff9100;
+    color: #ffffff;
+}
+
+.dropdown-arrow-close {
+    display: flex;
+    justify-content: flex-end;
+    color: #2c2c2c;
+    font-size: 12px;
+    margin-top: 5px;
+    cursor: pointer;
+}
+
+/* ==========================================
+   PANEL DESPLEGABLE DE NOTIFICACIONES
+   ========================================== */
+
+/* Envoltorio relativo para la campana */
+.notification-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+/* Caja principal del menú de notificaciones */
+.notification-dropdown-panel {
+    position: absolute;
+    top: 45px; /* Distancia hacia abajo desde el icono */
+    right: -60px; /* Desplazamiento estratégico para que caiga centrado respecto a la campana */
+    width: 290px; /* Un poco más ancho para albergar cómodamente el texto informativo */
+    background-color: #ffffff;
+    border: 2px solid #2c2c2c;
+    border-radius: 12px;
+    padding: 15px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Ocultar el panel por defecto */
+.notification-dropdown-panel.hidden {
+    display: none !important;
+}
+
+/* Encabezado del título */
+.dropdown-title-text {
+    font-size: 16px;
+    font-weight: bold;
+    color: #2c2c2c;
+    margin: 5px 0 0 0;
+}
+
+.notification-icon-title {
+    font-size: 24px;
+    color: #2c2c2c;
+}
+
+/* Contenedor de las tarjetas de notificación */
+.notifications-section {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 5px;
+}
+
+/* Cuadros Negros Interactivos de Notificación */
+.btn-notification-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    color: #ffffff;
+    background-color: #2c2c2c;
+    border: 2px solid #2c2c2c;
+    border-radius: 8px;
+    padding: 12px;
+    text-align: left;
+}
+
+/* Iconos dentro de las notificaciones */
+.btn-notification-item i {
+    font-size: 18px;
+    min-width: 20px;
+    text-align: center;
+}
+
+/* Textos dentro de la notificación */
+.notification-content {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.notification-content strong {
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.notification-content p {
+    font-size: 11px;
+    color: #e0e0e0; /* Color gris claro para texto secundario */
+    line-height: 1.3;
+    margin: 0;
+}
+
+/* Hover interactivo con el color naranja de la marca */
+.btn-notification-item:hover {
+    background-color: #ff9100;
+    border-color: #ff9100;
+}
+
+.btn-notification-item:hover .notification-content p {
+    color: #ffffff; /* El texto secundario se vuelve completamente blanco en hover */
+}

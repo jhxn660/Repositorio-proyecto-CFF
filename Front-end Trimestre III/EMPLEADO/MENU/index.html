@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Módulo Menú</title>
+    <link rel="stylesheet" href="css/style.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+    <header class="header">
+        <div class="logo">
+            <img class="conterimg" src="img/imagen fuego.png" alt="">
+            <h2>Corralejo <span class="letracolor">Fast Food</span></h2>
+        </div>
+
+        <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+
+        <div class="treencabezado">
+            <div class="notification-wrapper">
+                <li class="logo1" id="notification-menu-btn"><i class="fa-solid fa-bell"></i></li>
+                
+                <div class="notification-dropdown-panel hidden" id="notification-dropdown">
+                    <div class="dropdown-header">
+                        <div class="notification-icon-title">
+                            <i class="fa-solid fa-bell"></i>
+                        </div>
+                        <p class="dropdown-title-text">Notificaciones</p>
+                    </div>
+                    
+                    <hr class="dropdown-divider">
+                    
+                    <div class="notifications-section">                        
+                        <a href="/PANEL DE CONFI/index.html" class="btn-notification-item">
+                            <i class="fa-solid fa-user-pen"></i>
+                            <div class="notification-content">
+                                <strong>Mantén tus datos al día</strong>
+                                <p>Actualiza tu perfil para recibir promociones exclusivas.</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="user-profile-wrapper">
+                <li class="logo2" id="user-menu-btn"><i class="fa-regular fa-circle-user"></i></li>
+                
+                <div class="user-dropdown-panel hidden" id="user-dropdown">
+                    <div class="dropdown-header">
+                        <div class="user-avatar">
+                            <i class="fa-solid fa-circle-user"></i>
+                        </div>
+                        <p class="user-email">Karen pinzón</p>
+                    </div>
+                    
+                    <hr class="dropdown-divider">
+                    
+                    <div class="roles-section">
+                        <a href="/ADMIN/INFORMACION/informacion.html" class="role-item">
+                            <i class="fa-solid fa-rotate"></i>
+                            <p>Administrador</p>
+                        </a>
+                        <a href="/EMPLEADO/PEDIDOS/pedidos.html" class="role-item">
+                            <i class="fa-solid fa-rotate"></i>
+                            <p>Empleado</p>
+                        </a>
+                        <a href="/CLIENTE/INFORMACION/index.html" class="role-item role-item">
+                            <i class="fa-solid fa-rotate"></i>
+                            <p>Cliente</p>
+                        </a>
+                    </div>
+                    
+                    <hr class="dropdown-divider">
+                    
+                    <div class="actions-section">
+                        <a href="/PANEL DE CONFI/index.html" class="btn-dropdown btn-config">
+                            <i class="fa-solid fa-gear"></i> Configuración
+                        </a>
+                        <a href="/LOGIN/INICIO/index.html" class="btn-dropdown btn-logout">
+                            <i class="fa-solid fa-arrow-right-from-bracket"></i> Cerrar Sesión
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="mobile-menu" id="mobileMenu">
+        <ul>
+            <li>
+                <a href="/EMPLEADO/PEDIDOS/pedidos.html" style="color: inherit; text-decoration: none; display: block; width: 100%;">
+                    <i class="fa-solid fa-pen-to-square"></i> Gestión de Pedidos
+                </a>
+            </li>
+            <li class="active">
+                <i class="fa-solid fa-utensils"></i> Gestión de Menú
+            </li>
+            <li>
+                <a href="/EMPLEADO/VENTAS/Ventas1.html" style="color: inherit; text-decoration: none; display: block; width: 100%;">
+                    <i class="fa-solid fa-book-open"></i> Gestión de Ventas
+                </a>
+            </li>
+            <li>
+                <a href="pqrs.html" style="color: inherit; text-decoration: none; display: block; width: 100%;">
+                    <i class="fa-regular fa-user"></i> Gestión de PQRS
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <main class="container">
+
+        <aside class="sidebar">
+            <h3>Panel Empleado</h3>
+            <ul>
+                <li>
+                    <a href="/EMPLEADO/PEDIDOS/pedidos.html" class="sidebar-link">
+                        <i class="fa-solid fa-pen-to-square"></i> Gestión de Pedidos
+                    </a>
+                </li>
+                <li class="active">
+                    <a href="/EMPLEADO/MENU/index.html" class="sidebar-link">
+                        <i class="fa-solid fa-utensils"></i> Gestión de Menú
+                    </a>
+                </li>
+                <li>
+                    <a href="/EMPLEADO/VENTAS/Ventas1.html" class="sidebar-link">
+                        <i class="fa-solid fa-book-open"></i> Gestión de Ventas
+                    </a>
+                </li>
+                <li>
+                    <a href="/EMPLEADO/PQRS/pqrs.html" class="sidebar-link">
+                        <i class="fa-regular fa-user"></i> Gestión de PQRS
+                    </a>
+                </li>
+            </ul>
+        </aside>
+
+        <section class="content">
+
+            <h1>Nuestro Menú</h1>
+
+            <div class="cards">
+                <div class="card">
+                    <a href="entradas.html">
+                        <i class="fa-solid fa-utensils"></i>
+                        <h3>Entradas</h3>
+                        <p>Deliciosos aperitivos ideales para empezar tu comida con el mejor sabor y variedad.</p>
+                    </a>
+                </div>
+                <div class="card">
+                    <a href="burger.html">
+                        <i class="fa-solid fa-burger"></i>
+                        <h3>Hamburguesas</h3>
+                        <p>Jugosas hamburguesas preparadas al momento, con ingredientes frescos y mucho sabor.</p>
+                    </a>
+                </div>
+                <div class="card">
+                    <a href="mazorca.html">
+                        <i class="fa-solid fa-bowl-food"></i>
+                        <h3>Mazorcadas</h3>
+                        <p>Mazorcadas llenas de sabor, acompañadas de carnes, salsas y toppings especiales.</p>
+                    </a>
+                </div>
+                <div class="card">
+                    <a href="burrito.html">
+                        <i class="fa-solid fa-pepper-hot"></i>
+                        <h3>Burritos</h3>
+                        <p>Burritos rellenos con ingredientes frescos envueltos en tortillas suaves y deliciosas.</p>
+                    </a>
+                </div>
+            </div>
+
+            <div class="cards">
+                <div class="card">
+                    <a href="tortilla.html">
+                        <i class="fa-solid fa-cookie"></i>
+                        <h3>Tortillas</h3>
+                        <p>Tortillas calientes preparadas, perfectas para acompañar cualquier plato.</p>
+                    </a>
+                </div>
+                <div class="card">
+                    <a href="carne.html">
+                        <i class="fa-solid fa-drumstick-bite"></i>
+                        <h3>Carnes</h3>
+                        <p>Cortes de carne tiernos y sazonados, preparados al punto para disfrutar cada bocado.</p>
+                    </a>
+                </div>
+                <div class="card">
+                    <a href="bebida.html">
+                        <i class="fa-solid fa-glass-water"></i>
+                        <h3>Bebidas</h3>
+                        <p>Refrescantes bebidas para acompañar tus comidas y disfrutar en cualquier momento.</p>
+                    </a>
+                </div>
+                <div class="card">
+                    <a href="adicional.html">
+                        <i class="fa-solid fa-cheese"></i>
+                        <h3>Adicional</h3>
+                        <p>Complementos y extras ideales para personalizar y hacer tu pedido aún más completo.</p>
+                    </a>
+                </div>
+            </div>
+
+        </section>
+
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

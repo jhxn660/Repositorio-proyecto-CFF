@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel Operaciones - Corralejo Fast Food</title>
+    <link rel="stylesheet" href="css/pqrs.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+    <header class="header">
+        <div class="logo">
+            <img class="conterimg" src="img/imagen fuego.png" alt="Logo Fuego">
+            <h2>Corralejo <span class="letracolor">Fast Food</span></h2>
+        </div>
+
+        <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+
+        <div class="treencabezado">
+            <div class="notification-wrapper">
+                <li class="logo1" id="notification-menu-btn"><i class="fa-solid fa-bell"></i></li>
+                
+                <div class="notification-dropdown-panel hidden" id="notification-dropdown">
+                    <div class="dropdown-header">
+                        <div class="notification-icon-title">
+                            <i class="fa-solid fa-bell"></i>
+                        </div>
+                        <p class="dropdown-title-text">Notificaciones</p>
+                    </div>
+                    
+                    <hr class="dropdown-divider">
+                    
+                    <div class="notifications-section">                        
+                        <a href="/PANEL DE CONFI/index.html" class="btn-notification-item">
+                            <i class="fa-solid fa-user-pen"></i>
+                            <div class="notification-content">
+                                <strong>Mantén tus datos al día</strong>
+                                <p>Actualiza tu perfil para recibir promociones exclusivas.</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="user-profile-wrapper">
+                <li class="logo2" id="user-menu-btn"><i class="fa-regular fa-circle-user"></i></li>
+                
+                <div class="user-dropdown-panel hidden" id="user-dropdown">
+                    <div class="dropdown-header">
+                        <div class="user-avatar">
+                            <i class="fa-solid fa-circle-user"></i>
+                        </div>
+                        <p class="user-email">Karen pinzón</p>
+                    </div>
+                    
+                    <hr class="dropdown-divider">
+                    
+                    <div class="roles-section">
+                        <a href="/ADMIN/INFORMACION/informacion.html" class="role-item">
+                            <i class="fa-solid fa-rotate"></i>
+                            <p>Administrador</p>
+                        </a>
+                        <a href="/EMPLEADO/PEDIDOS/pedidos.html" class="role-item">
+                            <i class="fa-solid fa-rotate"></i>
+                            <p>Empleado</p>
+                        </a>
+                        <a href="/CLIENTE/INFORMACION/index.html" class="role-item role-item">
+                            <i class="fa-solid fa-rotate"></i>
+                            <p>Cliente</p>
+                        </a>
+                    </div>
+                    
+                    <hr class="dropdown-divider">
+                    
+                    <div class="actions-section">
+                        <a href="/PANEL DE CONFI/index.html" class="btn-dropdown btn-config">
+                            <i class="fa-solid fa-gear"></i> Configuración
+                        </a>
+                        <a href="/LOGIN/INICIO/index.html" class="btn-dropdown btn-logout">
+                            <i class="fa-solid fa-arrow-right-from-bracket"></i> Cerrar Sesión
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="mobile-menu" id="mobileMenu">
+        <ul>
+            <li><i class="fa-solid fa-pen-to-square"></i> Gestión de Pedidos</li>
+            <li><i class="fa-solid fa-utensils"></i> Menú</li>
+            <li><i class="fa-solid fa-book-open"></i> Gestión de Ventas</li>
+            <li class="active"><i class="fa-regular fa-user"></i> Gestión de PQRS</li>
+        </ul>
+    </div>
+    
+    <div class="main-layout">
+
+        <aside class="sidebar">
+            <h3>Panel Empleado</h3>
+            <ul>
+                <li>
+                    <a href="/EMPLEADO/PEDIDOS/pedidos.html" class="sidebar-link">
+                        <i class="fa-solid fa-pen-to-square"></i> Gestión de Pedidos
+                    </a>
+                </li>
+                <li>
+                    <a href="/EMPLEADO/MENU/index.html" class="sidebar-link">
+                        <i class="fa-solid fa-utensils"></i> Gestión de Menú
+                    </a>
+                </li>
+                <li>
+                    <a href="/EMPLEADO/VENTAS/Ventas1.html" class="sidebar-link">
+                        <i class="fa-solid fa-book-open"></i> Gestión de Ventas
+                    </a>
+                </li>
+                <li class="active">
+                    <a href="/EMPLEADO/PQRS/pqrs.html" class="sidebar-link">
+                        <i class="fa-regular fa-user"></i> Gestión de PQRS
+                    </a>
+                </li>
+            </ul>
+        </aside>
+
+        <main class="main-content">
+            <h2 class="page-heading">Listado de PQRS: Gestión y Respuestas</h2>
+
+            <div class="filters-card">
+                <div class="filter-group-row">
+                    <div class="input-pill-group">
+                        <label>Tipo de solicitud:</label>
+                        <select class="select-pill" id="filtroTipo">
+                            <option value="Todos">Todos</option>
+                            <option value="Queja">Queja</option>
+                            <option value="Reclamo">Reclamo</option>
+                            <option value="Sugerencia">Sugerencia</option>
+                        </select>
+                    </div>
+                    <div class="input-pill-group">
+                        <label>Estado:</label>
+                        <select class="select-pill" id="filtroEstado">
+                            <option value="Todos">Pendiente / Resuelto</option>
+                            <option value="Pendiente">Pendiente</option>
+                            <option value="Resuelto">Resuelto</option>
+                        </select>
+                    </div>
+                    <div class="input-pill-group">
+                        <label>Fecha de creación:</label>
+                        <select class="select-pill" id="filtroFecha">
+                            <option value="Todas">Cualquier fecha</option>
+                            <option value="Ultima semana">Última semana</option>
+                            <option value="Ultimo mes">Último mes</option>
+                            <option value="Año actual">Año actual</option>
+                        </select>
+                    </div>
+                    <div class="btn-filter-container">
+                        <button class="btn-solid-dark btn-actualizar" id="btnActualizarFiltros">Actualizar</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="table-wrapper mt-20">
+                <table class="pqrs-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Tipo de solicitud</th>
+                            <th>Fecha creación<br><small>Fecha respuesta</small></th>
+                            <th>Cliente</th>
+                            <th>Mensaje</th>
+                            <th>Estado</th>
+                            <th>Respuesta</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>#121</strong></td>
+                            <td>Queja</td>
+                            <td>04/03/2026<br><span class="text-muted">-----</span></td>
+                            <td>Juan Perdomo</td>
+                            <td class="text-truncate">Parece que el pedido...</td>
+                            <td><span class="status-badge pending">Pendiente</span></td>
+                            <td><button class="btn-table-action btn-open-modal">Ingresar</button></td>
+                        </tr>
+                        <tr>
+                            <td><strong>#120</strong></td>
+                            <td>Sugerencia</td>
+                            <td>04/03/2026<br>07/03/2026</td>
+                            <td>Sergio Niño</td>
+                            <td class="text-truncate">Las mesas estaban...</td>
+                            <td><span class="status-badge resolved">Resuelto</span></td>
+                            <td><button class="btn-table-action btn-open-modal">Ingresar</button></td>
+                        </tr>
+                        <tr>
+                            <td><strong>#119</strong></td>
+                            <td>Reclamo</td>
+                            <td>02/03/2026<br><span class="text-muted">-----</span></td>
+                            <td>Harold Antonio</td>
+                            <td class="text-truncate">Me dieron un pedido...</td>
+                            <td><span class="status-badge pending">Pendiente</span></td>
+                            <td><button class="btn-table-action btn-open-modal">Ingresar</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+
+    <div class="modal-overlay" id="pqrsModal">
+        <div class="modal-content">
+            
+            <div class="modal-info-capsule">
+                <div class="capsule-item">Petición #121</div>
+                <div class="capsule-item">Estado pendiente</div>
+                <div class="capsule-item">Tipo queja</div>
+            </div>
+
+            <div class="modal-body">
+                <div class="detail-section">
+                    <h4>Nombre del cliente</h4>
+                    <p>Juan Perdomo Acosta</p>
+                </div>
+
+                <div class="detail-section">
+                    <h4>Mensaje cliente</h4>
+                    <p class="client-message-text">
+                        Parece que el pedido que he generado no ha sido el correcto, ya que he pedido la hamburguesa clásica con combo (gaseosa 250ml y papas fritas) y solamente me ha llegado la hamburguesa clásica sin el combo completo, me parece una faltada de respeto ya que dure una hora esperando y no me orecieron un pasabocas o algo por el estilo.
+                    </p>
+                </div>
+
+                <div class="detail-section">
+                    <h4>Fecha de creación</h4>
+                    <p>04/03/2026</p>
+                </div>
+
+                <div class="detail-section mt-15">
+                    <h4>Estado actual de la solicitud generada:</h4>
+                    <select class="select-pill modal-select" id="modalEstadoSelect">
+                        <option value="PENDIENTE">PENDIENTE</option>
+                        <option value="RESUELTO">RESUELTO</option>
+                    </select>
+                </div>
+
+                <div class="detail-section mt-15">
+                    <h4>Digite su respuesta:</h4>
+                    <textarea class="modal-textarea" placeholder="Escriba la respuesta aquí..."></textarea>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button class="btn-outline-pill" id="btnCancelModal">CANCELAR</button>
+                <button class="btn-solid-dark-pill" id="btnEnviarRespuesta">ENVIAR RESPUESTA</button>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
