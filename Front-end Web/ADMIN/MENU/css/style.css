@@ -1,0 +1,869 @@
+@import url('https://fonts.googleapis.com/css2?family=Albert+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap');
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Albert Sans', sans-serif;
+}
+
+/* ========================
+   HEADER
+======================== */
+body{
+    background: #f0f0f0;
+}
+
+.header{
+    background-color: #212121;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    height: 80px;
+    padding: 5px 3%;
+    z-index: 100;
+    position: sticky;
+    top: 0; 
+}
+
+.header .logo{
+    cursor: pointer;
+    margin-right: auto;
+    color: #fff;
+    display: flex;
+    align-items: center;
+}
+
+.conterimg {
+    width: 50px;
+    border-radius: 20px;
+    flex-shrink: 0;
+}
+
+.logo h2 {
+    color: #fff;
+    margin: 10px;
+    font-size: clamp(14px, 2.5vw, 22px);
+    white-space: nowrap;
+}
+
+.letracolor {
+    color: #ff9100;
+}
+
+.nav-logos {
+    display: flex;
+    gap: 24px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.logo1,
+.logo2 {
+    font-size: 26px;
+    color: #fff;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.logo1:hover,
+.logo2:hover {
+    transform: scale(1.2);
+}
+
+a{
+    text-decoration: none;
+    color: #212121;
+}
+
+/* ========================
+   CONTENEDOR ESTRUCTURAL
+======================== */
+.container{
+    display: flex; 
+    min-height: calc(100vh - 80px); 
+    width: 100%; 
+}
+
+/* ========================
+   SIDEBAR (desktop/tablet)
+======================== */
+.sidebar {
+    width: 250px;
+    flex-shrink: 0;
+    background: white;
+    border: 1px solid #d9d9d9;
+    margin: 10px;
+    border-radius: 5px;
+    padding: 20px;
+}
+
+.sidebar h3 {
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+    color: #0b1f3f;
+}
+
+.sidebar ul {
+    list-style: none;
+}
+
+.sidebar li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 25px;
+    cursor: pointer;
+}
+
+/* Estilos base para el enlace interno */
+.sidebar-link {
+    text-decoration: none;
+    color: #666;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: color 0.2s;
+}
+
+/* Cambio de color unificado para hover y estado activo */
+.sidebar li:hover .sidebar-link,
+.sidebar li.active .sidebar-link {
+    color: #ff9100; /* Naranja Corralejo */ 
+}
+
+/* Panel de Contenido Principal */
+.content{
+    flex: 1;
+    padding: 20px 20px 40px 20px;
+    width: 100%;
+}
+
+.content h2{
+    text-align: center;
+    margin-top: 10px;
+    font-size: 28px;
+    color: #212121;
+}
+
+/* BOTONES SUPERIORES */
+.acciones{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin: 25px 0;
+}
+
+.btn{
+    padding: 10px 20px;
+    border: 2px solid #444;
+    border-radius: 15px;
+    background: white;
+    cursor: pointer;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+}
+
+/* ==========================================
+   NUEVOS ESTILOS OPTIMIZADOS PARA COMBOS
+========================================== */
+.modal-combo-grid {
+    display: flex;
+    gap: 20px;
+}
+
+.modal-combo-principal {
+    flex: 1.6;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.modal-combo-resumen {
+    flex: 0.9;
+    background-color: #f5f5f5;
+    border-radius: 8px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+    box-shadow: inset 0 0 5px rgba(0,0,0,0.05);
+}
+
+.modal-combo-resumen h3 {
+    font-size: 14px;
+    color: #444;
+    margin-bottom: 12px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 5px;
+}
+
+.lista-resumen-combo {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    min-height: 100px;
+    max-height: 180px;
+    overflow-y: auto;
+    margin-bottom: 15px;
+}
+
+.item-resumen-linea {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    color: #333;
+}
+
+.subtotal-resumen-linea {
+    display: flex;
+    justify-content: space-between;
+    font-weight: 700;
+    font-size: 14px;
+    color: #212121;
+    border-top: 1px dashed #ccc;
+    padding-top: 10px;
+}
+
+/* Distribución en paralelo: Categorías vs Artículos */
+.combo-bloques-paralelo {
+    display: flex;
+    gap: 15px;
+    width: 100%;
+}
+
+.bloque-combo-izq, .bloque-combo-der {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Contenedores de elementos seleccionados */
+.box-items-seleccionados {
+    background: #f9f9f9;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    min-height: 45px;
+    max-height: 110px;
+    overflow-y: auto;
+    padding: 6px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-top: 5px;
+}
+
+.badge-categoria-combo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #eef2f7;
+    border: 1px solid #cedbe7;
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #334e68;
+}
+
+.item-articulo-combo-temp {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: white;
+    padding: 5px 8px;
+    border-radius: 4px;
+    border: 1px solid #e0e0e0;
+    font-size: 12px;
+}
+
+/* Dropdown de categorías */
+.dropdown-dropdown-combo {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
+
+.dropdown-menu-combo {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: white;
+    width: 100%;
+    box-shadow: 0px 6px 12px rgba(0,0,0,0.15);
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    z-index: 1100;
+    display: none;
+    list-style: none;
+    padding: 5px 0;
+    max-height: 150px;
+    overflow-y: auto;
+}
+
+.dropdown-menu-combo.mostrar {
+    display: block;
+}
+
+.dropdown-menu-combo li {
+    padding: 8px 12px;
+    font-size: 13px;
+    cursor: pointer;
+    color: #333;
+    transition: background 0.2s;
+}
+
+.dropdown-menu-combo li:hover {
+    background-color: #f1f1f1;
+}
+
+@media (max-width: 650px) {
+    .modal-combo-grid, .combo-bloques-paralelo {
+        flex-direction: column;
+    }
+}
+
+.btn i{
+    margin-right: 8px;
+}
+
+.btn:hover{
+    box-shadow: 0 6px 12px rgba(0,0,0,.15);
+}
+
+.btn-rojo{
+    background: #ff9100;
+    color: white;
+    border: none;
+}
+
+.btn-rojo:hover {
+    background: #ff9100;
+}
+
+.btn-search {
+    padding: 6px 15px;
+}
+
+/* ========================
+   MODO ELIMINACIÓN (NUEVO)
+======================== */
+.btn-eliminar-modo {
+    background: #fff;
+    color: #e74c3c;
+    border: 2px solid #e74c3c;
+}
+
+/* Estado activo del botón principal */
+.btn-eliminar-modo.activo {
+    background: #e74c3c;
+    color: #fff;
+    box-shadow: 0 0 10px rgba(231, 76, 60, 0.4);
+}
+
+/* Animación y borde de advertencia en las tarjetas */
+.card-categoria.modo-eliminar-activo {
+    border: 2px dashed #e74c3c;
+    position: relative;
+    animation: shakeEffect 0.3s infinite alternate;
+}
+
+@keyframes shakeEffect {
+    0% { transform: rotate(0.5deg); }
+    100% { transform: rotate(-0.5deg); }
+}
+
+/* Botón flotante de eliminación dentro de la tarjeta */
+.btn-borrar-tarjeta-definitivo {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    background: #e74c3c;
+    color: white;
+    border: none;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    z-index: 10;
+    transition: transform 0.2s;
+}
+
+.btn-borrar-tarjeta-definitivo:hover {
+    transform: scale(1.15);
+    background: #c0392b;
+}
+
+.barrabusq {
+    border: none;
+    outline: none;
+    padding: 4px;
+    font-size: 14px;
+    width: 130px;
+    background: transparent;
+}
+
+/* ========================
+   TARJETAS DE CATEGORÍAS
+======================== */
+.categorias{
+    width: 100%;
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.card-categoria{
+    background: white;
+    border: 1px solid #bbb;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    padding: 20px;
+    min-height: 140px;
+    transition: transform .3s, box-shadow .3s, opacity .3s, display .3s;
+    opacity: 1;
+}
+
+.card-categoria:hover{
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0,0,0,.12);
+}
+
+.icono{
+    width: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 55px;
+    border-right: 3px solid #ff9100;
+    color: #444;
+    padding-right: 20px;
+}
+
+.icono img {
+    width: 65px;
+    height: 65px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.info{
+    width: 25%;
+    padding: 10px 25px;
+    border-right: 3px solid #ff9100;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.info h3{
+    margin-bottom: 10px;
+    font-size: 18px;
+    color: #212121;
+}
+
+.info p {
+    font-size: 13px;
+    color: #666;
+    line-height: 1.4;
+}
+
+.contenido{
+    flex: 1;
+    padding: 10px 25px;
+    border-right: 3px solid #ff9100;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.contenido h3{
+    margin-bottom: 12px;
+    font-size: 16px;
+    color: #212121;
+}
+
+.item{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 6px;
+    font-size: 14px;
+}
+
+.item p:last-child {
+    font-weight: bold;
+    color: #212121;
+}
+
+.acciones-card{
+    width: 180px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    padding-left: 20px;
+}
+
+/* Estados Dinámicos */
+.estado{
+    padding: 8px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 12px;
+    text-align: center;
+    width: 100%;
+    user-select: none;
+    transition: all 0.2s ease;
+}
+
+.disponible{
+    background: #2ecc71;
+    color: #ffffff;
+    border: 2px solid #2ecc71;
+}
+
+.inhabilitado{
+    background: #e74c3c;
+    color: #fff;
+    border: 2px solid #e74c3c;
+}
+
+.botones{
+    display: flex;
+    gap: 10px;
+    width: 100%;
+    justify-content: center;
+}
+
+.botones button{
+    flex: 1;
+    padding: 8px 10px;
+    border: 1px solid #555;
+    border-radius: 6px;
+    background: white;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 13px;
+    transition: 0.2s;
+}
+
+.botones button:hover{
+    background: #ff9100;
+    border-color: #ff9100;
+    color: white;
+}
+
+/* ========================
+   VENTANAS EMERGENTES (MODALES)
+======================== */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    padding: 15px;
+}
+
+.modal-overlay.show {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.modal-content {
+    background: white;
+    width: 100%;
+    max-width: 550px;
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    transform: translateY(-30px);
+    transition: transform 0.3s ease;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.modal-overlay.show .modal-content {
+    transform: translateY(0);
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #f1f1f1;
+    padding-bottom: 15px;
+    margin-bottom: 20px;
+}
+
+.modal-header h2 {
+    font-size: 20px;
+    color: #212121;
+}
+
+.btn-close {
+    background: none;
+    border: none;
+    font-size: 28px;
+    cursor: pointer;
+    color: #888;
+}
+
+.btn-close:hover {
+    color: #ff9100;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 16px;
+}
+
+.form-row {
+    display: flex;
+    gap: 15px;
+}
+
+.form-row .form-group {
+    flex: 1;
+}
+
+.form-group label, .seccion-titulo {
+    font-size: 13px;
+    font-weight: 600;
+    color: #444;
+}
+
+.seccion-titulo {
+    display: block;
+    margin-bottom: 8px;
+    border-top: 1px solid #eee;
+    padding-top: 15px;
+}
+
+.form-group input[type="text"],
+.form-group textarea,
+.form-group input[type="file"] {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+    outline: none;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: #ff9100;
+}
+
+/* Listas interactivas en formularios */
+.inputs-agregar-producto {
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.inputs-agregar-producto .form-group {
+    margin-bottom: 0;
+}
+
+.btn-agregar-lista {
+    background: #212121;
+    color: white;
+    border: none;
+    height: 38px;
+    width: 40px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.2s;
+}
+
+.btn-agregar-lista:hover {
+    background: #ff9100;
+}
+
+.lista-productos-temporal {
+    background: #f9f9f9;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    max-height: 120px;
+    overflow-y: auto;
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.item-producto-temp {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: white;
+    padding: 6px 12px;
+    border-radius: 4px;
+    border: 1px solid #e0e0e0;
+    font-size: 13px;
+    gap: 8px;
+}
+
+/* Inputs embebidos dentro de la lista de edición */
+.input-tabla-edit {
+    border: 1px dashed #ccc !important;
+    padding: 4px 8px !important;
+    font-size: 13px !important;
+    border-radius: 4px;
+    width: 100%;
+}
+
+.input-tabla-edit:focus {
+    border-color: #ff9100 !important;
+    background: #fffcf9;
+}
+
+.btn-eliminar-temp {
+    background: none;
+    border: none;
+    color: #EF4444;
+    cursor: pointer;
+    font-size: 14px;
+    flex-shrink: 0;
+    padding: 0 4px;
+}
+
+.btn-eliminar-temp:hover {
+    color: #DC2626;
+}
+
+.modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-top: 20px;
+    border-top: 1px solid #f1f1f1;
+    padding-top: 15px;
+}
+
+/* ========================
+   MEDIA QUERIES (RESPONSIVE)
+======================== */
+@media (max-width: 1024px) {
+    .card-categoria {
+        flex-wrap: wrap;
+    }
+    .info {
+        width: 40%;
+        border-right: none;
+    }
+    .contenido {
+        width: 100%;
+        order: 3;
+        border-right: none;
+        border-top: 2px dashed #ff9100;
+        padding: 15px 0 0 0;
+        margin-top: 15px;
+    }
+    .acciones-card {
+        width: 35%;
+        margin-left: auto;
+    }
+}
+
+@media (max-width: 850px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: calc(100% - 40px);
+        margin: 20px;
+        height: auto;
+        position: relative;
+        top: 0;
+    }
+
+    .sidebar ul {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+
+    .sidebar li {
+        margin-bottom: 0;
+    }
+
+    .card-categoria {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 20px;
+    }
+
+    .icono {
+        border-right: none;
+        border-bottom: 3px solid #ff9100;
+        padding-right: 0;
+        padding-bottom: 10px;
+        width: 100%;
+    }
+
+    .info {
+        width: 100%;
+        padding: 15px 0;
+        border-right: none;
+    }
+
+    .contenido {
+        width: 100%;
+        padding: 15px 0;
+        border-right: none;
+        border-top: 3px solid #ff9100;
+    }
+
+    .acciones-card {
+        width: 100%;
+        padding-left: 0;
+        margin-left: 0;
+        border-top: 2px dashed #ff9100;
+        padding-top: 15px;
+    }
+    
+    .form-row {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .inputs-agregar-producto {
+        flex-direction: row;
+        gap: 8px;
+    }
+}
