@@ -1,0 +1,55 @@
+# Adición de la función Hash
+
+DELIMITER //
+
+CREATE FUNCTION generarHash(pTexto VARCHAR(255), pSalt VARCHAR(32)) 
+RETURNS CHAR(64) 
+DETERMINISTIC
+
+BEGIN
+    # Se usa SHA256 para la cadena hexadecimal de exactamente 64 caracteres.
+    RETURN SHA2(CONCAT(pTexto, pSalt), 256);
+END //
+
+DELIMITER ;
+
+# Procedimiento de registrarCliente
+
+DELIMITER //
+
+CREATE PROCEDURE registrarCliente(IN p_nombre VARCHAR(100), IN p_correo VARCHAR(100), IN p_password VARCHAR(255), IN p_telefono VARCHAR(20))
+
+BEGIN
+    DECLARE v_salt VARCHAR(32);
+
+    # String aleatorio de 32 caracteres para encriptar
+    SET v_salt = MD5(RAND());
+    
+    INSERT INTO usuarios (id_rol, usuario_nombre, usuario_correo, usuario_contraseña, usuario_salt, usuario_telefono, usuario_estado
+    ) VALUES (3, # 3 Es el id_rol de 'Cliente'
+    p_nombre, p_correo, generarHash(p_password, v_salt), v_salt, p_telefono, 'ACTIVO'
+    );
+END //
+
+DELIMITER ;
+
+# Procedimiento de registrarEmpleado
+
+DELIMITER //
+
+CREATE PROCEDURE registrarEmpleado(IN p_id_rol INT, IN p_nombre VARCHAR(100), IN p_correo VARCHAR(100), IN p_password VARCHAR(255), IN p_telefono VARCHAR(20), IN p_empleado_rol Varchar(30))
+
+BEGIN
+    DECLARE v_salt VARCHAR(32);
+    SET v_salt = MD5(RAND());
+    
+    INSERT INTO usuarios (id_rol, usuario_nombre, usuario_correo, 
+		usuario_contraseña, usuario_salt, 
+        usuario_telefono, usuario_estado, empleado_rol
+    ) VALUES (p_id_rol, p_nombre, p_correo, 
+        generarHash(p_password, v_salt), 
+        v_salt, p_telefono, 'ACTIVO', p_empleado_rol
+    );
+END //
+
+DELIMITER ;

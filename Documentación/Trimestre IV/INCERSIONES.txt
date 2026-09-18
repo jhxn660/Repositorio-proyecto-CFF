@@ -1,0 +1,322 @@
+INSERT INTO `roles` (`id_rol`, `rol_nombre`) VALUES 
+(1, 'Administrador'),
+(2, 'Empleado'),
+(3, 'Cliente'),
+(4, 'Anonimo');
+
+INSERT INTO `categorias` (`id_categoria`, `categoria_nombre`, `categoria_tipo`) VALUES 
+(1, 'Hamburguesas', 'PRODUCTO'),
+(2, 'Bebidas', 'PRODUCTO'),
+(3, 'Acompañamientos', 'PRODUCTO'),
+(4, 'Carnes y Proteínas', 'INSUMO'),
+(5, 'Vegetales', 'INSUMO'),
+(6, 'Panadería', 'INSUMO'),
+(7, 'Salsas y Condimentos', 'INSUMO'),
+(8, 'Empaques y Desechables', 'INSUMO');
+
+-- =====================================================================
+-- 5. REGISTRO DE USUARIOS (EXCEPTUADO: PROCEDIMIENTOS ALMACENADOS)
+-- =====================================================================
+
+-- Admin (Rol 1)
+CALL registrarEmpleado(1, 'Carlos Andrés Mendoza', 'admin@corralejo.com', 'AdminPass2026*', '3001234567', NULL);
+
+-- Empleados (Rol 2)
+CALL registrarEmpleado(2, 'Laura Sofia Gómez', 'laura.gomez@corralejo.com', 'EmpPass2026*', '3109876543', 'Gerente de Tienda');
+CALL registrarEmpleado(2, 'Mateo Villa', 'mateo.villa@corralejo.com', 'EmpPass2026*', '3112223344', 'Cajero');
+CALL registrarEmpleado(2, 'Andrés Felipe Rios', 'andres.rios@corralejo.com', 'EmpPass2026*', '3123334455', 'Jefe de Cocina');
+CALL registrarEmpleado(2, 'Camila Torres', 'camila.torres@corralejo.com', 'EmpPass2026*', '3134445566', 'Auxiliar de Cocina');
+
+-- Clientes Registrados (Rol 3)
+CALL registrarCliente('Juan Pérez', 'juan.perez@email.com', 'ClientPass1*', '3001112233');
+CALL registrarCliente('Maria Rodríguez', 'maria.rodriguez@email.com', 'ClientPass2*', '3002223344');
+CALL registrarCliente('Pedro Gómez', 'pedro.gomez@email.com', 'ClientPass3*', '3003334455');
+CALL registrarCliente('Ana Martinez', 'ana.martinez@email.com', 'ClientPass4*', '3004445566');
+CALL registrarCliente('Luis Hernandez', 'luis.hernandez@email.com', 'ClientPass5*', '3005556677');
+CALL registrarCliente('Sofia Lopez', 'sofia.lopez@email.com', 'ClientPass6*', '3006667788');
+CALL registrarCliente('Diego Diaz', 'diego.diaz@email.com', 'ClientPass7*', '3007778899');
+CALL registrarCliente('Paula Sanchez', 'paula.sanchez@email.com', 'ClientPass8*', '3008889900');
+CALL registrarCliente('Javier Romero', 'javier.romero@email.com', 'ClientPass9*', '3011112233');
+CALL registrarCliente('Daniela Alvarez', 'daniela.alvarez@email.com', 'ClientPass10*', '3012223344');
+CALL registrarCliente('Gabriel Torres', 'gabriel.torres@email.com', 'ClientPass11*', '3013334455');
+CALL registrarCliente('Valentina Ruiz', 'valentina.ruiz@email.com', 'ClientPass12*', '3014445566');
+CALL registrarCliente('Santiago Ramirez', 'santiago.ramirez@email.com', 'ClientPass13*', '3015556677');
+CALL registrarCliente('Camila Flores', 'camila.flores@email.com', 'ClientPass14*', '3016667788');
+CALL registrarCliente('Alejandro Acosta', 'alejandro.acosta@email.com', 'ClientPass15*', '3017778899');
+CALL registrarCliente('Mariana Benitez', 'mariana.benitez@email.com', 'ClientPass16*', '3018889900');
+CALL registrarCliente('Fernando Medina', 'fernando.medina@email.com', 'ClientPass17*', '3021112233');
+CALL registrarCliente('Natalia Herrera', 'natalia.herrera@email.com', 'ClientPass18*', '3022223344');
+CALL registrarCliente('Sebastian Vargas', 'sebastian.vargas@email.com', 'ClientPass19*', '3023334455');
+CALL registrarCliente('Andrea Castro', 'andrea.castro@email.com', 'ClientPass20*', '3024445566');
+
+-- Usuarios Anónimos QR (Rol 4)
+CALL registrarCliente('Anonimo QR 01', NULL, 'AnonPass*', NULL);
+CALL registrarCliente('Anonimo QR 02', NULL, 'AnonPass*', NULL);
+CALL registrarCliente('Anonimo QR 03', NULL, 'AnonPass*', NULL);
+CALL registrarCliente('Anonimo QR 04', NULL, 'AnonPass*', NULL);
+CALL registrarCliente('Anonimo QR 05', NULL, 'AnonPass*', NULL);
+
+-- Actualizar rol para anónimos a ID 4
+UPDATE `usuarios` SET id_rol = 4 WHERE id_usuario BETWEEN 26 AND 30;
+
+-- =====================================================================
+-- 6. DATOS OPERATIVOS (CON IDENTIFICADORES EXPLÍCITOS)
+-- =====================================================================
+
+INSERT INTO `metas_indicadores` (`id_meta`, `id_usuario`, `meta_nombre`, `meta_periodo`, `meta_valor_esperado`) VALUES
+(1, 1, 'Ventas Mensuales Totales', '2026-01', 15000000.00),
+(2, 1, 'Ventas Mensuales Totales', '2026-02', 16000000.00),
+(3, 1, 'Ventas Mensuales Totales', '2026-03', 17000000.00),
+(4, 1, 'Ventas Mensuales Totales', '2026-04', 16500000.00),
+(5, 1, 'Ventas Mensuales Totales', '2026-05', 18000000.00),
+(6, 1, 'Ventas Mensuales Totales', '2026-06', 20000000.00),
+(7, 1, 'Ventas Mensuales Totales', '2026-07', 19000000.00),
+(8, 1, 'Ventas Mensuales Totales', '2026-08', 21000000.00),
+(9, 1, 'Ventas Mensuales Totales', '2026-09', 22000000.00),
+(10, 1, 'Ventas Mensuales Totales', '2026-10', 20000000.00),
+(11, 1, 'Ventas Mensuales Totales', '2026-11', 23000000.00),
+(12, 1, 'Ventas Mensuales Totales', '2026-12', 30000000.00),
+(13, 1, 'Tiempo Promedio de Entrega (Minutos)', '2026-Q1', 30.00),
+(14, 1, 'Tiempo Promedio de Entrega (Minutos)', '2026-Q2', 25.00),
+(15, 1, 'Tiempo Promedio de Entrega (Minutos)', '2026-Q3', 25.00),
+(16, 1, 'Tiempo Promedio de Entrega (Minutos)', '2026-Q4', 20.00),
+(17, 1, 'Satisfacción del Cliente (%)', '2026-Q1', 85.00),
+(18, 1, 'Satisfacción del Cliente (%)', '2026-Q2', 88.00),
+(19, 1, 'Satisfacción del Cliente (%)', '2026-Q3', 90.00),
+(20, 1, 'Satisfacción del Cliente (%)', '2026-Q4', 95.00),
+(21, 1, 'Reducción Desperdicio Insumos (%)', '2026-Q1', 5.00),
+(22, 1, 'Reducción Desperdicio Insumos (%)', '2026-Q2', 4.00),
+(23, 1, 'Reducción Desperdicio Insumos (%)', '2026-Q3', 3.00),
+(24, 1, 'Reducción Desperdicio Insumos (%)', '2026-Q4', 2.00),
+(25, 1, 'Clientes Nuevos Registrados', '2026-08', 100.00),
+(26, 1, 'Clientes Nuevos Registrados', '2026-09', 120.00),
+(27, 1, 'Tasa de Retención de Clientes (%)', '2026-Q3', 70.00),
+(28, 1, 'Venta Promedio por Ticket (COP)', '2026-09', 25000.00),
+(29, 1, 'Resolución de PQRS en < 24h (%)', '2026-09', 95.00),
+(30, 1, 'Crecimiento Pedidos por QR (%)', '2026-09', 15.00);
+
+INSERT INTO `productos` (`id_producto`, `id_categoria`, `id_usuario`, `producto_nombre`, `producto_descripcion`, `producto_precio`) VALUES
+(1, 1, 1, 'Hamburguesa Corralejo Especial', 'Carne 150g, queso cheddar, tocineta, lechuga, tomate y salsa de la casa.', 18000.00),
+(2, 1, 1, 'Hamburguesa Doble Carne', 'Doble carne 150g, doble queso cheddar, tocineta y salsa BBQ.', 24000.00),
+(3, 1, 1, 'Hamburguesa Crispy Chicken', 'Pechuga apanada, queso mozzarella, lechuga y mayonesa de ajo.', 19000.00),
+(4, 1, 1, 'Hamburguesa BBQ Bacon', 'Carne 150g, cebolla caramelizada, tocineta y abundante salsa BBQ.', 21000.00),
+(5, 1, 1, 'Hamburguesa Mexicana', 'Carne 150g, queso mozzarella, jalapeños, pico de gallo y salsa picante.', 20000.00),
+(6, 1, 1, 'Hamburguesa Sencilla', 'Carne 150g, queso cheddar, lechuga y tomate.', 14000.00),
+(7, 1, 1, 'Hamburguesa hawaiana', 'Carne 150g, piña caramelizada, jamón y queso mozzarella.', 19500.00),
+(8, 1, 1, 'Hamburguesa Trifásica', 'Carne de res, pechuga de pollo, tocineta y triple queso.', 27000.00),
+(9, 1, 1, 'Hamburguesa Vegetariana', 'Lenteja y garbanzo, queso mozzarella, vegetates frescos.', 16000.00),
+(10, 1, 1, 'Hamburguesa Monster', 'Triple carne, triple queso, tocineta, huevo y aros de cebolla.', 32000.00),
+(11, 2, 1, 'Gaseosa Coca-Cola 400ml', 'Bebida gaseosa refrescante en botella personal.', 4500.00),
+(12, 2, 1, 'Gaseosa Sprite 400ml', 'Bebida gaseosa sabor lima-limón.', 4500.00),
+(13, 2, 1, 'Gaseosa Cuatro 400ml', 'Bebida gaseosa sabor toronja.', 4500.00),
+(14, 2, 1, 'Jugo Natural en Agua', 'Sabor a mora, lulo, mango o maracuyá.', 5000.00),
+(15, 2, 1, 'Jugo Natural en Leche', 'Sabor a mora, lulo, mango o maracuyá.', 6500.00),
+(16, 2, 1, 'Cerveza Club Colombia 330ml', 'Cerveza dorada premium.', 7000.00),
+(17, 2, 1, 'Cerveza Corona 355ml', 'Cerveza clara importada.', 9000.00),
+(18, 2, 1, 'Agua Mineral 500ml', 'Agua sin gas embotellada.', 3000.00),
+(19, 2, 1, 'Limonada Cerezada', 'Limonada natural con syrup de cereza.', 7500.00),
+(20, 2, 1, 'Limonada de Coco', 'Limonada cremosa con crema de coco.', 8500.00),
+(21, 3, 1, 'Papas Francesas Porción', 'Papas crocantes sazonadas con sal fina 200g.', 6000.00),
+(22, 3, 1, 'Papas en Casco Porción', 'Papas rústicas sazonadas con finas hierbas 200g.', 7000.00),
+(23, 3, 1, 'Anillos de Cebolla (8stk)', 'Aros de cebolla apanados y crujientes.', 8000.00),
+(24, 3, 1, 'Papas Callejeras', 'Papas francesas con queso derretido y tocineta picada.', 12000.00),
+(25, 3, 1, 'Nuggets de Pollo (6stk)', 'Trozos de pechuga apanada acompañados de salsa BBQ.', 9500.00),
+(26, 3, 1, 'Muzzarella Sticks (5stk)', 'Deditos de queso mozzarella empanizados.', 11000.00),
+(27, 3, 1, 'Nachos con Queso y Jalapeño', 'Totopos de maíz con salsa cheddar y jalapeños.', 10000.00),
+(28, 3, 1, 'Papas Mixtas', 'Combinación de papas francesas y cascos con queso.', 13000.00),
+(29, 3, 1, 'Mazorca Desgranada', 'Maíz tierno con queso, tocineta y ripio de papa.', 12500.00),
+(30, 3, 1, 'Choripán Corralejo', 'Chorizo artesanal en pan perro con chimichurri.', 11500.00);
+
+INSERT INTO `insumos` (`id_insumo`, `id_categoria`, `id_usuario`, `insumo_nombre`, `insumo_stock`, `insumo_medida`, `insumo_costo`) VALUES
+(1, 4, 1, 'Carne de Res', 150, 'Unidades', 3500.00),
+(2, 4, 1, 'Pechuga de Pollo', 100, 'Unidades', 3000.00),
+(3, 4, 1, 'Tocineta Ahumada', 25, 'Kilogramos', 22000.00),
+(4, 4, 1, 'Carne Mixta (Res/Cerdo)', 80, 'Unidades', 3200.00),
+(5, 4, 1, 'Salchicha Ranchera', 120, 'Unidades', 1500.00),
+(6, 4, 1, 'Queso Cheddar Tajado', 15, 'Kilogramos', 28000.00),
+(7, 4, 1, 'Queso Mozzarella Tajado', 12, 'Kilogramos', 25000.00),
+(8, 5, 1, 'Lechuga Crespa', 30, 'Kilogramos', 4000.00),
+(9, 5, 1, 'Tomate Chonto', 40, 'Kilogramos', 3500.00),
+(10, 5, 1, 'Cebolla Cabezona', 35, 'Kilogramos', 2800.00),
+(11, 5, 1, 'Cebolla Caramelizada', 10, 'Kilogramos', 6000.00),
+(12, 5, 1, 'Pepinillos Dulces', 8, 'Kilogramos', 12000.00),
+(13, 5, 1, 'Jalapeños en Rodajas', 5, 'Kilogramos', 15000.00),
+(14, 6, 1, 'Pan Artesanal Brioche', 300, 'Unidades', 1200.00),
+(15, 6, 1, 'Pan Ajonjolí Clásico', 200, 'Unidades', 900.00),
+(16, 6, 1, 'Pan Perro Caliente', 150, 'Unidades', 800.00),
+(17, 7, 1, 'Salsa de Casa Corralejo', 20, 'Litros', 8500.00),
+(18, 7, 1, 'Salsa BBQ', 15, 'Litros', 9000.00),
+(19, 7, 1, 'Salsa de Mostaza Miel', 10, 'Litros', 9500.00),
+(20, 7, 1, 'Mayonesa Ajo', 12, 'Litros', 8000.00),
+(21, 7, 1, 'Salsa Ketchup', 25, 'Litros', 6500.00),
+(22, 3, 1, 'Papa Pastusa Prefrita', 100, 'Kilogramos', 5500.00),
+(23, 3, 1, 'Papa En Cascos', 60, 'Kilogramos', 6500.00),
+(24, 3, 1, 'Anillos de Cebolla', 40, 'Kilogramos', 8000.00),
+(25, 8, 1, 'Caja Hamburguesa Cartón', 500, 'Unidades', 450.00),
+(26, 8, 1, 'Vaso Plástico 16oz', 600, 'Unidades', 250.00),
+(27, 8, 1, 'Papel Antigrasa', 100, 'Unidades', 80.00),
+(28, 8, 1, 'Bolsa Delivery Kraft', 400, 'Unidades', 350.00),
+(29, 8, 1, 'Servilletas Paquete x100', 50, 'Unidades', 2200.00),
+(30, 8, 1, 'Pitillos Biodegradables', 500, 'Unidades', 50.00);
+
+INSERT INTO `producto_insumo` (`id_producto_insumo`, `id_producto`, `id_insumo`, `cantidad_requerida`) VALUES
+(1, 1, 1, 1.00), (2, 1, 3, 0.05), (3, 1, 6, 1.00), (4, 1, 8, 0.03), (5, 1, 9, 0.03), 
+(6, 1, 14, 1.00), (7, 1, 17, 0.02), (8, 2, 1, 2.00), (9, 2, 6, 2.00), (10, 2, 3, 0.08), 
+(11, 2, 18, 0.03), (12, 3, 2, 1.00), (13, 3, 7, 1.00), (14, 3, 20, 0.02), (15, 4, 1, 1.00), 
+(16, 4, 11, 0.04), (17, 4, 18, 0.03), (18, 5, 1, 1.00), (19, 5, 13, 0.03), (20, 6, 1, 1.00), 
+(21, 6, 15, 1.00), (22, 7, 1, 1.00), (23, 7, 7, 1.00), (24, 8, 1, 1.00), (25, 8, 2, 1.00), 
+(26, 10, 1, 3.00), (27, 21, 22, 0.20), (28, 22, 23, 0.20), (29, 23, 24, 0.20), (30, 24, 22, 0.20);
+
+-- =====================================================================
+-- 7. TRANSACCIONALIDAD (PEDIDOS, VENTAS Y DETALLES)
+-- =====================================================================
+
+INSERT INTO `pedidos` (`id_pedido`, `id_usuario`, `pedido_fecha`, `pedido_estado`, `pedido_direccion`, `pedido_total`) VALUES
+(1, 6, '2026-09-01 12:30:00', 'ENTREGADO', 'Calle 45 # 12-34', 22500.00),
+(2, 7, '2026-09-01 13:15:00', 'ENTREGADO', 'Carrera 10 # 5-12', 28500.00),
+(3, 8, '2026-09-01 14:00:00', 'ENTREGADO', 'Avenida 19 # 100-20', 18000.00),
+(4, 9, '2026-09-02 18:20:00', 'ENTREGADO', 'Calle 100 # 15-40', 33000.00),
+(5, 10, '2026-09-02 19:10:00', 'ENTREGADO', 'Carrera 7 # 45-10', 24000.00),
+(6, 11, '2026-09-02 20:00:00', 'ENTREGADO', 'Diagonal 40 # 2-18', 19000.00),
+(7, 12, '2026-09-03 12:10:00', 'ENTREGADO', 'Calle 80 # 11-22', 21000.00),
+(8, 13, '2026-09-03 13:40:00', 'ENTREGADO', 'Carrera 15 # 85-30', 27000.00),
+(9, 14, '2026-09-03 19:30:00', 'ENTREGADO', 'Transversal 23 # 4-50', 16000.00),
+(10, 15, '2026-09-04 20:15:00', 'ENTREGADO', 'Calle 53 # 7-19', 32000.00),
+(11, 16, '2026-09-04 21:00:00', 'ENTREGADO', 'Carrera 68 # 26-48', 14000.00),
+(12, 17, '2026-09-05 13:00:00', 'ENTREGADO', 'Calle 127 # 19-30', 25500.00),
+(13, 18, '2026-09-05 14:20:00', 'ENTREGADO', 'Carrera 50 # 80-12', 36500.00),
+(14, 19, '2026-09-05 18:45:00', 'ENTREGADO', 'Calle 63 # 30-00', 19500.00),
+(15, 20, '2026-09-06 12:00:00', 'ENTREGADO', 'Carrera 9 # 72-11', 27000.00),
+(16, 21, '2026-09-06 13:30:00', 'ENTREGADO', 'Calle 116 # 45-20', 16000.00),
+(17, 22, '2026-09-06 19:10:00', 'ENTREGADO', 'Carrera 30 # 18-50', 32000.00),
+(18, 23, '2026-09-07 20:00:00', 'ENTREGADO', 'Calle 72 # 10-34', 22500.00),
+(19, 24, '2026-09-07 21:15:00', 'ENTREGADO', 'Carrera 13 # 54-21', 30000.00),
+(20, 25, '2026-09-08 12:45:00', 'ENTREGADO', 'Calle 26 # 68-90', 18000.00),
+(21, 26, '2026-09-08 13:50:00', 'ENTREGADO', 'En Local - Mesa 01', 22500.00),
+(22, 27, '2026-09-08 18:30:00', 'ENTREGADO', 'En Local - Mesa 02', 28500.00),
+(23, 28, '2026-09-09 19:20:00', 'ENTREGADO', 'En Local - Mesa 03', 18000.00),
+(24, 29, '2026-09-09 20:10:00', 'ENTREGADO', 'En Local - Mesa 04', 33000.00),
+(25, 30, '2026-09-09 21:00:00', 'ENTREGADO', 'En Local - Mesa 05', 24000.00),
+(26, 6, '2026-09-10 12:20:00', 'ENTREGADO', 'Calle 45 # 12-34', 19000.00),
+(27, 7, '2026-09-10 13:40:00', 'ENTREGADO', 'Carrera 10 # 5-12', 21000.00),
+(28, 8, '2026-09-10 19:50:00', 'ENTREGADO', 'Avenida 19 # 100-20', 27000.00),
+(29, 9, '2026-09-11 20:30:00', 'ENTREGADO', 'Calle 100 # 15-40', 16000.00),
+(30, 10, '2026-09-11 21:15:00', 'ENTREGADO', 'Carrera 7 # 45-10', 32000.00);
+
+INSERT INTO `pedido_detalle` (`id_pedido_detalle`, `id_pedido`, `id_producto`, `cantidad`, `precio_unitario`) VALUES
+(1, 1, 1, 1, 18000.00), (2, 1, 11, 1, 4500.00), (3, 2, 2, 1, 24000.00), (4, 2, 11, 1, 4500.00), (5, 3, 1, 1, 18000.00),
+(6, 4, 8, 1, 27000.00), (7, 4, 21, 1, 6000.00), (8, 5, 2, 1, 24000.00), (9, 6, 3, 1, 19000.00), (10, 7, 4, 1, 21000.00),
+(11, 8, 8, 1, 27000.00), (12, 9, 9, 1, 16000.00), (13, 10, 10, 1, 32000.00), (14, 11, 6, 1, 14000.00), (15, 12, 1, 1, 18000.00),
+(16, 12, 19, 1, 7500.00), (17, 13, 8, 1, 27000.00), (18, 13, 25, 1, 9500.00), (19, 14, 7, 1, 19500.00), (20, 15, 8, 1, 27000.00),
+(21, 16, 9, 1, 16000.00), (22, 17, 10, 1, 32000.00), (23, 18, 1, 1, 18000.00), (24, 18, 11, 1, 4500.00), (25, 19, 5, 1, 20000.00),
+(26, 19, 27, 1, 10000.00), (27, 20, 1, 1, 18000.00), (28, 21, 1, 1, 18000.00), (29, 21, 11, 1, 4500.00), (30, 22, 2, 1, 24000.00);
+
+INSERT INTO `ventas` (`id_venta`, `venta_fecha`, `venta_total`, `ticket_qr`) VALUES
+(1, '2026-09-01 12:35:00', 22500.00, 'qr_v1.png'),
+(2, '2026-09-01 13:20:00', 28500.00, 'qr_v2.png'),
+(3, '2026-09-01 14:05:00', 18000.00, 'qr_v3.png'),
+(4, '2026-09-02 18:25:00', 33000.00, 'qr_v4.png'),
+(5, '2026-09-02 19:15:00', 24000.00, 'qr_v5.png'),
+(6, '2026-09-02 20:05:00', 19000.00, 'qr_v6.png'),
+(7, '2026-09-03 12:15:00', 21000.00, 'qr_v7.png'),
+(8, '2026-09-03 13:45:00', 27000.00, 'qr_v8.png'),
+(9, '2026-09-03 19:35:00', 16000.00, 'qr_v9.png'),
+(10, '2026-09-04 20:20:00', 32000.00, 'qr_v10.png'),
+(11, '2026-09-04 21:05:00', 14000.00, 'qr_v11.png'),
+(12, '2026-09-05 13:05:00', 25500.00, 'qr_v12.png'),
+(13, '2026-09-05 14:25:00', 36500.00, 'qr_v13.png'),
+(14, '2026-09-05 18:50:00', 19500.00, 'qr_v14.png'),
+(15, '2026-09-06 12:05:00', 27000.00, 'qr_v15.png'),
+(16, '2026-09-06 13:35:00', 16000.00, 'qr_v16.png'),
+(17, '2026-09-06 19:15:00', 32000.00, 'qr_v17.png'),
+(18, '2026-09-07 20:05:00', 22500.00, 'qr_v18.png'),
+(19, '2026-09-07 21:20:00', 30000.00, 'qr_v19.png'),
+(20, '2026-09-08 12:50:00', 18000.00, 'qr_v20.png'),
+(21, '2026-09-08 13:55:00', 22500.00, 'qr_v21.png'),
+(22, '2026-09-08 18:35:00', 28500.00, 'qr_v22.png'),
+(23, '2026-09-09 19:25:00', 18000.00, 'qr_v23.png'),
+(24, '2026-09-09 20:15:00', 33000.00, 'qr_v24.png'),
+(25, '2026-09-09 21:05:00', 24000.00, 'qr_v25.png'),
+(26, '2026-09-10 12:25:00', 19000.00, 'qr_v26.png'),
+(27, '2026-09-10 13:45:00', 21000.00, 'qr_v27.png'),
+(28, '2026-09-10 19:55:00', 27000.00, 'qr_v28.png'),
+(29, '2026-09-11 20:35:00', 16000.00, 'qr_v29.png'),
+(30, '2026-09-11 21:20:00', 32000.00, 'qr_v30.png');
+
+INSERT INTO `venta_detalle` (`id_venta_detalle`, `id_pedido`, `id_venta`) VALUES
+(1, 1, 1), (2, 2, 2), (3, 3, 3), (4, 4, 4), (5, 5, 5), (6, 6, 6), (7, 7, 7), (8, 8, 8), (9, 9, 9), (10, 10, 10),
+(11, 11, 11), (12, 12, 12), (13, 13, 13), (14, 14, 14), (15, 15, 15), (16, 16, 16), (17, 17, 17), (18, 18, 18), (19, 19, 19), (20, 20, 20),
+(21, 21, 21), (22, 22, 22), (23, 23, 23), (24, 24, 24), (25, 25, 25), (26, 26, 26), (27, 27, 27), (28, 28, 28), (29, 29, 29), (30, 30, 30);
+
+INSERT INTO `liquidacion_insumo` (`id_insumo_liquidacion`, `id_insumo`, `id_venta`) VALUES
+(1, 1, 1), (2, 3, 1), (3, 6, 1), (4, 14, 1), (5, 1, 2), (6, 6, 2), (7, 18, 2), (8, 1, 3), (9, 1, 4), (10, 2, 4),
+(11, 1, 5), (12, 6, 5), (13, 2, 6), (14, 7, 6), (15, 1, 7), (16, 11, 7), (17, 1, 8), (18, 2, 8), (19, 8, 9), (20, 1, 10),
+(21, 15, 11), (22, 1, 12), (23, 17, 12), (24, 1, 13), (25, 2, 13), (26, 1, 14), (27, 7, 14), (28, 1, 15), (29, 2, 15), (30, 8, 16);
+
+-- =====================================================================
+-- 8. COMENTARIOS Y PQRS (CON IDENTIFICADORES EXPLÍCITOS)
+-- =====================================================================
+
+INSERT INTO `comentarios` (`id_comentario`, `id_usuario`, `ticket_qr`, `comentario_fecha`, `comentario_descripcion`, `comentario_valoracion`, `comentario_respuesta`) VALUES
+(1, 6, 'qr_v1.png', '2026-09-01 13:00:00', NULL, 10, '¡Muchas gracias Juan! Nos alegra que disfrutes nuestras especialidades.'),
+(2, 7, 'qr_v2.png', '2026-09-01 14:00:00', NULL, 7, 'Gracias Maria, tendremos en cuenta tu observación sobre la temperatura de las bebidas.'),
+(3, 8, 'qr_v3.png', '2026-09-01 15:00:00', NULL, 2, 'Lamentamos mucho la experiencia Pedro, nos pondremos en contacto contigo.'),
+(4, 26, 'qr_v4.png', '2026-09-02 18:40:00', NULL, 9, '¡Nos alegra que el sistema QR te fuera de utilidad!'),
+(5, 9, 'qr_v5.png', '2026-09-02 19:30:00', NULL, 5, 'Hola Ana, reforzaremos los controles de cocción en plancha.'),
+(6, 10, 'qr_v6.png', '2026-09-02 20:15:00', NULL, 10, '¡Gracias Luis! Son de las favoritas de la casa.'),
+(7, 27, 'qr_v7.png', '2026-09-03 12:30:00', 'Todo muy rico, el ambiente del restaurante es genial.', 9, NULL),
+(8, 11, 'qr_v8.png', '2026-09-03 14:00:00', 'Buen precio para la calidad de la comida.', 8, NULL),
+(9, 12, 'qr_v9.png', '2026-09-03 20:00:00', NULL, 10, '¡Gracias Diego! La receta del apanado es secreta y especial.'),
+(10, 13, 'qr_v10.png', '2026-09-04 13:30:00', NULL, 6, 'Atención normal, nada fuera de lo común.'),
+(11, 28, 'qr_v11.png', '2026-09-04 19:00:00', 'El menú QR fue muy intuitivo para pedir rápido.', 9, NULL),
+(12, 14, 'qr_v12.png', '2026-09-04 21:00:00', 'La salsa BBQ es demasiado dulce para mi gusto.', 6, NULL),
+(13, 15, 'qr_v13.png', '2026-09-05 13:15:00', 'Excelente todo, las limonadas de coco son top.', 10, NULL),
+(14, 16, 'qr_v14.png', '2026-09-05 15:00:00', NULL, 4, 'Disculpas por la demora Sofia, trabajamos en agilizar el servicio.'),
+(15, 17, 'qr_v15.png', '2026-09-05 19:30:00', 'Muy buena proporción de tocineta y queso.', 9, NULL),
+(16, 29, 'qr_v16.png', '2026-09-06 12:45:00', 'Escanear el QR y dar la opinión en segundos es muy práctico.', 10, NULL),
+(17, 18, 'qr_v17.png', '2026-09-06 14:15:00', 'La vegetariana de lentejas está bien sazonada.', 8, NULL),
+(18, 19, 'qr_v18.png', '2026-09-06 20:00:00', NULL, 5, 'Tomaremos nota para verificar el lote de panadería.'),
+(19, 20, 'qr_v19.png', '2026-09-07 13:00:00', 'Servicio rápido y empacado de forma impecable.', 9, NULL),
+(20, 21, 'qr_v20.png', '2026-09-07 19:15:00', 'Totalmente recomendado, volveré con mi familia.', 10, NULL),
+(21, 30, 'qr_v21.png', '2026-09-08 13:30:00', 'Buena experiencia comprando en caja y valorando en el ticket.', 8, NULL),
+(22, 22, 'qr_v22.png', '2026-09-08 19:00:00', NULL, 4, 'Ajustaremos el sazonado en cocina, gracias por avisarnos.'),
+(23, 23, 'qr_v23.png', '2026-09-08 21:10:00', 'La hamburguesa trifásica es enorme y deliciosa.', 10, NULL),
+(24, 24, 'qr_v24.png', '2026-09-09 13:00:00', 'Los anillos de cebolla estaban súper crujientes.', 9, NULL),
+(25, 25, 'qr_v25.png', '2026-09-09 20:00:00', 'Buena relación precio-calidad.', 8, NULL),
+(26, 6, 'qr_v26.png', '2026-09-10 13:30:00', 'Segunda vez que pido este mes y mantienen la calidad.', 10, NULL),
+(27, 7, 'qr_v27.png', '2026-09-10 19:40:00', 'Muy grasosa la hamburguesa esta vez.', 3, NULL),
+(28, 8, 'qr_v28.png', '2026-09-11 12:50:00', 'Atención amable por parte de los meseros.', 9, NULL),
+(29, 9, 'qr_v29.png', '2026-09-11 20:10:00', 'La limonada cerezada estaba un poco empalagosa.', 6, NULL),
+(30, 10, 'qr_v30.png', '2026-09-12 14:00:00', '5 estrellas bien merecidas (10/10). Todo increíble.', 10, NULL);
+
+INSERT INTO `pqrs` (`id_pqrs`, `id_usuario`, `pqrs_fecha`, `pqrs_tipo`, `pqrs_descripcion`, `pqrs_estado`, `pqrs_respuesta`) VALUES
+(1, 6, '2026-09-01 14:00:00', 'QUEJA', 'El pedido demoró más de 50 minutos en llegar.', 'RESUELTO', 'Lamentamos la demora. Hemos ofrecido un cupón de descuento al cliente.'),
+(2, 7, '2026-09-01 15:30:00', 'FELICITACIÓN', 'Excelente sabor y la carne estaba muy jugosa.', 'RESUELTO', 'Agradecemos sus comentarios, seguimos trabajando para ofrecer lo mejor.'),
+(3, 8, '2026-09-02 10:15:00', 'PETICIÓN', '¿Tienen opciones para personas celíacas (pan sin gluten)?', 'RESUELTO', 'Actualmente no contamos con pan sin gluten, pero estamos evaluando proveedores.'),
+(4, 9, '2026-09-02 21:00:00', 'RECLAMO', 'Faltó la porción de papas en mi pedido a domicilio.', 'RESUELTO', 'Se reenvió la porción de papas sin costo adicional de inmediato.'),
+(5, 10, '2026-09-03 11:20:00', 'SUGERENCIA', 'Podrían incluir malteadas en el menú de bebidas.', 'PENDIENTE', NULL),
+(6, 11, '2026-09-03 14:50:00', 'FELICITACIÓN', 'Muy buena atención del domiciliario.', 'RESUELTO', 'Nos alegra saberlo, transmitiremos la felicitación al domiciliario.'),
+(7, 12, '2026-09-04 13:10:00', 'QUEJA', 'Las papas llegaron un poco frías.', 'RESUELTO', 'Tomaremos medidas con el empaque térmico para mantener la temperatura.'),
+(8, 13, '2026-09-04 16:40:00', 'RECLAMO', 'Pedí gaseosa Sprite y me enviaron Coca-Cola.', 'RESUELTO', 'Se realizó el cambio de bebida e incluyó un postre de cortesía.'),
+(9, 14, '2026-09-05 11:00:00', 'PETICIÓN', 'Solicito factura electrónica a nombre de mi empresa.', 'RESUELTO', 'Factura emitida y enviada al correo registrado.'),
+(10, 15, '2026-09-05 21:30:00', 'SUGERENCIA', 'Ampliar el horario de atención los domingos.', 'PENDIENTE', NULL),
+(11, 16, '2026-09-06 14:00:00', 'FELICITACIÓN', 'La hamburguesa Monster es espectacular.', 'RESUELTO', '¡Muchas gracias por preferirnos!'),
+(12, 17, '2026-09-06 17:20:00', 'QUEJA', 'No me agregaron la salsa de la casa que solicité.', 'RESUELTO', 'Ofrecemos disculpas, entregamos sachets adicionales en su próxima visita.'),
+(13, 18, '2026-09-07 10:00:00', 'PETICIÓN', 'Información sobre precios para eventos empresariales.', 'PENDIENTE', NULL),
+(14, 19, '2026-09-07 19:45:00', 'RECLAMO', 'Cobro duplicado en mi tarjeta de crédito.', 'EN PROCESO', 'Se verificó la transacción con el banco y se aplicó el reverso correspondiente.'),
+(15, 20, '2026-09-08 13:15:00', 'SUGERENCIA', 'Colocar más mesas en la terraza.', 'PENDIENTE', NULL),
+(16, 21, '2026-09-08 15:00:00', 'FELICITACIÓN', 'La limonada de coco está deliciosa.', 'RESUELTO', '¡Nos alegra que disfrute nuestras bebidas!'),
+(17, 22, '2026-09-08 20:30:00', 'QUEJA', 'Mucho ruido en el local durante el almuerzo.', 'RESUELTO', 'Ajustamos los niveles del sistema de audio.'),
+(18, 23, '2026-09-09 11:40:00', 'RECLAMO', 'Empaque roto al momento de la entrega.', 'RESUELTO', 'Se realizó la reposición del producto dañado.'),
+(19, 24, '2026-09-09 18:00:00', 'SUGERENCIA', 'Agregar opción de pagos con Nequi desde la web.', 'PENDIENTE', NULL),
+(20, 25, '2026-09-09 22:10:00', 'FELICITACIÓN', 'Atención rápida y todo impecable.', 'RESUELTO', '¡Gracias por tu visita! Esperamos verte pronto.'),
+(21, 6, '2026-09-10 13:00:00', 'SUGERENCIA', 'Incapacidad de pedir salsas extra en la app.', 'PENDIENTE', NULL),
+(22, 7, '2026-09-10 14:20:00', 'PETICIÓN', '¿Tienen bonos de regalo disponibles?', 'RESUELTO', 'Sí disponemos de bonos. Puedes adquirirlos directamente en caja.'),
+(23, 8, '2026-09-10 20:10:00', 'QUEJA', 'La tocineta estaba demasiado quemada.', 'RESUELTO', 'Revisamos los tiempos de cocción con el equipo de cocina.'),
+(24, 9, '2026-09-11 12:15:00', 'FELICITACIÓN', 'Las papas en casco son las mejores de la ciudad.', 'RESUELTO', '¡Gracias por tus amables palabras!'),
+(25, 10, '2026-09-11 16:30:00', 'RECLAMO', 'Tiempo de espera excesivo en la mesa 3.', 'RESUELTO', 'Reforzamos el personal en hora pico para evitar futuros retrasos.'),
+(26, 11, '2026-09-11 21:00:00', 'SUGERENCIA', 'Música ambiental un poco más baja.', 'PENDIENTE', NULL),
+(27, 12, '2026-09-12 11:10:00', 'PETICIÓN', 'Información de alérgenos en el menú.', 'PENDIENTE', NULL),
+(28, 13, '2026-09-12 14:00:00', 'FELICITACIÓN', 'Excelente empaque ecológico.', 'RESUELTO', 'Nos esforzamos por ser amigables con el medio ambiente.'),
+(29, 14, '2026-09-12 19:20:00', 'QUEJA', 'Demora al traer la cuenta.', 'RESUELTO', 'Se capacitó al personal de mesa sobre atención ágil.'),
+(30, 15, '2026-09-13 10:00:00', 'SUGERENCIA', 'Promociones para estudiantes.', 'PENDIENTE', NULL);

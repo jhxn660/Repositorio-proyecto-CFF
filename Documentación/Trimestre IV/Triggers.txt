@@ -1,0 +1,134 @@
+# 1. Muestre un trigger que si el precio de un producto se ve modificado se muestre en la tabla auditoria. 
+
+DELIMITER //
+CREATE TRIGGER Producto_Modificacion
+AFTER UPDATE ON productos
+FOR EACH ROW
+BEGIN
+    IF OLD.producto_precio <> NEW.producto_precio THEN
+        INSERT INTO auditoria (tabla_afectada, accion, id_usuario)
+        VALUES (
+            'productos', 
+            CONCAT('CAMBIO_PRECIO: Producto ID ', NEW.id_producto, ' varió de $', OLD.producto_precio, ' a $', NEW.producto_precio), 
+            NEW.id_usuario
+        ); 
+    END IF;
+END //
+DELIMITER ;
+
+# Comprobación 
+UPDATE productos 
+SET producto_precio = 19500.00 
+WHERE id_producto = 1;
+
+# 2. Muestre un trigger que impida que el inventario quede con valores negativos por errores de concurrencia.
+
+DELIMITER //
+CREATE TRIGGER Inventario_Negativo
+BEFORE UPDATE ON insumos
+FOR EACH ROW
+BEGIN
+    IF NEW.insumo_stock < 0 THEN
+        SIGNAL SQLSTATE '45000' 
+        SET MESSAGE_TEXT = 'Operación rechazada. El stock no puede ser negativo.';
+    END IF;
+END //
+DELIMITER ;
+
+# Comprobación
+UPDATE insumos 
+SET insumo_stock = insumo_stock - 200 
+WHERE id_insumo = 1;
+
+# 3. Muestre un trigger que guarde un registro en auditoría cuando un producto sea eliminado.
+
+DELIMITER //
+
+DROP TRIGGER IF EXISTS trg_producto_eliminado //
+
+CREATE TRIGGER trg_producto_eliminado
+AFTER DELETE ON productos
+FOR EACH ROW
+BEGIN
+    INSERT INTO auditoria (tabla_afectada, accion, id_usuario)
+    VALUES (
+        'productos', 
+        CONCAT('ELIMINACIÓN: Producto eliminado. ID: ', OLD.id_producto, ' - Último precio: $', OLD.producto_precio), 
+        1 
+    );
+END //
+
+DELIMITER ;
+
+-- 3. Limpiar dependencias en TODAS las tablas hijas para evitar el Error 1451
+DELETE FROM producto_insumo WHERE id_producto = 2;
+DELETE FROM pedido_detalle WHERE id_producto = 2;
+
+-- 4. Eliminar el producto de forma segura (activa el trigger AFTER DELETE)
+DELETE FROM productos WHERE id_producto = 2;
+
+-- 5. Comprobación del registro en auditoría
+SELECT * FROM auditoria;
+
+# 4. Muestre un trigger que calcule automáticamente el subtotal de un ítem en el detalle del # pedido multiplicando la cantidad por el precio unitario.
+
+DELIMITER //
+CREATE TRIGGER Calcular_SumaTotal
+BEFORE INSERT ON pedido_detalle
+FOR EACH ROW
+BEGIN
+
+    SET NEW.sumtotal = IFNULL(NEW.cantidad, 0) * IFNULL(NEW.precio_unitario, 0);
+    
+END //
+DELIMITER ;
+
+# Comprobación
+INSERT INTO pedido_detalle (id_pedido_detalle, id_pedido, id_producto, cantidad, precio_unitario)
+VALUES (50, 1, 1, 4, 15000.00);
+
+SELECT id_pedido_detalle, cantidad, precio_unitario, sumtotal 
+FROM pedido_detalle 
+WHERE id_pedido_detalle = 50;
+
+# 5. Muestre un trigger que impida que un pedido con estado COMPLETADO pueda regresar al estado PENDIENTE.
+
+DELIMITER //
+CREATE TRIGGER Pedido_Estado_Invalido
+BEFORE UPDATE ON pedidos
+FOR EACH ROW
+BEGIN
+IF OLD.pedido_estado = 'ENTREGADO' AND NEW.pedido_estado = 'PENDIENTE' THEN
+SIGNAL SQLSTATE '45000'
+SET MESSAGE_TEXT = 'Violación de Flujo: Un pedido COMPLETADO no puede regresar al estado PENDIENTE.';
+END IF;
+END //
+DELIMITER ;
+
+# Comprobación
+UPDATE pedidos
+SET pedido_estado = 'PENDIENTE'
+WHERE id_pedido = 2;
+
+# 6. Muestre un trigger que registre una alerta en auditoría si un cliente deja un comentario con valoración muy baja (Menor o igual a 3).
+
+DELIMITER //
+CREATE TRIGGER Comentario_Alerta_Baja_Valoracion
+AFTER INSERT ON comentarios
+FOR EACH ROW
+BEGIN
+IF NEW.comentario_valoracion <= 3 THEN
+INSERT INTO auditoria (tabla_afectada, accion, id_usuario)
+VALUES (
+'comentarios',
+CONCAT('ALERTA DE SERVICIO: Cliente inconforme. Valoración de ', NEW.comentario_valoracion, ' estrellas. ID Comentario: ', NEW.id_comentario),
+NEW.id_usuario
+);
+END IF;
+END //
+DELIMITER ;
+
+# Comprobación
+INSERT INTO comentarios (id_comentario, id_usuario, comentario_fecha, comentario_descripcion, comentario_valoracion)
+VALUES (300, 2, NOW(), 'La comida llegó completamente fría.', 2);
+SELECT * FROM auditoria;
