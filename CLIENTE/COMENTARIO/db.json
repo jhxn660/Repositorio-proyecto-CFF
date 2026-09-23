@@ -1,0 +1,61 @@
+{
+  "comentarios": [
+    {
+      "id": "1",
+      "nombre": "Carlos Gómez",
+      "texto": "¡Las hamburguesas son excelentes! El tiempo de entrega fue bastante rápido.",
+      "fecha": "12/05/2026",
+      "likes": 5,
+      "liked": false
+    },
+    {
+      "id": "2",
+      "nombre": "María Rodríguez",
+      "texto": "Muy buen servicio y la comida caliente. Totalmente recomendado.",
+      "fecha": "15/05/2026",
+      "likes": 2,
+      "liked": false
+    },
+    {
+      "id": "eSAhGQYrkKo",
+      "nombre": "Andres Gomez",
+      "texto": "Pedi un combo familiar y todo llego completo y bien empacado. Muy buena relacion calidad-precio",
+      "fecha": "17/9/2026",
+      "likes": 0,
+      "liked": false
+    },
+    {
+      "id": "BvDXlVD2jXA",
+      "nombre": "Natalia Herrera",
+      "texto": "Me encantó la salsa de la casa, le da un toque diferente a las alitas.",
+      "fecha": "17/9/2026",
+      "likes": 0,
+      "liked": false
+    },
+    {
+      "id": "KJgwbUcdJJg",
+      "nombre": "Maria Fernanda",
+      "texto": "El mejor fast food de la zona. Precios justos y porciones generosas. ¡Totalmente recomendado!\n",
+      "fecha": "17/9/2026",
+      "likes": 0,
+      "liked": false
+    },
+    {
+      "id": "QMH-Sza48Lc",
+      "nombre": "Julian Gomez",
+      "texto": "Me encanta la atención al cliente, es muy ordenada y respetuosa.\n",
+      "fecha": "17/9/2026",
+      "likes": 0,
+      "liked": false
+    },
+    {
+      "id": "NWYG7ryruF8",
+      "nombre": "Arley Gomez",
+      "texto": "Me encanta este restaurante, tiene muy buena comida.\n",
+      "fecha": "17/9/2026",
+      "likes": 0,
+      "liked": false
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}
