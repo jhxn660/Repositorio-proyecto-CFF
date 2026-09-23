@@ -1,0 +1,236 @@
+ALTER TABLE pqrs MODIFY COLUMN id_pqrs INT AUTO_INCREMENT;
+
+DELIMITER //
+CREATE PROCEDURE RegistrarPQRS(
+    IN p_id_usuario INT, 
+    IN p_tipo VARCHAR(50), 
+    IN p_descripcion TEXT
+)
+BEGIN
+    INSERT INTO pqrs (id_usuario, pqrs_fecha, pqrs_tipo, pqrs_descripcion, pqrs_estado)
+    VALUES (p_id_usuario, NOW(), p_tipo, p_descripcion, 'EN PROCESO');
+END //
+DELIMITER ;
+
+-- ------------------------------------------------------------------------------------
+
+SET FOREIGN_KEY_CHECKS = 0;
+
+ALTER TABLE pedidos 
+MODIFY COLUMN id_pedido INT AUTO_INCREMENT;
+
+ALTER TABLE pedido_detalle 
+MODIFY COLUMN id_pedido_detalle INT AUTO_INCREMENT;
+
+SET FOREIGN_KEY_CHECKS = 1;
+
+DELIMITER //
+CREATE PROCEDURE CrearPedido(
+    IN p_id_usuario INT,
+    IN p_direccion VARCHAR(255),
+    IN p_id_producto INT,
+    IN p_cantidad INT
+)
+BEGIN
+    -- Declaración de variables locales
+    DECLARE v_id_pedido INT;
+    DECLARE v_precio DECIMAL(10,2);
+    DECLARE v_subtotal DECIMAL(10,2);
+
+    -- Manejador simple de errores: si ocurre un fallo, revierte todo
+    DECLARE EXIT HANDLER FOR SQLEXCEPTION 
+    BEGIN 
+        ROLLBACK; 
+        RESIGNAL; 
+    END;
+
+    -- Iniciar bloque transaccional (Garantiza ACID)
+    START TRANSACTION;
+
+    -- 1. Insertar la cabecera en 'pedidos'
+    INSERT INTO pedidos (id_usuario, pedido_fecha, pedido_estado, pedido_direccion, pedido_total)
+    VALUES (p_id_usuario, NOW(), 'PENDIENTE', p_direccion, 0.00);
+
+    -- Obtener el ID del pedido recién creado
+    SET v_id_pedido = LAST_INSERT_ID();
+
+    -- 2. Obtener el precio actual del producto desde la tabla 'productos'
+    SELECT producto_precio INTO v_precio 
+    FROM productos 
+    WHERE id_producto = p_id_producto;
+
+    -- Calcular el subtotal del ítem
+    SET v_subtotal = v_precio * p_cantidad;
+
+    -- 3. Insertar el renglón en 'pedido_detalle'
+    -- (id_pedido_detalle se genera automáticamente gracias al AUTO_INCREMENT)
+    INSERT INTO pedido_detalle (id_pedido, id_producto, cantidad, precio_unitario, sumtotal)
+    VALUES (v_id_pedido, p_id_producto, p_cantidad, v_precio, v_subtotal);
+
+    -- 4. Actualizar el total acumulado en la cabecera del pedido
+    UPDATE pedidos 
+    SET pedido_total = v_subtotal 
+    WHERE id_pedido = v_id_pedido;
+
+    -- Confirmar la transacción
+    COMMIT;
+
+    -- Retornar el resumen del pedido creado
+    SELECT 
+        id_pedido, 
+        pedido_fecha, 
+        pedido_estado, 
+        pedido_direccion, 
+        pedido_total 
+    FROM pedidos 
+    WHERE id_pedido = v_id_pedido;
+
+END //
+DELIMITER ;
+
+-- ------------------------------------------------------------------------------------
+
+SET FOREIGN_KEY_CHECKS = 0;
+
+ALTER TABLE ventas 
+MODIFY COLUMN id_venta INT AUTO_INCREMENT;
+
+ALTER TABLE venta_detalle 
+MODIFY COLUMN id_venta_detalle INT AUTO_INCREMENT;
+
+SET FOREIGN_KEY_CHECKS = 1;
+
+DELIMITER //
+CREATE PROCEDURE CerrarVentaGQR(
+    IN p_id_pedido INT
+)
+BEGIN
+    -- Declaración de variables locales
+    DECLARE v_total DECIMAL(10,2);
+    DECLARE v_estado VARCHAR(50);
+    DECLARE v_id_venta INT;
+    DECLARE v_codigo_qr VARCHAR(100);
+
+    -- Control de Excepciones: Si ocurre cualquier error SQL, deshace los cambios completamente
+    DECLARE EXIT HANDLER FOR SQLEXCEPTION 
+    BEGIN 
+        ROLLBACK; 
+        RESIGNAL; 
+    END;
+
+    -- Inicio de la Transacción Atómica
+    START TRANSACTION;
+
+    -- 1. Lectura con Bloqueo Pesimista (FOR UPDATE)
+    -- Bloquea la fila del pedido para evitar que otra transacción paralela la modifique
+    SELECT pedido_total, pedido_estado 
+    INTO v_total, v_estado 
+    FROM pedidos 
+    WHERE id_pedido = p_id_pedido 
+    FOR UPDATE;
+
+    -- 2. Validar que el pedido esté PENDIENTE (Fail-Fast)
+    IF v_estado IS NULL THEN
+        SIGNAL SQLSTATE '45000' 
+        SET MESSAGE_TEXT = 'Error: El pedido especificado no existe.';
+    ELSEIF v_estado != 'PENDIENTE' THEN
+        SIGNAL SQLSTATE '45000' 
+        SET MESSAGE_TEXT = 'Anomalía detectada: El pedido ya fue procesado o se encuentra cancelado.';
+    END IF;
+
+    -- 3. Crear la cabecera de la venta con estado temporal del QR
+    INSERT INTO ventas (venta_fecha, venta_total, ticket_qr) 
+    VALUES (NOW(), v_total, 'PROCESANDO...');
+
+    -- Capturar el ID de la venta recién creada en esta sesión
+    SET v_id_venta = LAST_INSERT_ID();
+
+    -- 4. Invocar la UDF fn_generar_codigo_qr
+    SET v_codigo_qr = GenerarQR(v_id_venta);
+
+    -- Actualizar la venta con su código QR definitivo
+    UPDATE ventas 
+    SET ticket_qr = v_codigo_qr 
+    WHERE id_venta = v_id_venta;
+
+    -- 5. Insertar el registro en la tabla detalle/relacional (venta_detalle)
+    INSERT INTO venta_detalle (id_pedido, id_venta) 
+    VALUES (p_id_pedido, v_id_venta);
+
+    -- 6. Actualizar el estado del pedido a 'PAGADO'
+    UPDATE pedidos 
+    SET pedido_estado = 'ENTREGADO' 
+    WHERE id_pedido = p_id_pedido;
+
+    -- Confirmación de los cambios en disco
+    COMMIT;
+
+    -- 7. Retornar el resultado estructurado para la aplicación / impresora de tickets
+    SELECT 
+        v.id_venta,
+        v.venta_fecha,
+        v.venta_total,
+        v.ticket_qr,
+        vd.id_pedido
+    FROM ventas v
+    INNER JOIN venta_detalle vd ON v.id_venta = vd.id_venta
+    WHERE v.id_venta = v_id_venta;
+
+END //
+DELIMITER ;
+
+-- ------------------------------------------------------------------------------------
+
+DELIMITER //
+CREATE PROCEDURE RespuestaPQRS(
+    IN p_id_pqrs INT,
+    IN p_respuesta TEXT
+)
+BEGIN
+    DECLARE v_estado_actual VARCHAR(50);
+
+    -- Manejo de Excepciones: Aborta y revierte ante cualquier fallo inesperado
+    DECLARE EXIT HANDLER FOR SQLEXCEPTION 
+    BEGIN 
+        ROLLBACK; 
+        RESIGNAL; 
+    END;
+
+    START TRANSACTION;
+
+    -- 1. Validar la existencia y el estado actual con Bloqueo Pesimista (FOR UPDATE)
+    SELECT pqrs_estado INTO v_estado_actual 
+    FROM pqrs 
+    WHERE id_pqrs = p_id_pqrs 
+    FOR UPDATE;
+
+    -- Validaciones de Lógica de Negocio (Fail-Fast)
+    IF v_estado_actual IS NULL THEN
+        SIGNAL SQLSTATE '45000' 
+        SET MESSAGE_TEXT = 'Error: La PQRS especificada no existe.';
+    ELSEIF v_estado_actual = 'RESUELTO' THEN
+        SIGNAL SQLSTATE '45000' 
+        SET MESSAGE_TEXT = 'Atención: Esta PQRS ya se encuentra resuelta y no se puede modificar.';
+    END IF;
+
+    -- 2. Actualizar el registro en la tabla pqrs
+    -- (Esta operación activará automáticamente el Trigger 'trg_auditoria_pqrs_update')
+    UPDATE pqrs 
+    SET 
+        pqrs_respuesta = p_respuesta,
+        pqrs_estado = 'RESUELTO'
+    WHERE id_pqrs = p_id_pqrs;
+
+    COMMIT;
+
+    -- 3. Retornar confirmación al backend
+    SELECT 
+        id_pqrs, 
+        pqrs_estado, 
+        pqrs_respuesta 
+    FROM pqrs 
+    WHERE id_pqrs = p_id_pqrs;
+
+END //
+
+DELIMITER ;

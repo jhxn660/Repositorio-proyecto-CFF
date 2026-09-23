@@ -17,7 +17,7 @@ DELIMITER ;
 
 DELIMITER //
 
-CREATE PROCEDURE registrarCliente(IN p_nombre VARCHAR(100), IN p_correo VARCHAR(100), IN p_password VARCHAR(255), IN p_telefono VARCHAR(20))
+CREATE PROCEDURE `registrarCliente`(IN p_nombre VARCHAR(100), IN p_correo VARCHAR(100), IN p_password VARCHAR(255), IN p_telefono VARCHAR(20))
 
 BEGIN
     DECLARE v_salt VARCHAR(32);
@@ -37,7 +37,7 @@ DELIMITER ;
 
 DELIMITER //
 
-CREATE PROCEDURE registrarEmpleado(IN p_id_rol INT, IN p_nombre VARCHAR(100), IN p_correo VARCHAR(100), IN p_password VARCHAR(255), IN p_telefono VARCHAR(20), IN p_empleado_rol Varchar(30))
+CREATE PROCEDURE `registrarEmpleado`(IN p_id_rol INT, IN p_nombre VARCHAR(100), IN p_correo VARCHAR(100), IN p_password VARCHAR(255), IN p_telefono VARCHAR(20), IN p_empleado_rol Varchar(30))
 
 BEGIN
     DECLARE v_salt VARCHAR(32);

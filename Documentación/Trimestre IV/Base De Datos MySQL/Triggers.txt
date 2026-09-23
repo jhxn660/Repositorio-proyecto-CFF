@@ -132,3 +132,28 @@ DELIMITER ;
 INSERT INTO comentarios (id_comentario, id_usuario, comentario_fecha, comentario_descripcion, comentario_valoracion)
 VALUES (300, 2, NOW(), 'La comida llegó completamente fría.', 2);
 SELECT * FROM auditoria;
+
+-- ----------------------------------------------------------------------------------------
+
+DELIMITER //
+CREATE TRIGGER AuditoriaRespuestaPQRS
+AFTER UPDATE ON pqrs
+FOR EACH ROW
+BEGIN
+    -- Se dispara la auditoría únicamente si hubo un cambio en la respuesta o en el estado
+    IF (OLD.pqrs_estado <> NEW.pqrs_estado) OR (OLD.pqrs_respuesta IS NULL AND NEW.pqrs_respuesta IS NOT NULL) THEN
+        INSERT INTO auditoria (
+            tabla_afectada, 
+            accion, 
+            id_usuario, 
+            fecha_auditoria
+        ) 
+        VALUES (
+            'pqrs', 
+            CONCAT('PQRS ID ', NEW.id_pqrs, ' actualizada de estado: ', OLD.pqrs_estado, ' -> ', NEW.pqrs_estado),
+            NEW.id_usuario, -- Toma el ID del usuario propietario de la solicitud
+            NOW()
+        );
+    END IF;
+END //
+DELIMITER ;
