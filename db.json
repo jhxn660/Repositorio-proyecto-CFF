@@ -1,0 +1,41 @@
+{
+  "kpis": [
+    { "id": 1, "icon": "💰", "variant": "sales", "label": "Ventas del Mes", "value": "$12.800.000", "trend": "▲ 8.4% vs mes anterior" },
+    { "id": 2, "icon": "📊", "variant": "year", "label": "Ventas del Año", "value": "$148.500.000", "trend": "▲ 12.1% vs año anterior" },
+    { "id": 3, "icon": "🍔", "variant": "products", "label": "Productos Vendidos", "value": "9.640", "trend": "▲ 5.2% vs mes anterior" }
+  ],
+  "goal": {
+    "label": "Meta Anual de Ventas",
+    "value": "$180.000.000",
+    "progressPercent": 82.5,
+    "remaining": "$31.500.000"
+  },
+  "comparison": {
+    "previous": { "year": "2025", "sales": "$132.450.000", "products": "101.800" },
+    "current": { "year": "2026", "sales": "$148.500.000", "products": "112.400" },
+    "yearlyDiff": "▲ 12.1%",
+    "yearlyNote": "$16.050.000 más que el año anterior",
+    "monthly": { "label": "Junio 2026", "value": "$12.800.000", "diff": "▲ 8.4% vs jun. 2025" }
+  },
+  "productRows": [
+    { "id": 1, "name": "Combo Corralejo Clásico", "monthly": { "qty": "2.480", "revenue": "$49.600.000", "pct": 33 }, "annual": { "qty": "26.150", "revenue": "$523.000.000", "pct": 35 } },
+    { "id": 2, "name": "Hamburguesa Doble Carne", "monthly": { "qty": "1.960", "revenue": "$35.280.000", "pct": 24 }, "annual": { "qty": "21.300", "revenue": "$383.400.000", "pct": 26 } },
+    { "id": 3, "name": "Alitas BBQ x12", "monthly": { "qty": "1.340", "revenue": "$26.800.000", "pct": 18 }, "annual": { "qty": "14.760", "revenue": "$295.200.000", "pct": 17 } },
+    { "id": 4, "name": "Papas Criollas Especiales", "monthly": { "qty": "1.870", "revenue": "$14.960.000", "pct": 14 }, "annual": { "qty": "19.870", "revenue": "$158.960.000", "pct": 13 } },
+    { "id": 5, "name": "Malteada Tropical", "monthly": { "qty": "990", "revenue": "$11.880.000", "pct": 11 }, "annual": { "qty": "10.320", "revenue": "$123.840.000", "pct": 9 } }
+  ],
+  "ranking": [
+    { "id": 1, "pos": 1, "tone": "gold", "name": "Combo Corralejo Clásico", "qty": "26.150", "revenue": "$523.000.000", "pct": 35 },
+    { "id": 2, "pos": 2, "tone": "silver", "name": "Hamburguesa Doble Carne", "qty": "21.300", "revenue": "$383.400.000", "pct": 26 },
+    { "id": 3, "pos": 3, "tone": "bronze", "name": "Papas Criollas Especiales", "qty": "19.870", "revenue": "$158.960.000", "pct": 17 },
+    { "id": 4, "pos": 4, "tone": "plain", "name": "Alitas BBQ x12", "qty": "14.760", "revenue": "$295.200.000", "pct": 13 },
+    { "id": 5, "pos": 5, "tone": "plain", "name": "Malteada Tropical", "qty": "10.320", "revenue": "$123.840.000", "pct": 9 }
+  ],
+  "reviews": [
+    { "id": 1, "name": "Combo Corralejo Clásico", "count": 324, "score": 4.8 },
+    { "id": 2, "name": "Alitas BBQ x12", "count": 211, "score": 4.6 },
+    { "id": 3, "name": "Malteada Tropical", "count": 178, "score": 4.5 },
+    { "id": 4, "name": "Hamburguesa Doble Carne", "count": 256, "score": 4.3 },
+    { "id": 5, "name": "Papas Criollas Especiales", "count": 142, "score": 4.1 }
+  ]
+}
